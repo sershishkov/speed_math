@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/users', require('./routes/user/auth/userRoutes'));
+app.use('/api/auth', require('./routes/user/auth/authRoutes'));
 
 //Serve frontend
 if (process.env.NODE_ENV === 'production') {
