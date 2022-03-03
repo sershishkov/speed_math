@@ -32,22 +32,6 @@ const user__Schema = mongoose.Schema(
       type: String,
       default: '/uploads/default_user.jpg',
     },
-    totalTasks: {
-      type: Number,
-      default: 0,
-    },
-    rightTasks: {
-      type: Number,
-      default: 0,
-    },
-    wrongTasks: {
-      type: Number,
-      default: 0,
-    },
-    totalTime: {
-      type: Number,
-      default: 0,
-    },
   },
   {
     timestamps: true,
