@@ -82,6 +82,7 @@ const Login = () => {
           label='email'
           type='email'
           id='email'
+          value={email}
           onChange={onChange}
         />
       </Grid>
@@ -94,6 +95,7 @@ const Login = () => {
           label='Password'
           type='password'
           id='password'
+          value={password}
           onChange={onChange}
         />
       </Grid>

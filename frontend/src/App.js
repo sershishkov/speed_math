@@ -9,6 +9,11 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 
 import Container from '@mui/material/Container';
+import LessonsList from './pages/lessons/LessonsList';
+import SimpleAddition from './pages/lessons/level_1/SimpleAddition';
+import SimpleDivision from './pages/lessons/level_1/SimpleDivision';
+import SimpleMultiplication from './pages/lessons/level_1/SimpleMultiplication';
+import SimpleSubtraction from './pages/lessons/level_1/SimpleSubtraction';
 
 function App() {
   return (
@@ -20,6 +25,24 @@ function App() {
             <Route path='/' element={<Landing />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+
+            <Route path='/lessons' element={<LessonsList />} />
+            <Route
+              path='/lessons/level_1/simple-addition'
+              element={<SimpleAddition />}
+            />
+            <Route
+              path='/lessons/level_1/simple-division'
+              element={<SimpleDivision />}
+            />
+            <Route
+              path='/lessons/level_1/simple-multiplication'
+              element={<SimpleMultiplication />}
+            />
+            <Route
+              path='/lessons/level_1/simple-subtraction'
+              element={<SimpleSubtraction />}
+            />
           </Routes>
           <Footer />
         </Container>

@@ -88,6 +88,7 @@ const Register = () => {
           label='Name'
           type='text'
           id='name'
+          value={name}
           onChange={onChange}
         />
       </Grid>
@@ -100,6 +101,7 @@ const Register = () => {
           label='email'
           type='email'
           id='email'
+          value={email}
           onChange={onChange}
         />
       </Grid>
@@ -112,6 +114,7 @@ const Register = () => {
           label='Password'
           type='password'
           id='password'
+          value={password}
           onChange={onChange}
         />
       </Grid>
@@ -124,6 +127,7 @@ const Register = () => {
           label='Confirm password'
           type='password'
           id='password2'
+          value={password2}
           onChange={onChange}
         />
       </Grid>
