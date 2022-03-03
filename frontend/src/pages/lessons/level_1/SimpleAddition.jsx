@@ -3,8 +3,15 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-// import List from '@mui/material/List';
-// import ListItem from '@mui/material/ListItem';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import TableFooter from '@mui/material/TableFooter';
+import Paper from '@mui/material/Paper';
+
 import { generateExample__AddMultSub } from '../../../utils/generateExample';
 
 const operators = ['+', '-', '*', '/', '='];
@@ -21,17 +28,19 @@ function SimpleAddition() {
   const [disableStartButton, set__disableStartButton] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
 
-  const [statisticObject, set__statisticObject] = useState({
-    // simpleAdditionScore: null,
-    // simpleAddition_Done: false,
-    // totalAttempts: null,
-    // exersizeTime: null,
-    // averageTimePerTask: null,
-    // totalExersizesTime: null,
-    // rightAnswers: null,
-    // wrongAnswers: null,
-    resultsList: [],
-  });
+  const [resultsList, set__resultsList] = useState([]);
+
+  // const [statisticObject, set__statisticObject] = useState({
+  //   // simpleAdditionScore: null,
+  //   // simpleAddition_Done: false,
+  //   // totalAttempts: null,
+  //   // exersizeTime: null,
+  //   // averageTimePerTask: null,
+  //   // totalExersizesTime: null,
+  //   // rightAnswers: null,
+  //   // wrongAnswers: null,
+  //   resultsList: [],
+  // });
 
   const onStart = () => {
     set__displayExample(true);
@@ -42,24 +51,21 @@ function SimpleAddition() {
 
   const nextTask = () => {
     set__example(new generateExample__AddMultSub(min, max));
-    set_numberOf_Task(numberOf_Task + 1);
+    set_numberOf_Task((prevState) => prevState + 1);
   };
 
   const onAnswer = () => {
     const obj = {
       example: `${example.numberLeft} ${operators[0]} ${example.numberRight}`,
       userAnswer,
-      rightUswer: example.result,
+      rightAnswer: example.result,
       done: +userAnswer === +example.result,
     };
-    set__statisticObject((prevState) => ({
-      ...prevState,
-      resultsList: [...prevState.resultsList, obj],
-    }));
+    set__resultsList((prevState) => [...prevState, obj]);
+
     set__userAnswer('');
 
     console.log(numberOf_Task);
-    console.log(statisticObject);
 
     if (numberOf_Task < examplesNumber) {
       nextTask();
@@ -68,14 +74,19 @@ function SimpleAddition() {
       set__displayStatistics(true);
     }
   };
+  const onSaveResults = () => {
+    set__displayExample(true);
+    set__displayStatistics(false);
+    set_numberOf_Task(0);
+    set__displaySettings(true);
+    set__disableStartButton(false);
+    set__resultsList([]);
+    set__userAnswer('');
+  };
 
   return (
     <Grid container direction='column'>
-      <Grid item>
-        <Typography variant='h5' align='center'>
-          Простое сложение
-        </Typography>
-      </Grid>
+      <Grid item></Grid>
       <Grid item>
         <Typography variant='h6' align='center'>
           Решите упражнения
@@ -169,6 +180,7 @@ function SimpleAddition() {
               // margin='normal'
               // required
               // fullWidth
+
               name='userAnswer'
               label='Ответ'
               type='number'
@@ -178,7 +190,11 @@ function SimpleAddition() {
             />
           </Grid>
           <Grid item>
-            <Button variant='contained' onClick={onAnswer}>
+            <Button
+              variant='contained'
+              onClick={onAnswer}
+              disabled={userAnswer.length < 1}
+            >
               OK
             </Button>
           </Grid>
@@ -188,6 +204,52 @@ function SimpleAddition() {
         <Typography variant='h1' align='center'>
           Statistic list
         </Typography>
+        <TableContainer component={Paper}>
+          <Table
+            sx={{ minWidth: 650 }}
+            align='center'
+            aria-label='simple table'
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell>Пример</TableCell>
+                <TableCell>Ваш ответ</TableCell>
+                <TableCell>Ответ</TableCell>
+                <TableCell>Сдано?</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {resultsList &&
+                resultsList.length > 0 &&
+                resultsList.map((item, index) => (
+                  <TableRow key={index} sx={{}}>
+                    <TableCell>{item.example}</TableCell>
+                    <TableCell>{item.userAnswer}</TableCell>
+                    <TableCell>{item.rightAnswer}</TableCell>
+                    <TableCell
+                      sx={{ color: item.done ? 'success.main' : 'error.main' }}
+                    >
+                      {item.done ? 'ok' : 'ошибка'}
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TableCell colSpan={4}>
+                  <Button
+                    fullWidth
+                    onClick={onSaveResults}
+                    variant='contained'
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Сохранить результаты
+                  </Button>
+                </TableCell>
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </TableContainer>
       </Grid>
     </Grid>
   );
