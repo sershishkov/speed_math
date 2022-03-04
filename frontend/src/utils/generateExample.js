@@ -38,7 +38,7 @@ export class generateExample__SimpleDivision {
         }
       }
     }
-    console.log(this.examplesArray);
+    // console.log(this.examplesArray);
     const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
     this.numberLeft = +this.examplesArray[exampleIndex].tempResult;
     this.numberRight = +this.examplesArray[exampleIndex].tempRight;

@@ -23,7 +23,7 @@ import Paper from '@mui/material/Paper';
 const operators = ['+', '-', '*', '/', '='];
 
 function SimpleDivision() {
-  const [min, set__min] = useState(1);
+  // const [min, set__min] = useState(1);
   const [max, set__max] = useState(100);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
@@ -163,7 +163,7 @@ function SimpleDivision() {
               value={examplesNumber}
             />
           </Grid>
-          <Grid item>
+          {/* <Grid item>
             <TextField
               margin='normal'
               required
@@ -174,7 +174,7 @@ function SimpleDivision() {
               onChange={(e) => set__min(e.target.value)}
               value={min}
             />
-          </Grid>
+          </Grid> */}
           <Grid item>
             <TextField
               margin='normal'
