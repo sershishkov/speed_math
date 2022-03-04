@@ -3,12 +3,10 @@ const router = express.Router();
 
 const {
   update__Statistic,
-  create__Statistic,
   getAll__Statistic,
 } = require('../../controllers/statistic/statisticConroller');
 const { protect } = require('../../middlewares/authMiddleware');
 
-router.post('/', protect, create__Statistic);
 router.put('/', protect, update__Statistic);
 router.get('/', getAll__Statistic);
 

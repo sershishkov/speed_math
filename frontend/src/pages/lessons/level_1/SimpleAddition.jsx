@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useTimer } from 'use-timer';
+import { generateExample__AddMultSub } from '../../../utils/generateExample';
+import {
+  update__statistic,
+  reset as resetStatistic,
+} from '../../../features/statistics/statisticSlice';
+
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -11,8 +19,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
 import Paper from '@mui/material/Paper';
-
-import { generateExample__AddMultSub } from '../../../utils/generateExample';
 
 const operators = ['+', '-', '*', '/', '='];
 
@@ -27,55 +33,81 @@ function SimpleAddition() {
   const [displayStatistics, set__displayStatistics] = useState(false);
   const [disableStartButton, set__disableStartButton] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
-
   const [resultsList, set__resultsList] = useState([]);
 
-  // const [statisticObject, set__statisticObject] = useState({
-  //   // simpleAdditionScore: null,
-  //   // simpleAddition_Done: false,
-  //   // totalAttempts: null,
-  //   // exersizeTime: null,
-  //   // averageTimePerTask: null,
-  //   // totalExersizesTime: null,
-  //   // rightAnswers: null,
-  //   // wrongAnswers: null,
-  //   resultsList: [],
-  // });
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  const { time, start, pause, reset } = useTimer();
+  const userAnswerInput = document.getElementById('userAnswer');
 
   const onStart = () => {
     set__displayExample(true);
     set__displaySettings(false);
     set__disableStartButton(true);
+    // userAnswerInput.focus();
     nextTask();
+    start();
   };
 
   const nextTask = () => {
     set__example(new generateExample__AddMultSub(min, max));
     set_numberOf_Task((prevState) => prevState + 1);
   };
+  const onContinue = () => {
+    nextTask();
+
+    dispatch(resetStatistic());
+    reset();
+
+    set__displayExample(false);
+    set__displayStatistics(false);
+    set_numberOf_Task(0);
+    set__displaySettings(true);
+    set__disableStartButton(false);
+    set__resultsList([]);
+    set__userAnswer('');
+  };
 
   const onAnswer = () => {
     const obj = {
       example: `${example.numberLeft} ${operators[0]} ${example.numberRight}`,
       userAnswer,
-      rightAnswer: example.result,
-      done: +userAnswer === +example.result,
+      rightAnswer: example.resultAdd,
+      done: +userAnswer === +example.resultAdd,
     };
     set__resultsList((prevState) => [...prevState, obj]);
 
     set__userAnswer('');
 
-    console.log(numberOf_Task);
-
     if (numberOf_Task < examplesNumber) {
       nextTask();
+
+      userAnswerInput.focus();
     } else {
       set__displayExample(false);
       set__displayStatistics(true);
+      pause();
     }
   };
   const onSaveResults = () => {
-    set__displayExample(true);
+    let rightTasks = 0;
+    resultsList.forEach((item) => {
+      if (item.done) {
+        rightTasks++;
+      }
+    });
+
+    const statisticData = {
+      totalTasks: resultsList.length,
+      rightTasks,
+      wrongTasks: resultsList.length - rightTasks,
+      totalTime: time,
+    };
+    dispatch(update__statistic(statisticData));
+    dispatch(resetStatistic());
+    reset();
+
+    set__displayExample(false);
     set__displayStatistics(false);
     set_numberOf_Task(0);
     set__displaySettings(true);
@@ -86,7 +118,25 @@ function SimpleAddition() {
 
   return (
     <Grid container direction='column'>
-      <Grid item></Grid>
+      <Grid item>
+        <Grid container justifyContent='flex-end' alignItems='center'>
+          <Grid item>
+            <Typography variant='h6' align='center'>
+              {time > 60
+                ? Math.floor(time / 60) < 10
+                  ? `0${Math.floor(time / 60)}`
+                  : Math.floor(time / 60)
+                : '00'}
+              :
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant='h6' align='center'>
+              {time % 60 < 10 ? `0${time % 60}` : `${time % 60}`}
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
       <Grid item>
         <Typography variant='h6' align='center'>
           Решите упражнения
@@ -201,8 +251,8 @@ function SimpleAddition() {
         </Grid>
       </Grid>
       <Grid item sx={{ display: displayStatistics ? 'block' : 'none' }}>
-        <Typography variant='h1' align='center'>
-          Statistic list
+        <Typography variant='h4' align='center'>
+          Ваши результаты
         </Typography>
         <TableContainer component={Paper}>
           <Table
@@ -236,14 +286,30 @@ function SimpleAddition() {
             </TableBody>
             <TableFooter>
               <TableRow>
-                <TableCell colSpan={4}>
+                <TableCell colSpan={2}>
                   <Button
                     fullWidth
+                    disabled={!user}
                     onClick={onSaveResults}
                     variant='contained'
                     sx={{ mt: 3, mb: 2 }}
                   >
-                    Сохранить результаты
+                    {user
+                      ? 'Сохранить результаты'
+                      : 'Не возможно сохранить результаты - вы не авторизованы'}
+                  </Button>
+                </TableCell>
+                <TableCell
+                  colSpan={2}
+                  sx={{ display: !user ? 'block' : 'none' }}
+                >
+                  <Button
+                    fullWidth
+                    onClick={onContinue}
+                    variant='contained'
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Тренироваться еще
                   </Button>
                 </TableCell>
               </TableRow>

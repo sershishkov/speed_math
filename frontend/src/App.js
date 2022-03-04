@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getMe } from './features/auth/authSlice';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/layout/Header';
@@ -16,6 +19,12 @@ import SimpleMultiplication from './pages/lessons/level_1/SimpleMultiplication';
 import SimpleSubtraction from './pages/lessons/level_1/SimpleSubtraction';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (localStorage.token) {
+      dispatch(getMe());
+    }
+  }, [dispatch]);
   return (
     <>
       <Router>
