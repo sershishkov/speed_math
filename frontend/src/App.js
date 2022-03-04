@@ -18,6 +18,7 @@ import SimpleDivision from './pages/lessons/level_1/SimpleDivision';
 import SimpleMultiplication from './pages/lessons/level_1/SimpleMultiplication';
 import AlternativeMultiplication from './pages/lessons/level_1/AlternativeMultiplication';
 import SimpleSubtraction from './pages/lessons/level_1/SimpleSubtraction';
+import MultCloseTo100 from './pages/lessons/level_2/MultCloseTo100';
 
 function App() {
   const dispatch = useDispatch();
@@ -56,6 +57,10 @@ function App() {
             <Route
               path='/lessons/level_1/simple-subtraction'
               element={<SimpleSubtraction />}
+            />
+            <Route
+              path='/lessons/level_2/mult-close-to-100'
+              element={<MultCloseTo100 />}
             />
           </Routes>
           <Footer />

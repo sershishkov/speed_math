@@ -23,6 +23,7 @@ function NavigationList({ toggleDrawer }) {
 
   const [openUser, set__openUser] = useState(false);
   const [openLevel_1, set__openLevel_1] = useState(false);
+  const [openLevel_2, set__openLevel_2] = useState(false);
 
   const onLogout = () => {
     dispatch(logout());
@@ -96,6 +97,7 @@ function NavigationList({ toggleDrawer }) {
         </ListItemIcon>
         <ListItemText primary='Уроки' />
       </ListItemButton>
+
       <ListItemButton onClick={() => set__openLevel_1(!openLevel_1)}>
         <ListItemIcon>
           <InboxIcon />
@@ -163,6 +165,29 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Вычитание' />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <ListItemButton onClick={() => set__openLevel_2(!openLevel_2)}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary='Уровень№ 2' />
+        {openLevel_2 ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={openLevel_2} timeout='auto' unmountOnExit>
+        <List disablePadding>
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_2/mult-close-to-100'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение близко 100' />
           </ListItemButton>
         </List>
       </Collapse>
