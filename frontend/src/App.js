@@ -16,6 +16,7 @@ import LessonsList from './pages/lessons/LessonsList';
 import SimpleAddition from './pages/lessons/level_1/SimpleAddition';
 import SimpleDivision from './pages/lessons/level_1/SimpleDivision';
 import SimpleMultiplication from './pages/lessons/level_1/SimpleMultiplication';
+import AlternativeMultiplication from './pages/lessons/level_1/AlternativeMultiplication';
 import SimpleSubtraction from './pages/lessons/level_1/SimpleSubtraction';
 
 function App() {
@@ -47,6 +48,10 @@ function App() {
             <Route
               path='/lessons/level_1/simple-multiplication'
               element={<SimpleMultiplication />}
+            />
+            <Route
+              path='/lessons/level_1/alternative-multiplication'
+              element={<AlternativeMultiplication />}
             />
             <Route
               path='/lessons/level_1/simple-subtraction'

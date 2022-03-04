@@ -144,6 +144,18 @@ function NavigationList({ toggleDrawer }) {
           <ListItemButton
             sx={{ pl: 4 }}
             component={Link}
+            href='/lessons/level_1/alternative-multiplication'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение альтернативное' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
             href='/lessons/level_1/simple-subtraction'
             onClick={toggleDrawer(false)}
           >

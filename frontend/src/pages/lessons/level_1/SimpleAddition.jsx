@@ -139,7 +139,7 @@ function SimpleAddition() {
       </Grid>
       <Grid item>
         <Typography variant='h6' align='center'>
-          Решите упражнения
+          Простое сложение
         </Typography>
       </Grid>
       <Grid item sx={{ display: displaySettings ? 'block' : 'none' }}>

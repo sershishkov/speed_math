@@ -138,7 +138,7 @@ function SimpleDivision() {
       </Grid>
       <Grid item>
         <Typography variant='h6' align='center'>
-          Решите упражнения
+          Простое деление
         </Typography>
       </Grid>
       <Grid item sx={{ display: displaySettings ? 'block' : 'none' }}>
