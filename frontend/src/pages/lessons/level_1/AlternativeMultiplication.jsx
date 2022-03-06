@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
+import Link from '@mui/material/Link';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -35,6 +36,7 @@ function SimpleMultiplication() {
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
   const [displayStatistics, set__displayStatistics] = useState(false);
+  const [displayStopButton, set__displayStopButton] = useState(false);
   const [disableStartButton, set__disableStartButton] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
   const [resultsList, set__resultsList] = useState([]);
@@ -50,11 +52,24 @@ function SimpleMultiplication() {
 
   const onStart = () => {
     set__displayExample(true);
+    set__displayStopButton(true);
     set__displaySettings(false);
     set__disableStartButton(true);
     // userAnswerInput.focus();
     nextTask();
     start();
+  };
+
+  const onStopExercise = () => {
+    set__displayStopButton(false);
+    set__displayExample(false);
+    set__displaySettings(true);
+    reset();
+    set__displayStatistics(false);
+    set_numberOf_Task(0);
+    set__disableStartButton(false);
+    set__resultsList([]);
+    set__userAnswer('');
   };
 
   const nextTask = () => {
@@ -68,12 +83,14 @@ function SimpleMultiplication() {
     reset();
 
     set__displayExample(false);
+
     set__displayStatistics(false);
     set_numberOf_Task(0);
     set__displaySettings(true);
     set__disableStartButton(false);
     set__resultsList([]);
     set__userAnswer('');
+    set__displayStopButton(false);
   };
 
   const onAnswer = () => {
@@ -95,6 +112,7 @@ function SimpleMultiplication() {
       set__displayExample(false);
       set__displayStatistics(true);
       pause();
+      set__displayStopButton(false);
     }
   };
   const onSaveResults = () => {
@@ -127,23 +145,55 @@ function SimpleMultiplication() {
   return (
     <Grid container direction='column'>
       <Grid item>
-        <Grid container justifyContent='flex-end' alignItems='center'>
+        <Grid container alignItems='center' justifyContent='space-between'>
           <Grid item>
-            <Typography variant='h6' align='center'>
-              {time > 60
-                ? Math.floor(time / 60) < 10
-                  ? `0${Math.floor(time / 60)}`
-                  : Math.floor(time / 60)
-                : '00'}
-              :
-            </Typography>
+            <Grid container alignItems='center' justifyContent='flex-start'>
+              <Grid item sx={{ mr: '5px' }}>
+                <Button
+                  variant='contained'
+                  component={Link}
+                  href='/lessons/level_1/simple-multiplication'
+                >
+                  Предыдущий урок
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  variant='contained'
+                  component={Link}
+                  href='/lessons/level_2/mult-close-to-100'
+                >
+                  Следующий Урок
+                </Button>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item>
-            <Typography variant='h6' align='center'>
-              {time % 60 < 10 ? `0${time % 60}` : `${time % 60}`}
-            </Typography>
+            <Grid container alignItems='center' justifyContent='flex-end'>
+              <Grid item>
+                <Typography variant='h6' align='center'>
+                  {time > 60
+                    ? Math.floor(time / 60) < 10
+                      ? `0${Math.floor(time / 60)}`
+                      : Math.floor(time / 60)
+                    : '00'}
+                  :
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant='h6' align='center'>
+                  {time % 60 < 10 ? `0${time % 60}` : `${time % 60}`}
+                </Typography>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
+      </Grid>
+
+      <Grid item>
+        <Typography variant='h3' align='center'>
+          Алтернативный способ умножения
+        </Typography>
       </Grid>
       <Grid item>
         <Accordion
@@ -422,7 +472,7 @@ function SimpleMultiplication() {
           </AccordionDetails>
         </Accordion>
       </Grid>
-      <Grid item></Grid>
+
       <Grid item sx={{ display: displaySettings ? 'block' : 'none' }}>
         <Typography variant='h6' align='center'>
           Настройки
@@ -481,6 +531,22 @@ function SimpleMultiplication() {
           </Grid>
         </Grid>
       </Grid>
+
+      <Grid item sx={{ display: displayStopButton ? 'block' : 'none' }}>
+        <Grid container justifyContent={`center`} alignItems='center'>
+          <Grid item>
+            <Button
+              variant='contained'
+              color='error'
+              sx={{ margin: 'auto' }}
+              onClick={onStopExercise}
+            >
+              Остановить упражнения
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+
       <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
         <Typography variant='h5' align='center'>
           Упражнения

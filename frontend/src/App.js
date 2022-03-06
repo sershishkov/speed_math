@@ -19,6 +19,7 @@ import SimpleMultiplication from './pages/lessons/level_1/SimpleMultiplication';
 import AlternativeMultiplication from './pages/lessons/level_1/AlternativeMultiplication';
 import SimpleSubtraction from './pages/lessons/level_1/SimpleSubtraction';
 import MultCloseTo100 from './pages/lessons/level_2/MultCloseTo100';
+import ReferenceNumber10 from './pages/lessons/level_2/ReferenceNumber10';
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +62,10 @@ function App() {
             <Route
               path='/lessons/level_2/mult-close-to-100'
               element={<MultCloseTo100 />}
+            />
+            <Route
+              path='/lessons/level_2/ref-number-10'
+              element={<ReferenceNumber10 />}
             />
           </Routes>
           <Footer />

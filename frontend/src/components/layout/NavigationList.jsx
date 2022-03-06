@@ -122,6 +122,18 @@ function NavigationList({ toggleDrawer }) {
           <ListItemButton
             sx={{ pl: 4 }}
             component={Link}
+            href='/lessons/level_1/simple-subtraction'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Вычитание' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
             href='/lessons/level_1/simple-division'
             onClick={toggleDrawer(false)}
           >
@@ -154,18 +166,6 @@ function NavigationList({ toggleDrawer }) {
             </ListItemIcon>
             <ListItemText primary='Умножение альтернативное' />
           </ListItemButton>
-
-          <ListItemButton
-            sx={{ pl: 4 }}
-            component={Link}
-            href='/lessons/level_1/simple-subtraction'
-            onClick={toggleDrawer(false)}
-          >
-            <ListItemIcon>
-              <SendIcon />
-            </ListItemIcon>
-            <ListItemText primary='Вычитание' />
-          </ListItemButton>
         </List>
       </Collapse>
 
@@ -188,6 +188,18 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Умножение близко 100' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_2/ref-number-10'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Опорное число 10' />
           </ListItemButton>
         </List>
       </Collapse>
