@@ -29,7 +29,7 @@ const operators = ['+', '-', '*', '/', '='];
 
 function ReferenceNumber10() {
   const [min, set__min] = useState(11);
-  const [max, set__max] = useState(19);
+  const [max, set__max] = useState(21);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
   const [userAnswer, set__userAnswer] = useState([]);
@@ -1111,6 +1111,266 @@ function ReferenceNumber10() {
               Если числа в кружках выше множителей, мы склаДываем накрест, если
               же они ниже, тогда вычитаем накрест.
             </Typography>
+            <Typography variant='body1'>
+              Если вы где-то допустили ошибку, прочтите раздел заново и
+              выясните, что сделали не так, после чего попробуйте решить примеры
+              снова
+            </Typography>
+            <Typography variant='body1'>
+              А как бы вы перемножали 12 и 21? Давайте разберем данный пример.
+            </Typography>
+
+            <TableContainer
+              component={Paper}
+              sx={{ width: 550, margin: '1rem auto' }}
+            >
+              <Table
+                // sx={{ minWidth: 650 }}
+                align='center'
+                aria-label='simple table'
+              >
+                <TableBody>
+                  <TableRow>
+                    <TableCell sx={{ pr: 0 }}>
+                      <Typography variant='h3' align='right'>
+                        +
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography
+                        variant='h3'
+                        align='center'
+                        sx={{
+                          borderRadius: '50%',
+                          border: '2px solid #000',
+                          width: '3rem',
+                          height: '3rem',
+                          fontSize: '2.3rem',
+                        }}
+                      >
+                        2
+                      </Typography>
+                    </TableCell>
+                    <TableCell sx={{ pr: 0 }}>
+                      <Typography variant='h3' align='right'>
+                        +
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography
+                        variant='h3'
+                        align='center'
+                        sx={{
+                          borderRadius: '50%',
+                          border: '2px solid #000',
+                          width: '3rem',
+                          height: '3rem',
+                          fontSize: '2.3rem',
+                        }}
+                      >
+                        11
+                      </Typography>
+                    </TableCell>
+                    <TableCell sx={{ pr: 0 }}>
+                      <Typography variant='h3' align='right'></Typography>
+                    </TableCell>
+                    <TableCell sx={{ visibility: 'hidden' }}>
+                      <Typography variant='h3' align='center'>
+                        +22
+                      </Typography>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <Typography
+                        variant='h3'
+                        align='center'
+                        color='error'
+                        sx={{
+                          borderRadius: '50%',
+                          border: '2px solid #f00',
+                          width: '3rem',
+                          height: '3rem',
+                          fontSize: '1.5rem',
+                          lineHeight: 1.8,
+                        }}
+                      >
+                        10
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        12
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        X
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        21
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        =
+                      </Typography>
+                    </TableCell>
+                    <TableCell sx={{ visibility: 'hidden' }}>
+                      <Typography variant='h3' align='center'>
+                        230
+                      </Typography>
+                    </TableCell>
+                  </TableRow>
+
+                  <TableRow sx={{ display: 'none' }}>
+                    <TableCell colSpan={5}>
+                      <Typography variant='h3' align='right'>
+                        Ответ
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        252
+                      </Typography>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+            <Typography variant='body1'>
+              В качестве опорного числа берем 10. Оба множителя больше 10,
+              поэтому рисуем кружки над ними. 12 больше 10 на 2, а 21 — на 11,
+              поэтому вписываем 2 и 11 в соответствующие кружки. 21 плюс 2 равно
+              23, которое после умножения на 10 дает 230. 2, умноженное на 11 ,
+              равно 22, которое в сумме с 230 равняется 252.
+            </Typography>
+            <Typography variant='body1'>
+              Полностью решенный пример выглядит следующим образом:
+            </Typography>
+            <TableContainer
+              component={Paper}
+              sx={{ width: 550, margin: '1rem auto' }}
+            >
+              <Table
+                // sx={{ minWidth: 650 }}
+                align='center'
+                aria-label='simple table'
+              >
+                <TableBody>
+                  <TableRow>
+                    <TableCell sx={{ pr: 0 }}>
+                      <Typography variant='h3' align='right'>
+                        +
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography
+                        variant='h3'
+                        align='center'
+                        sx={{
+                          borderRadius: '50%',
+                          border: '2px solid #000',
+                          width: '3rem',
+                          height: '3rem',
+                          fontSize: '2.3rem',
+                        }}
+                      >
+                        2
+                      </Typography>
+                    </TableCell>
+                    <TableCell sx={{ pr: 0 }}>
+                      <Typography variant='h3' align='right'>
+                        +
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography
+                        variant='h3'
+                        align='center'
+                        sx={{
+                          borderRadius: '50%',
+                          border: '2px solid #000',
+                          width: '3rem',
+                          height: '3rem',
+                          fontSize: '2.3rem',
+                        }}
+                      >
+                        11
+                      </Typography>
+                    </TableCell>
+                    <TableCell sx={{ pr: 0 }}>
+                      <Typography variant='h3' align='right'></Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        +22
+                      </Typography>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>
+                      <Typography
+                        variant='h3'
+                        align='center'
+                        color='error'
+                        sx={{
+                          borderRadius: '50%',
+                          border: '2px solid #f00',
+                          width: '3rem',
+                          height: '3rem',
+                          fontSize: '1.5rem',
+                          lineHeight: 1.8,
+                        }}
+                      >
+                        10
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        12
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        X
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        21
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        =
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        230
+                      </Typography>
+                    </TableCell>
+                  </TableRow>
+
+                  <TableRow>
+                    <TableCell colSpan={5}>
+                      <Typography variant='h3' align='right'>
+                        Ответ
+                      </Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant='h3' align='center'>
+                        252
+                      </Typography>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
           </AccordionDetails>
         </Accordion>
       </Grid>
