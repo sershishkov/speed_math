@@ -20,6 +20,8 @@ import AlternativeMultiplication from './pages/lessons/level_1/AlternativeMultip
 import SimpleSubtraction from './pages/lessons/level_1/SimpleSubtraction';
 import MultCloseTo100 from './pages/lessons/level_2/MultCloseTo100';
 import ReferenceNumber10 from './pages/lessons/level_2/ReferenceNumber10';
+import ReferenceNumber100Above from './pages/lessons/level_2/ReferenceNumber100Above';
+import ReferenceNumber100Below from './pages/lessons/level_2/ReferenceNumber100Below';
 
 function App() {
   const dispatch = useDispatch();
@@ -66,6 +68,14 @@ function App() {
             <Route
               path='/lessons/level_2/ref-number-10'
               element={<ReferenceNumber10 />}
+            />
+            <Route
+              path='/lessons/level_2/ref-number-100-above'
+              element={<ReferenceNumber100Above />}
+            />
+            <Route
+              path='/lessons/level_2/ref-number-100-below'
+              element={<ReferenceNumber100Below />}
             />
           </Routes>
           <Footer />
