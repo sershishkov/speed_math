@@ -211,7 +211,31 @@ function NavigationList({ toggleDrawer }) {
             <ListItemIcon>
               <SendIcon />
             </ListItemIcon>
-            <ListItemText primary='Опорное число 100' />
+            <ListItemText primary='Опорное число 100 (над)' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_2/ref-number-100-below'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Опорное число 100 (под)' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_2/ref-number-100-mix'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Опорное число 100 микс' />
           </ListItemButton>
         </List>
       </Collapse>

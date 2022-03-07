@@ -22,6 +22,7 @@ import MultCloseTo100 from './pages/lessons/level_2/MultCloseTo100';
 import ReferenceNumber10 from './pages/lessons/level_2/ReferenceNumber10';
 import ReferenceNumber100Above from './pages/lessons/level_2/ReferenceNumber100Above';
 import ReferenceNumber100Below from './pages/lessons/level_2/ReferenceNumber100Below';
+import ReferenceNumber100Mix from './pages/lessons/level_2/ReferenceNumber100Mix';
 
 function App() {
   const dispatch = useDispatch();
@@ -76,6 +77,10 @@ function App() {
             <Route
               path='/lessons/level_2/ref-number-100-below'
               element={<ReferenceNumber100Below />}
+            />
+            <Route
+              path='/lessons/level_2/ref-number-100-mix'
+              element={<ReferenceNumber100Mix />}
             />
           </Routes>
           <Footer />
