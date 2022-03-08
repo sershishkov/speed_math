@@ -28,7 +28,7 @@ function SimpleMultiplication() {
   const [max, set__max] = useState(10);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
-  const [userAnswer, set__userAnswer] = useState([]);
+  const [userAnswer, set__userAnswer] = useState('');
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
   const [displayStatistics, set__displayStatistics] = useState(false);

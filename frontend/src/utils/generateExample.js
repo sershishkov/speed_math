@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { getRandomIntInclusive } from './randoms';
+import { getRandomIntInclusive, numberToDigit } from './helper';
 
 export class generateExample__AddMultSub {
   id;
@@ -43,5 +43,32 @@ export class generateExample__SimpleDivision {
     this.numberLeft = +this.examplesArray[exampleIndex].tempResult;
     this.numberRight = +this.examplesArray[exampleIndex].tempRight;
     this.resultDivision = +this.examplesArray[exampleIndex].tempLeft;
+  }
+}
+
+export class generateExample__ForCheckMultiplication {
+  id;
+  numberLeft;
+  numberRight;
+  resultRight;
+
+  checkNumberLeft;
+  checkNumberRight;
+
+  checkResultLeft;
+  checkResultRight;
+
+  constructor(min, max) {
+    this.id = uuidv4();
+    this.numberLeft = getRandomIntInclusive(+min, +max);
+    this.numberRight = getRandomIntInclusive(+min, +max);
+    this.resultRight = +this.numberLeft * +this.numberRight;
+
+    this.checkNumberLeft = numberToDigit(+this.numberLeft);
+    this.checkNumberRight = numberToDigit(+this.numberRight);
+    this.checkResultLeft = numberToDigit(
+      +this.checkNumberLeft * +this.checkNumberRight
+    );
+    this.checkResultRight = numberToDigit(+this.resultRight);
   }
 }

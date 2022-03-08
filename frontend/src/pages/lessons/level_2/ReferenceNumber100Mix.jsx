@@ -32,7 +32,7 @@ function ReferenceNumber100Mix() {
   const [max, set__max] = useState(125);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
-  const [userAnswer, set__userAnswer] = useState([]);
+  const [userAnswer, set__userAnswer] = useState('');
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
   const [displayStatistics, set__displayStatistics] = useState(false);
@@ -160,7 +160,7 @@ function ReferenceNumber100Mix() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_2/ref-number-100-mix'
+                  href='/lessons/level_2/checking-answers'
                 >
                   Следующий Урок
                 </Button>
@@ -206,7 +206,6 @@ function ReferenceNumber100Mix() {
             <Typography variant='h4'>Введение</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography variant='h6' align='center'></Typography>
             <Typography variant='body1'>
               До сих пор мы перемножали числа, которые располагались либо выше,
               либо ниже опорного числа. А как нам перемножать числа, одно из
@@ -630,6 +629,28 @@ function ReferenceNumber100Mix() {
                 </TableBody>
               </Table>
             </TableContainer>
+            <Typography variant='h6' align='center'>
+              Произведение чисел в кружках
+            </Typography>
+            <Typography variant='body1'>
+              Правило, согласно которому находят произведение чисел в кружках,
+              звучит так:
+            </Typography>
+            <Typography variant='body1'>
+              Если оба кружка находятся над или под множителями, то мы
+              прибавляем их произведение к промежуточному результату. Когда один
+              из кружков располагается над множителями, а другой — под ними, мы
+              вычитаем произведение чисел в кружках из промежуточного
+              результата.
+            </Typography>
+            <Typography variant='body1'>
+              Говоря математическим языком, когда мы перемножаем два
+              положительных (с плюсом) числа, то получаем положительное (с
+              плюсом) число в ответе. Когда перемножаем два отрицательных (с
+              минусом) числа, мы также получаем положительное (с плюсом) число.
+              Когда же умножаем положительное (с плюсом) число на отрицательное
+              (с минусом), мы получаем отрицательное (с минусом) число.
+            </Typography>
           </AccordionDetails>
         </Accordion>
       </Grid>
