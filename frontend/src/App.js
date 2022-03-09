@@ -24,6 +24,8 @@ import ReferenceNumber100Above from './pages/lessons/level_2/ReferenceNumber100A
 import ReferenceNumber100Below from './pages/lessons/level_2/ReferenceNumber100Below';
 import ReferenceNumber100Mix from './pages/lessons/level_2/ReferenceNumber100Mix';
 import CheckingAnswers from './pages/lessons/level_2/CheckingAnswers';
+// import UseMyTimer from './pages/lessons/level_2/UseMyTimer';
+import RefNumber20 from './pages/lessons/level_3/refNumber20/RefNumber20';
 
 function App() {
   const dispatch = useDispatch();
@@ -87,6 +89,14 @@ function App() {
               path='/lessons/level_2/checking-answers'
               element={<CheckingAnswers />}
             />
+            <Route
+              path='/lessons/level_3/ref-number-20'
+              element={<RefNumber20 />}
+            />
+            {/* <Route
+              path='/lessons/level_2/use-base-timer'
+              element={<UseMyTimer />}
+            /> */}
           </Routes>
           <Footer />
         </Container>

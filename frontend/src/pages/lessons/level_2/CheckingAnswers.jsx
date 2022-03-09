@@ -81,8 +81,6 @@ function CheckingAnswers() {
     set__userAnswer_CheckNumberRight('');
     set__userAnswer_CheckResultLeft('');
     set__userAnswer_CheckResultRight('');
-
-    // console.log(example);
   };
 
   const nextTask = () => {
@@ -191,7 +189,7 @@ function CheckingAnswers() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_2/checking-answers'
+                  href='/lessons/level_3/ref-number-20'
                 >
                   Следующий Урок
                 </Button>
@@ -722,6 +720,7 @@ function CheckingAnswers() {
         </Accordion>
       </Grid>
       <Grid item></Grid>
+
       <Grid item sx={{ display: displaySettings ? 'block' : 'none' }}>
         <Typography variant='h6' align='center'>
           Настройки
@@ -1003,6 +1002,7 @@ function CheckingAnswers() {
           </TableContainer>
         </Grid>
       </Grid>
+
       <Grid item sx={{ display: displayStatistics ? 'block' : 'none' }}>
         <Typography variant='h4' align='center'>
           Ваши результаты

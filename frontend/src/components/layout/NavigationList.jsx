@@ -24,6 +24,7 @@ function NavigationList({ toggleDrawer }) {
   const [openUser, set__openUser] = useState(false);
   const [openLevel_1, set__openLevel_1] = useState(false);
   const [openLevel_2, set__openLevel_2] = useState(false);
+  const [openLevel_3, set__openLevel_3] = useState(false);
 
   const onLogout = () => {
     dispatch(logout());
@@ -248,6 +249,41 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Проверка ответов' />
+          </ListItemButton>
+
+          {/* <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_2/use-base-timer'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='timer' />
+          </ListItemButton> */}
+        </List>
+      </Collapse>
+
+      <ListItemButton onClick={() => set__openLevel_3(!openLevel_3)}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary='Уровень№ 3' />
+        {openLevel_3 ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={openLevel_3} timeout='auto' unmountOnExit>
+        <List disablePadding>
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_3/ref-number-20'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Опорное число 20' />
           </ListItemButton>
         </List>
       </Collapse>
