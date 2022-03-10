@@ -28,6 +28,7 @@ import CheckingAnswers from './pages/lessons/level_2/CheckingAnswers';
 import RefNumber20 from './pages/lessons/level_3/refNumber20/RefNumber20';
 import RefNumber50 from './pages/lessons/level_3/refNumber50/RefNumber50';
 import RefNumber200 from './pages/lessons/level_3/refNumber200/RefNumber200';
+import RefNumber500 from './pages/lessons/level_3/refNumber500/RefNumber500';
 
 function App() {
   const dispatch = useDispatch();
@@ -102,6 +103,10 @@ function App() {
             <Route
               path='/lessons/level_3/ref-number-200'
               element={<RefNumber200 />}
+            />
+            <Route
+              path='/lessons/level_3/ref-number-500'
+              element={<RefNumber500 />}
             />
             {/* <Route
               path='/lessons/level_2/use-base-timer'
