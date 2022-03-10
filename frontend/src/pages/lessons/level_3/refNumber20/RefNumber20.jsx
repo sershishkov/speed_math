@@ -20,12 +20,14 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import TableFooter from '@mui/material/TableFooter';
 
 const operators = ['+', '-', '*', '/', '='];
 
 function RefNumber20() {
   const [min, set__min] = useState(11);
   const [max, set__max] = useState(35);
+  const [referenceNumber, set__referenceNumber] = useState(20);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
   const [userAnswer, set__userAnswer] = useState('');
@@ -108,8 +110,19 @@ function RefNumber20() {
 
     const obj = {
       example: `${example.numberLeft} ${operators[2]} ${example.numberRight}`,
+
       userAnswer,
-      rightAnswer: example.resultRight,
+      userAnswer_CheckNumberLeft,
+      userAnswer_CheckNumberRight,
+      userAnswer_CheckResultLeft,
+      userAnswer_CheckResultRight,
+
+      resultRight: example.resultRight,
+      checkNumberLeft: example.checkNumberLeft,
+      checkNumberRight: example.checkNumberRight,
+      checkResultLeft: example.checkResultLeft,
+      checkResultRight: example.checkResultRight,
+
       doneExample,
       doneCheck,
       doneExcercise: doneExample && doneCheck,
@@ -127,6 +140,7 @@ function RefNumber20() {
       const userAnswerInput = document.getElementById('userAnswer');
 
       userAnswerInput.focus();
+      // console.log(example);
     } else {
       set__displayExample(false);
       set__displayStatistics(true);
@@ -280,6 +294,23 @@ function RefNumber20() {
               value={max}
             />
           </Grid>
+          <Grid
+            item
+            sx={{
+              display: 'none',
+            }}
+          >
+            <TextField
+              margin='normal'
+              required
+              name='referenceNumber'
+              label='Максимальное значение'
+              type='number'
+              id='referenceNumber'
+              onChange={(e) => set__referenceNumber(e.target.value)}
+              value={referenceNumber}
+            />
+          </Grid>
           <Grid item>
             <Button
               disabled={disableStartButton}
@@ -341,8 +372,8 @@ function RefNumber20() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example && example.numberLeft > 20
-                        ? +example.numberLeft - 20
+                      {example && example.numberLeft > referenceNumber
+                        ? +example.numberLeft - referenceNumber
                         : ''}
                     </Typography>
                   </TableCell>
@@ -363,8 +394,8 @@ function RefNumber20() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example && example.numberRight > 20
-                        ? example.numberRight - 20
+                      {example && example.numberRight > referenceNumber
+                        ? example.numberRight - referenceNumber
                         : ''}
                     </Typography>
                   </TableCell>
@@ -390,7 +421,7 @@ function RefNumber20() {
                         lineHeight: 1.8,
                       }}
                     >
-                      20
+                      {referenceNumber}
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -447,8 +478,8 @@ function RefNumber20() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example && example.numberLeft < 20
-                        ? 20 - example.numberLeft
+                      {example && example.numberLeft < referenceNumber
+                        ? referenceNumber - example.numberLeft
                         : ''}
                     </Typography>
                   </TableCell>
@@ -469,8 +500,8 @@ function RefNumber20() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example && example.numberRight < 20
-                        ? 20 - example.numberRight
+                      {example && example.numberRight < referenceNumber
+                        ? referenceNumber - example.numberRight
                         : ''}
                     </Typography>
                   </TableCell>
@@ -655,6 +686,7 @@ function RefNumber20() {
         <Typography variant='h4' align='center'>
           Ваши результаты
         </Typography>
+
         <TableContainer component={Paper}>
           <Table
             sx={{ width: '90%', margin: 'auto', minWidth: '550px' }}
@@ -663,31 +695,44 @@ function RefNumber20() {
           >
             <TableHead>
               <TableRow>
-                <TableCell
-                  colSpan={2}
-                  sx={
-                    {
-                      //  border: '1px solid #0F0'
-                    }
-                  }
-                >
+                <TableCell>
                   <Typography variant='h6' align='center'>
                     Пример
                   </Typography>
                 </TableCell>
                 <TableCell>
                   <Typography variant='h6' align='center'>
-                    Сдано решение?
+                    чей ответ?
                   </Typography>
                 </TableCell>
                 <TableCell>
                   <Typography variant='h6' align='center'>
-                    Сдана проверка?
+                    решение
                   </Typography>
                 </TableCell>
                 <TableCell>
                   <Typography variant='h6' align='center'>
-                    Сдан пример?
+                    Проверка левого
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    Проверка правого
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    контрольное число слева
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    контрольное число справа
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    Сдан пример
                   </Typography>
                 </TableCell>
               </TableRow>
@@ -697,94 +742,244 @@ function RefNumber20() {
                 resultsList.length > 0 &&
                 resultsList.map((item, index) => (
                   <TableRow key={index} sx={{}}>
-                    <TableCell colSpan={2}>
+                    <TableCell>
                       <Typography variant='h6' align='center'>
                         {item.example}
                       </Typography>
                     </TableCell>
+                    <TableCell>
+                      <Grid
+                        container
+                        justifyContent='flex-start'
+                        alignItems='center'
+                        direction='column'
+                      >
+                        <Grid item>
+                          <Typography variant='h6' align='center'>
+                            Ваш
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <Typography variant='h6' align='center'>
+                            Комп
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </TableCell>
 
-                    <TableCell
-                      sx={{
-                        color: item.doneExample ? 'success.main' : 'error.main',
-                      }}
-                    >
-                      <Typography variant='h6' align='center'>
-                        {item.doneExample ? 'ok' : 'ошибка'}
-                      </Typography>
+                    <TableCell>
+                      <Grid
+                        container
+                        justifyContent='flex-start'
+                        alignItems='center'
+                        direction='column'
+                      >
+                        <Grid item>
+                          <Typography
+                            variant='h6'
+                            align='center'
+                            color={
+                              item.userAnswer - item.resultRight === 0
+                                ? 'success.main'
+                                : 'error.main'
+                            }
+                          >
+                            {item.userAnswer}
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <Typography variant='h6' align='center'>
+                            {item.resultRight}
+                          </Typography>
+                        </Grid>
+                      </Grid>
                     </TableCell>
-                    <TableCell
-                      sx={{
-                        color: item.doneCheck ? 'success.main' : 'error.main',
-                      }}
-                    >
-                      <Typography variant='h6' align='center'>
-                        {item.doneCheck ? 'ok' : 'ошибка'}
-                      </Typography>
+
+                    <TableCell>
+                      <Grid
+                        container
+                        justifyContent='flex-start'
+                        alignItems='center'
+                        direction='column'
+                      >
+                        <Grid item>
+                          <Typography
+                            variant='h6'
+                            align='center'
+                            color={
+                              item.userAnswer_CheckNumberLeft -
+                                item.checkNumberLeft ===
+                              0
+                                ? 'success.main'
+                                : 'error.main'
+                            }
+                          >
+                            {item.userAnswer_CheckNumberLeft}
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <Typography variant='h6' align='center'>
+                            {item.checkNumberLeft}
+                          </Typography>
+                        </Grid>
+                      </Grid>
                     </TableCell>
-                    <TableCell
-                      sx={{
-                        color: item.doneExcercise
-                          ? 'success.main'
-                          : 'error.main',
-                      }}
-                    >
-                      <Typography variant='h6' align='center'>
-                        {item.doneExcercise ? 'ok' : 'ошибка'}
+
+                    <TableCell>
+                      <Grid
+                        container
+                        justifyContent='flex-start'
+                        alignItems='center'
+                        direction='column'
+                      >
+                        <Grid item>
+                          <Typography
+                            variant='h6'
+                            align='center'
+                            color={
+                              item.userAnswer_CheckNumberRight -
+                                item.checkNumberRight ===
+                              0
+                                ? 'success.main'
+                                : 'error.main'
+                            }
+                          >
+                            {item.userAnswer_CheckNumberRight}
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <Typography variant='h6' align='center'>
+                            {item.checkNumberRight}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </TableCell>
+
+                    <TableCell>
+                      <Grid
+                        container
+                        justifyContent='flex-start'
+                        alignItems='center'
+                        direction='column'
+                      >
+                        <Grid item>
+                          <Typography
+                            variant='h6'
+                            align='center'
+                            color={
+                              item.userAnswer_CheckResultLeft -
+                                item.checkResultLeft ===
+                              0
+                                ? 'success.main'
+                                : 'error.main'
+                            }
+                          >
+                            {item.userAnswer_CheckResultLeft}
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <Typography variant='h6' align='center'>
+                            {item.checkResultLeft}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </TableCell>
+
+                    <TableCell>
+                      <Grid
+                        container
+                        justifyContent='flex-start'
+                        alignItems='center'
+                        direction='column'
+                      >
+                        <Grid item>
+                          <Typography
+                            variant='h6'
+                            align='center'
+                            color={
+                              item.userAnswer_CheckResultRight -
+                                item.checkResultRight ===
+                              0
+                                ? 'success.main'
+                                : 'error.main'
+                            }
+                          >
+                            {item.userAnswer_CheckResultRight}
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <Typography variant='h6' align='center'>
+                            {item.checkResultRight}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography
+                        variant='h6'
+                        align='center'
+                        color={
+                          item.doneExcercise ? 'success.main' : 'error.main'
+                        }
+                      >
+                        {item.doneExcercise ? 'ок!' : 'ошибка!'}
                       </Typography>
                     </TableCell>
                   </TableRow>
                 ))}
             </TableBody>
-
-            <TableRow
-              sx={
-                {
-                  // padding: 0,
-                }
-              }
-            >
-              <TableCell
-                colSpan={3}
+            <TableFooter>
+              <TableRow
                 sx={
                   {
-                    //  border: '1px solid #0F0'
+                    // padding: 0,
                   }
                 }
               >
-                <Button
-                  fullWidth
-                  disabled={!user}
-                  onClick={onSaveResults}
-                  variant='contained'
+                <TableCell
+                  colSpan={4}
                   sx={
                     {
-                      // padding: 0
+                      //  border: '1px solid #0F0'
                     }
                   }
                 >
-                  {user
-                    ? 'Сохранить результаты'
-                    : 'Не возможно сохранить результаты - вы не авторизованы'}
-                </Button>
-              </TableCell>
-              <TableCell
-                // align='center'
-                colSpan={2}
-                sx={{
-                  // border: '1px solid #00F',
-                  display: !user ? 'table-cell' : 'none',
-                }}
-              >
-                <Button
-                  fullWidth
-                  onClick={onContinue}
-                  variant='contained'
-                  sx={{ margin: 'auto' }}
+                  <Button
+                    fullWidth
+                    disabled={!user}
+                    onClick={onSaveResults}
+                    variant='contained'
+                    sx={
+                      {
+                        // padding: 0
+                      }
+                    }
+                  >
+                    {user
+                      ? 'Сохранить результаты'
+                      : 'Не возможно сохранить результаты - вы не авторизованы'}
+                  </Button>
+                </TableCell>
+                <TableCell
+                  // align='center'
+                  colSpan={4}
+                  sx={{
+                    // border: '1px solid #00F',
+                    display: !user ? 'table-cell' : 'none',
+                  }}
                 >
-                  Тренироваться еще
-                </Button>
-              </TableCell>
-            </TableRow>
+                  <Button
+                    fullWidth
+                    onClick={onContinue}
+                    variant='contained'
+                    sx={{ margin: 'auto' }}
+                  >
+                    Тренироваться еще
+                  </Button>
+                </TableCell>
+              </TableRow>
+            </TableFooter>
           </Table>
         </TableContainer>
       </Grid>

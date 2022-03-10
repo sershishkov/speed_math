@@ -5,5 +5,6 @@ export function getRandomIntInclusive(min, max) {
 }
 
 export function numberToDigit(number) {
-  return number % 9;
+  const reminder9 = number % 9;
+  return reminder9 === 0 ? 9 : reminder9;
 }
