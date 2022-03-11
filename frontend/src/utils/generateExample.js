@@ -72,3 +72,30 @@ export class generateExample__ForCheckMultiplication {
     this.checkResultRight = numberToDigit(+this.resultRight);
   }
 }
+
+export class genExample_Mult__WithDifferentRangers {
+  id;
+  numberLeft;
+  numberRight;
+  resultRight;
+
+  checkNumberLeft;
+  checkNumberRight;
+
+  checkResultLeft;
+  checkResultRight;
+
+  constructor(minLeft, maxLeft, minRight, maxRight) {
+    this.id = uuidv4();
+    this.numberLeft = getRandomIntInclusive(+minLeft, +maxLeft);
+    this.numberRight = getRandomIntInclusive(+minRight, +maxRight);
+    this.resultRight = +this.numberLeft * +this.numberRight;
+
+    this.checkNumberLeft = numberToDigit(+this.numberLeft);
+    this.checkNumberRight = numberToDigit(+this.numberRight);
+    this.checkResultLeft = numberToDigit(
+      +this.checkNumberLeft * +this.checkNumberRight
+    );
+    this.checkResultRight = numberToDigit(+this.resultRight);
+  }
+}

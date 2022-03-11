@@ -29,6 +29,7 @@ import RefNumber20 from './pages/lessons/level_3/refNumber20/RefNumber20';
 import RefNumber50 from './pages/lessons/level_3/refNumber50/RefNumber50';
 import RefNumber200 from './pages/lessons/level_3/refNumber200/RefNumber200';
 import RefNumber500 from './pages/lessons/level_3/refNumber500/RefNumber500';
+import Decimals from './pages/lessons/level_3/decimals/Decimals';
 
 function App() {
   const dispatch = useDispatch();
@@ -108,6 +109,7 @@ function App() {
               path='/lessons/level_3/ref-number-500'
               element={<RefNumber500 />}
             />
+            <Route path='/lessons/level_3/decimals' element={<Decimals />} />
             {/* <Route
               path='/lessons/level_2/use-base-timer'
               element={<UseMyTimer />}

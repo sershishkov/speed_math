@@ -321,6 +321,18 @@ function NavigationList({ toggleDrawer }) {
             </ListItemIcon>
             <ListItemText primary='Опорное число 500' />
           </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_3/decimals'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Десятичные' />
+          </ListItemButton>
         </List>
       </Collapse>
     </List>
