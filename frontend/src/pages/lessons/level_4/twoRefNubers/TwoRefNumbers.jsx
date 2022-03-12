@@ -6,7 +6,9 @@ import {
   update__statistic,
   reset as resetStatistic,
 } from '../../../../features/statistics/statisticSlice';
-import Description from './Description';
+import Description1 from './Description1';
+import Description2 from './Description2';
+import Description3 from './Description3';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -24,12 +26,13 @@ import TableFooter from '@mui/material/TableFooter';
 
 const operators = ['+', '-', '*', '/', '='];
 
-function Decimals() {
-  const [minLeft, set__minLeft] = useState(7);
-  const [maxLeft, set__maxLeft] = useState(9);
-  const [minRight, set__minRight] = useState(80);
+function TwoRefNumbers() {
+  const [minLeft, set__minLeft] = useState(11);
+  const [maxLeft, set__maxLeft] = useState(19);
+  const [minRight, set__minRight] = useState(90);
   const [maxRight, set__maxRight] = useState(99);
-  const [referenceNumber, set__referenceNumber] = useState(100);
+  const [referenceNumber1, set__referenceNumber1] = useState(20);
+  const [referenceNumber2, set__referenceNumber2] = useState(5);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
   const [userAnswer, set__userAnswer] = useState('');
@@ -198,7 +201,7 @@ function Decimals() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_3/ref-number-500'
+                  href='/lessons/level_3/decimals'
                 >
                   Предыдущий урок
                 </Button>
@@ -207,7 +210,7 @@ function Decimals() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_4/two-ref-numbers'
+                  href='/lessons/level_3/decimals'
                 >
                   Следующий Урок
                 </Button>
@@ -238,14 +241,16 @@ function Decimals() {
 
       <Grid item>
         <Typography variant='h3' align='center'>
-          Произведение
+          Умножение с помощью
         </Typography>
         <Typography variant='h3' align='center'>
-          десятичных дробей
+          двух опорных чисел
         </Typography>
       </Grid>
       <Grid item>
-        <Description />
+        <Description1 />
+        <Description2 />
+        <Description3 />
       </Grid>
       <Grid item sx={{ display: displaySettings ? 'block' : 'none' }}>
         <Typography variant='h6' align='center'>
@@ -348,12 +353,29 @@ function Decimals() {
             <TextField
               margin='normal'
               required
-              name='referenceNumber'
-              label='Максимальное значение'
+              name='referenceNumber1'
+              label='Опорное число 1'
               type='number'
-              id='referenceNumber'
-              onChange={(e) => set__referenceNumber(e.target.value)}
-              value={referenceNumber}
+              id='referenceNumber1'
+              onChange={(e) => set__referenceNumber1(e.target.value)}
+              value={referenceNumber1}
+            />
+          </Grid>
+          <Grid
+            item
+            sx={{
+              display: 'none',
+            }}
+          >
+            <TextField
+              margin='normal'
+              required
+              name='referenceNumber2'
+              label='Опорное число 2'
+              type='number'
+              id='referenceNumber2'
+              onChange={(e) => set__referenceNumber2(e.target.value)}
+              value={referenceNumber2}
             />
           </Grid>
           <Grid item>
@@ -399,7 +421,7 @@ function Decimals() {
           >
             <Table align='center' aria-label='simple table'>
               <TableBody>
-                <TableRow>
+                <TableRow sx={{ display: 'none' }}>
                   <TableCell sx={{ pr: 0 }}>
                     <Typography variant='h3' align='right'>
                       +
@@ -417,8 +439,8 @@ function Decimals() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example && example.numberLeft > referenceNumber
-                        ? +example.numberLeft - referenceNumber
+                      {example && example.numberLeft > referenceNumber1
+                        ? +example.numberLeft - referenceNumber1
                         : ''}
                     </Typography>
                   </TableCell>
@@ -439,8 +461,8 @@ function Decimals() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example && example.numberRight > referenceNumber
-                        ? example.numberRight - referenceNumber
+                      {example && example.numberRight > referenceNumber1
+                        ? example.numberRight - referenceNumber1
                         : ''}
                     </Typography>
                   </TableCell>
@@ -460,18 +482,18 @@ function Decimals() {
                       sx={{
                         borderRadius: '50%',
                         border: '2px solid #f00',
-                        width: '3rem',
-                        height: '3rem',
+                        width: '4rem',
+                        height: '4rem',
                         fontSize: '1.5rem',
-                        lineHeight: 1.8,
+                        lineHeight: 2.4,
                       }}
                     >
-                      {referenceNumber}
+                      {`${referenceNumber1}x${referenceNumber2}`}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Typography variant='h3' align='center'>
-                      {example ? `${example.numberLeft},0` : ''}
+                      {example ? `${example.numberLeft}` : ''}
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -523,8 +545,8 @@ function Decimals() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example && example.numberLeft < referenceNumber
-                        ? referenceNumber - example.numberLeft * 10
+                      {example && example.numberLeft < referenceNumber1
+                        ? referenceNumber1 - example.numberLeft
                         : ''}
                     </Typography>
                   </TableCell>
@@ -545,8 +567,65 @@ function Decimals() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example && example.numberRight < referenceNumber
-                        ? referenceNumber - example.numberRight
+                      {example &&
+                      example.numberRight < referenceNumber1 * referenceNumber2
+                        ? referenceNumber1 * referenceNumber2 -
+                          example.numberRight
+                        : ''}
+                    </Typography>
+                  </TableCell>
+                  <TableCell sx={{ pr: 0 }}>
+                    <Typography variant='h3' align='right'></Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant='h3' align='center'></Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell sx={{ pr: 0 }}>
+                    <Typography variant='h3' align='right'>
+                      -
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography
+                      variant='h3'
+                      align='center'
+                      sx={{
+                        borderRadius: '50%',
+                        border: '2px solid #000',
+                        width: '3rem',
+                        height: '3rem',
+                        fontSize: '2.3rem',
+                      }}
+                    >
+                      {example && example.numberLeft < referenceNumber1
+                        ? (referenceNumber1 - example.numberLeft) *
+                          referenceNumber2
+                        : ''}
+                    </Typography>
+                  </TableCell>
+                  <TableCell sx={{ display: 'none' }}>
+                    <Typography variant='h3' align='right'>
+                      -
+                    </Typography>
+                  </TableCell>
+                  <TableCell sx={{ display: 'none' }}>
+                    <Typography
+                      variant='h3'
+                      align='center'
+                      sx={{
+                        borderRadius: '50%',
+                        border: '2px solid #000',
+                        width: '3rem',
+                        height: '3rem',
+                        fontSize: '2.3rem',
+                      }}
+                    >
+                      {example &&
+                      example.numberRight < referenceNumber1 * referenceNumber2
+                        ? referenceNumber1 * referenceNumber2 -
+                          example.numberRight
                         : ''}
                     </Typography>
                   </TableCell>
@@ -1032,4 +1111,4 @@ function Decimals() {
   );
 }
 
-export default Decimals;
+export default TwoRefNumbers;

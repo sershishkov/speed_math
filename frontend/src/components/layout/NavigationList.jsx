@@ -25,6 +25,7 @@ function NavigationList({ toggleDrawer }) {
   const [openLevel_1, set__openLevel_1] = useState(false);
   const [openLevel_2, set__openLevel_2] = useState(false);
   const [openLevel_3, set__openLevel_3] = useState(false);
+  const [openLevel_4, set__openLevel_4] = useState(false);
 
   const onLogout = () => {
     dispatch(logout());
@@ -332,6 +333,29 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Десятичные' />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <ListItemButton onClick={() => set__openLevel_4(!openLevel_4)}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary='Уровень№ 4' />
+        {openLevel_4 ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={openLevel_4} timeout='auto' unmountOnExit>
+        <List disablePadding>
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_4/two-ref-numbers'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Два опорных числа' />
           </ListItemButton>
         </List>
       </Collapse>
