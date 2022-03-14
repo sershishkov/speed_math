@@ -28,8 +28,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const operators = ['+', '-', '*', '/', '='];
 
 function ReferenceNumber10() {
-  const [min, set__min] = useState(11);
-  const [max, set__max] = useState(21);
+  const [min, set__min] = useState(21);
+  const [max, set__max] = useState(28);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
   const [userAnswer, set__userAnswer] = useState('');
@@ -151,7 +151,7 @@ function ReferenceNumber10() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_2/mult-close-to-100'
+                  href='/lessons/level_2/ref-number-10'
                 >
                   Предыдущий урок
                 </Button>
@@ -160,7 +160,7 @@ function ReferenceNumber10() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_2/ref-number-20'
+                  href='/lessons/level_2/ref-number-100-above'
                 >
                   Следующий Урок
                 </Button>
@@ -191,7 +191,7 @@ function ReferenceNumber10() {
 
       <Grid item>
         <Typography variant='h3' align='center'>
-          Умножение чисел с опорным числом 10
+          Умножение чисел с опорным числом 20
         </Typography>
       </Grid>
       <Grid item>
@@ -1493,7 +1493,7 @@ function ReferenceNumber10() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example ? example.numberLeft - 10 : ''}
+                      {example ? example.numberLeft - 20 : ''}
                     </Typography>
                   </TableCell>
                   <TableCell sx={{ pr: 0 }}>
@@ -1513,7 +1513,7 @@ function ReferenceNumber10() {
                         fontSize: '2.3rem',
                       }}
                     >
-                      {example ? example.numberRight - 10 : ''}
+                      {example ? example.numberRight - 20 : ''}
                     </Typography>
                   </TableCell>
                   <TableCell sx={{ pr: 0 }}>
@@ -1538,7 +1538,7 @@ function ReferenceNumber10() {
                         lineHeight: 1.8,
                       }}
                     >
-                      10
+                      20
                     </Typography>
                   </TableCell>
                   <TableCell>

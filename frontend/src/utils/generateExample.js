@@ -99,3 +99,34 @@ export class genExample_Mult__WithDifferentRangers {
     this.checkResultRight = numberToDigit(+this.resultRight);
   }
 }
+
+export class genExample__Add_3numbers_WithCheck {
+  id;
+  number_1;
+  number_2;
+  number_3;
+  resultRight;
+
+  checkNumber_1;
+  checkNumber_2;
+  checkNumber_3;
+
+  checkResultLeft;
+  checkResultRight;
+  constructor(min, max) {
+    this.id = uuidv4();
+    this.number_1 = getRandomIntInclusive(+min, +max);
+    this.number_2 = getRandomIntInclusive(+min, +max);
+    this.number_3 = getRandomIntInclusive(+min, +max);
+    this.resultRight = +this.number_1 + +this.number_2 + +this.number_3;
+
+    this.checkNumber_1 = numberToDigit(+this.number_1);
+    this.checkNumber_2 = numberToDigit(+this.number_2);
+    this.checkNumber_3 = numberToDigit(+this.number_3);
+
+    this.checkResultLeft = numberToDigit(
+      +this.checkNumber_1 + +this.checkNumber_2 + +this.checkNumber_3
+    );
+    this.checkResultRight = numberToDigit(+this.resultRight);
+  }
+}

@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
-import { genExample_Mult__WithDifferentRangers } from '../../../../utils/generateExample';
+import { genExample__Add_3numbers_WithCheck } from '../../../../utils/generateExample';
 import {
   update__statistic,
   reset as resetStatistic,
 } from '../../../../features/statistics/statisticSlice';
 import Description1 from './Description1';
-import Description2 from './Description2';
-import Description3 from './Description3';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -25,25 +23,40 @@ import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
 
 const operators = ['+', '-', '*', '/', '='];
+const initialStateUserAnswers = {
+  userResult: '',
+  userCheckNumber_1: '',
+  userCheckNumber_2: '',
+  userCheckNumber_3: '',
+  userCheckSumNumbers: '',
+  userCheckResult: '',
+};
 
 function TwoRefNumbers() {
-  const [minLeft, set__minLeft] = useState(11);
-  const [maxLeft, set__maxLeft] = useState(19);
-  const [minRight, set__minRight] = useState(90);
-  const [maxRight, set__maxRight] = useState(99);
-  const [referenceNumber1, set__referenceNumber1] = useState(20);
-  const [referenceNumber2, set__referenceNumber2] = useState(5);
+  const [min, set__min] = useState(10000);
+  const [max, set__max] = useState(99999);
+
+  const [userAnswers, set__userAnswers] = useState(initialStateUserAnswers);
+
+  const {
+    userResult,
+    userCheckNumber_1,
+    userCheckNumber_2,
+    userCheckNumber_3,
+    userCheckSumNumbers,
+    userCheckResult,
+  } = userAnswers;
+
+  const onChangeUserAnswers = (e) => {
+    set__userAnswers({
+      ...userAnswers,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
-  const [userAnswer, set__userAnswer] = useState('');
-  const [userAnswer_CheckNumberLeft, set__userAnswer_CheckNumberLeft] =
-    useState('');
-  const [userAnswer_CheckNumberRight, set__userAnswer_CheckNumberRight] =
-    useState('');
-  const [userAnswer_CheckResultLeft, set__userAnswer_CheckResultLeft] =
-    useState('');
-  const [userAnswer_CheckResultRight, set__userAnswer_CheckResultRight] =
-    useState('');
+
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
   const [displayStatistics, set__displayStatistics] = useState(false);
@@ -65,6 +78,11 @@ function TwoRefNumbers() {
     start();
   };
 
+  useEffect(() => {
+    const userResultInput = document.getElementById('userResult');
+    userResultInput.focus();
+  }, [set__displayExample]);
+
   const onStopExercise = () => {
     set__displayStopButton(false);
     set__displayExample(false);
@@ -74,22 +92,11 @@ function TwoRefNumbers() {
     set_numberOf_Task(0);
     set__disableStartButton(false);
     set__resultsList([]);
-    set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
+    set__userAnswers(initialStateUserAnswers);
   };
 
   const nextTask = () => {
-    set__example(
-      new genExample_Mult__WithDifferentRangers(
-        minLeft,
-        maxLeft,
-        minRight,
-        maxRight
-      )
-    );
+    set__example(new genExample__Add_3numbers_WithCheck(min, max));
     set_numberOf_Task((prevState) => prevState + 1);
   };
   const onContinue = () => {
@@ -104,54 +111,49 @@ function TwoRefNumbers() {
     set__displaySettings(true);
     set__disableStartButton(false);
     set__resultsList([]);
-    set__userAnswer('');
     set__displayStopButton(false);
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
+    set__userAnswers(initialStateUserAnswers);
   };
 
   const onAnswer = () => {
-    const doneExample = +userAnswer === +example.resultRight;
+    const doneResult = +userResult - +example.resultRight === 0;
     const doneCheck =
-      +userAnswer_CheckNumberLeft === +example.checkNumberLeft &&
-      +userAnswer_CheckNumberRight === +example.checkNumberRight &&
-      +userAnswer_CheckResultLeft === +example.checkResultLeft &&
-      +userAnswer_CheckResultRight === +example.checkResultRight;
+      +userCheckNumber_1 === +example.checkNumber_1 &&
+      +userCheckNumber_2 === +example.checkNumber_2 &&
+      +userCheckNumber_3 === +example.checkNumber_3 &&
+      +userCheckSumNumbers === +example.checkResultLeft &&
+      +userCheckResult === +example.checkResultRight;
 
     const obj = {
-      example: `${example.numberLeft} ${operators[2]} ${example.numberRight}`,
+      example: `${example.number_1} ${operators[0]} ${example.number_2} ${operators[0]} ${example.number_3}`,
 
-      userAnswer,
-      userAnswer_CheckNumberLeft,
-      userAnswer_CheckNumberRight,
-      userAnswer_CheckResultLeft,
-      userAnswer_CheckResultRight,
+      userResult,
+      userCheckNumber_1,
+      userCheckNumber_2,
+      userCheckNumber_3,
+      userCheckSumNumbers,
+      userCheckResult,
 
       resultRight: example.resultRight,
-      checkNumberLeft: example.checkNumberLeft,
-      checkNumberRight: example.checkNumberRight,
+      checkNumber_1: example.checkNumber_1,
+      checkNumber_2: example.checkNumber_2,
+      checkNumber_3: example.checkNumber_3,
       checkResultLeft: example.checkResultLeft,
       checkResultRight: example.checkResultRight,
 
-      doneExample,
+      doneResult,
       doneCheck,
-      doneExcercise: doneExample && doneCheck,
+      doneExcercise: doneResult && doneCheck,
     };
     set__resultsList((prevState) => [...prevState, obj]);
 
-    set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
+    set__userAnswers(initialStateUserAnswers);
 
     if (numberOf_Task < examplesNumber) {
       nextTask();
-      const userAnswerInput = document.getElementById('userAnswer');
+      const userResultInput = document.getElementById('userResult');
 
-      userAnswerInput.focus();
+      userResultInput.focus();
       // console.log(example);
     } else {
       set__displayExample(false);
@@ -184,11 +186,7 @@ function TwoRefNumbers() {
     set__displaySettings(true);
     set__disableStartButton(false);
     set__resultsList([]);
-    set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
+    set__userAnswers(initialStateUserAnswers);
   };
 
   return (
@@ -201,7 +199,7 @@ function TwoRefNumbers() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_3/decimals'
+                  href='/lessons/level_4/two-ref-numbers'
                 >
                   Предыдущий урок
                 </Button>
@@ -241,16 +239,11 @@ function TwoRefNumbers() {
 
       <Grid item>
         <Typography variant='h3' align='center'>
-          Умножение с помощью
-        </Typography>
-        <Typography variant='h3' align='center'>
-          двух опорных чисел
+          Сложение
         </Typography>
       </Grid>
       <Grid item>
         <Description1 />
-        <Description2 />
-        <Description3 />
       </Grid>
       <Grid item sx={{ display: displaySettings ? 'block' : 'none' }}>
         <Typography variant='h6' align='center'>
@@ -283,12 +276,12 @@ function TwoRefNumbers() {
             <TextField
               margin='normal'
               required
-              name='minLeft'
-              label='Минимум левого'
+              name='min'
+              label='Минимальное значение'
               type='number'
-              id='minLeft'
-              onChange={(e) => set__minLeft(e.target.value)}
-              value={minLeft}
+              id='min'
+              onChange={(e) => set__min(e.target.value)}
+              value={min}
             />
           </Grid>
 
@@ -301,83 +294,15 @@ function TwoRefNumbers() {
             <TextField
               margin='normal'
               required
-              name='maxLeft'
-              label='Максимум левого'
+              name='max'
+              label='Максимальное значение'
               type='number'
-              id='maxLeft'
-              onChange={(e) => set__maxLeft(e.target.value)}
-              value={maxLeft}
-            />
-          </Grid>
-          <Grid
-            item
-            sx={{
-              display: 'none',
-            }}
-          >
-            <TextField
-              margin='normal'
-              required
-              name='minRight'
-              label='Минимум правого'
-              type='number'
-              id='minRight'
-              onChange={(e) => set__minRight(e.target.value)}
-              value={minRight}
+              id='max'
+              onChange={(e) => set__max(e.target.value)}
+              value={max}
             />
           </Grid>
 
-          <Grid
-            item
-            sx={{
-              display: 'none',
-            }}
-          >
-            <TextField
-              margin='normal'
-              required
-              name='maxRight'
-              label='Максимум правого'
-              type='number'
-              id='maxRight'
-              onChange={(e) => set__maxRight(e.target.value)}
-              value={maxRight}
-            />
-          </Grid>
-          <Grid
-            item
-            sx={{
-              display: 'none',
-            }}
-          >
-            <TextField
-              margin='normal'
-              required
-              name='referenceNumber1'
-              label='Опорное число 1'
-              type='number'
-              id='referenceNumber1'
-              onChange={(e) => set__referenceNumber1(e.target.value)}
-              value={referenceNumber1}
-            />
-          </Grid>
-          <Grid
-            item
-            sx={{
-              display: 'none',
-            }}
-          >
-            <TextField
-              margin='normal'
-              required
-              name='referenceNumber2'
-              label='Опорное число 2'
-              type='number'
-              id='referenceNumber2'
-              onChange={(e) => set__referenceNumber2(e.target.value)}
-              value={referenceNumber2}
-            />
-          </Grid>
           <Grid item>
             <Button
               disabled={disableStartButton}
@@ -412,320 +337,100 @@ function TwoRefNumbers() {
         </Typography>
 
         <Grid container justifyContent='space-evenly' alignItems='center'>
-          <TableContainer
-            component={Paper}
-            sx={{
-              width: '70%',
-              margin: 'auto',
-            }}
-          >
-            <Table align='center' aria-label='simple table'>
+          <TableContainer component={Paper} sx={{ border: '1px solid blue' }}>
+            <Table
+              align='center'
+              aria-label='simple table'
+              sx={{
+                border: '1px solid red',
+                width: '50%',
+                minWidth: '300px',
+                margin: 'auto',
+              }}
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    sx={{
+                      width: '50%',
+                    }}
+                  >
+                    <Typography variant='h6' align='center'>
+                      Сложите!!!
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant='h6' align='center'>
+                      проверка чисел
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant='h6' align='center'>
+                      проверка сумм
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
               <TableBody>
-                <TableRow sx={{ display: 'none' }}>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'>
-                      +
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example && example.numberLeft > referenceNumber1
-                        ? +example.numberLeft - referenceNumber1
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'>
-                      +
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example && example.numberRight > referenceNumber1
-                        ? example.numberRight - referenceNumber1
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'></Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'></Typography>
-                  </TableCell>
-                </TableRow>
                 <TableRow>
                   <TableCell>
                     <Typography
-                      variant='h3'
-                      align='center'
-                      color='error'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #f00',
-                        width: '4rem',
-                        height: '4rem',
-                        fontSize: '1.5rem',
-                        lineHeight: 2.4,
-                      }}
+                      variant='h6'
+                      align='right'
+                      sx={{ letterSpacing: '0.5rem' }}
                     >
-                      {`${referenceNumber1}x${referenceNumber2}`}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {example ? `${example.numberLeft}` : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {operators[2]}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {example ? example.numberRight : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {operators[4]}
+                      {example ? `${example.number_1}` : ''}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <TextField
-                      // margin='normal'
-                      // required
-                      // fullWidth
-
-                      name='userAnswer'
-                      label='Ответ'
-                      type='number'
-                      id='userAnswer'
-                      value={userAnswer}
-                      onChange={(e) => set__userAnswer(e.target.value)}
-                    />
-                  </TableCell>
-                </TableRow>
-
-                <TableRow>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'>
-                      -
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
+                      tabIndex='12'
                       sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example && example.numberLeft < referenceNumber1
-                        ? referenceNumber1 - example.numberLeft
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'>
-                      -
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example &&
-                      example.numberRight < referenceNumber1 * referenceNumber2
-                        ? referenceNumber1 * referenceNumber2 -
-                          example.numberRight
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'></Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'></Typography>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'>
-                      -
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example && example.numberLeft < referenceNumber1
-                        ? (referenceNumber1 - example.numberLeft) *
-                          referenceNumber2
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ display: 'none' }}>
-                    <Typography variant='h3' align='right'>
-                      -
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ display: 'none' }}>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example &&
-                      example.numberRight < referenceNumber1 * referenceNumber2
-                        ? referenceNumber1 * referenceNumber2 -
-                          example.numberRight
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'></Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'></Typography>
-                  </TableCell>
-                </TableRow>
-
-                <TableRow>
-                  <TableCell colSpan={8}>
-                    <Typography variant='h4' align='center'>
-                      Проверка решения
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-
-                <TableRow>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'></Typography>
-                  </TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{
-                      padding: 0,
-                    }}
-                  >
-                    <TextField
-                      sx={{
+                        textAlign: 'right',
                         '& div': {
                           borderRadius: '50%',
                           width: '3rem',
                           height: '3rem',
                           border: '2px solid #0F0',
                           fontSize: '2rem',
+
                           color: '#F00',
                           '&:hover': {
                             border: '2px solid #F00',
                           },
                         },
                       }}
-                      name='userAnswer_CheckNumberLeft'
+                      name='userCheckNumber_1'
                       // label='Ответ'
                       type='number'
-                      id='userAnswer_CheckNumberLeft'
-                      value={userAnswer_CheckNumberLeft}
-                      onChange={(e) =>
-                        set__userAnswer_CheckNumberLeft(e.target.value)
-                      }
-                    />
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}></TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{
-                      padding: 0,
-                    }}
-                  >
-                    <TextField
-                      sx={{
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-                          color: '#F00',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
+                      id='userCheckNumber_1'
+                      value={userCheckNumber_1}
+                      onChange={onChangeUserAnswers}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === 'Tab') {
+                          const userCheckNumber_2_Input =
+                            document.getElementById('userCheckNumber_2');
+
+                          userCheckNumber_2_Input.focus();
+                        }
                       }}
-                      name='userAnswer_CheckNumberRight'
-                      // label='Ответ'
-                      type='number'
-                      id='userAnswer_CheckNumberRight'
-                      value={userAnswer_CheckNumberRight}
-                      onChange={(e) =>
-                        set__userAnswer_CheckNumberRight(e.target.value)
-                      }
                     />
                   </TableCell>
-                  <TableCell sx={{ pr: 0 }}></TableCell>
                   <TableCell></TableCell>
                 </TableRow>
-
                 <TableRow>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'></Typography>
+                  <TableCell>
+                    <Typography
+                      variant='h6'
+                      align='right'
+                      sx={{ letterSpacing: '0.5rem' }}
+                    >
+                      {example ? `${example.number_2}` : ''}
+                    </Typography>
                   </TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{
-                      padding: 0,
-                    }}
-                    colSpan={3}
-                  >
+                  <TableCell>
                     <TextField
+                      tabIndex='13'
                       sx={{
                         '& div': {
                           borderRadius: '50%',
@@ -739,25 +444,25 @@ function TwoRefNumbers() {
                           },
                         },
                       }}
-                      name='userAnswer_CheckResultLeft'
+                      name='userCheckNumber_2'
                       // label='Ответ'
                       type='number'
-                      id='userAnswer_CheckResultLeft'
-                      value={userAnswer_CheckResultLeft}
-                      onChange={(e) =>
-                        set__userAnswer_CheckResultLeft(e.target.value)
-                      }
+                      id='userCheckNumber_2'
+                      value={userCheckNumber_2}
+                      onChange={onChangeUserAnswers}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === 'Tab') {
+                          const userCheckNumber_3_Input =
+                            document.getElementById('userCheckNumber_3');
+
+                          userCheckNumber_3_Input.focus();
+                        }
+                      }}
                     />
                   </TableCell>
-
-                  <TableCell sx={{ pr: 0 }}></TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{
-                      padding: 0,
-                    }}
-                  >
+                  <TableCell>
                     <TextField
+                      tabIndex='15'
                       sx={{
                         '& div': {
                           borderRadius: '50%',
@@ -771,37 +476,164 @@ function TwoRefNumbers() {
                           },
                         },
                       }}
-                      name='userAnswer_CheckResultRight'
+                      name='userCheckSumNumbers'
                       // label='Ответ'
                       type='number'
-                      id='userAnswer_CheckResultRight'
-                      value={userAnswer_CheckResultRight}
-                      onChange={(e) =>
-                        set__userAnswer_CheckResultRight(e.target.value)
-                      }
+                      id='userCheckSumNumbers'
+                      value={userCheckSumNumbers}
+                      onChange={onChangeUserAnswers}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === 'Tab') {
+                          const userCheckResult_Input =
+                            document.getElementById('userCheckResult');
+
+                          userCheckResult_Input.focus();
+                        }
+                      }}
                     />
                   </TableCell>
                 </TableRow>
-
                 <TableRow>
-                  <TableCell colSpan={8}>
+                  <TableCell>
+                    <Typography
+                      variant='h6'
+                      align='right'
+                      sx={{ letterSpacing: '0.5rem' }}
+                    >
+                      {example ? `${example.number_3}` : ''}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <TextField
+                      align='right'
+                      tabIndex='14'
+                      sx={{
+                        // textAlign: 'right',
+                        '& div': {
+                          borderRadius: '50%',
+                          width: '3rem',
+                          height: '3rem',
+                          border: '2px solid #0F0',
+                          fontSize: '2rem',
+                          color: '#F00',
+                          // textAlign: 'right',
+                          '&:hover': {
+                            border: '2px solid #F00',
+                          },
+                        },
+                        '& input': {
+                          letterSpacing: '0.5rem',
+                          // textAlign: 'right',
+                        },
+                      }}
+                      name='userCheckNumber_3'
+                      // label='Ответ'
+                      type='number'
+                      id='userCheckNumber_3'
+                      value={userCheckNumber_3}
+                      onChange={onChangeUserAnswers}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === 'Tab') {
+                          const userCheckSumNumbers_Input =
+                            document.getElementById('userCheckSumNumbers');
+
+                          userCheckSumNumbers_Input.focus();
+                        }
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <TextField
+                      tabIndex='11'
+                      // margin='normal'
+                      // required
+                      fullWidth
+                      name='userResult'
+                      label='Ответ'
+                      type='number'
+                      id='userResult'
+                      value={userResult}
+                      onChange={onChangeUserAnswers}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === 'Tab') {
+                          const userCheckNumber_1_Input =
+                            document.getElementById('userCheckNumber_1');
+
+                          userCheckNumber_1_Input.focus();
+                        }
+                      }}
+                      sx={{
+                        '& input': {
+                          textAlign: 'right',
+                          letterSpacing: '0.5rem',
+                          paddingRight: 0,
+                          fontWeight: 'bold',
+                          fontSize: '1.2rem',
+                        },
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell></TableCell>
+                  <TableCell>
+                    <TextField
+                      tabIndex='16'
+                      sx={{
+                        '& div': {
+                          borderRadius: '50%',
+                          width: '3rem',
+                          height: '3rem',
+                          border: '2px solid #0F0',
+                          fontSize: '2rem',
+                          color: '#F00',
+                          '&:hover': {
+                            border: '2px solid #F00',
+                          },
+                        },
+                      }}
+                      name='userCheckResult'
+                      // label='Ответ'
+                      type='number'
+                      id='userCheckResult'
+                      value={userCheckResult}
+                      onChange={onChangeUserAnswers}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === 'Tab') {
+                          const onAnswer_Button =
+                            document.getElementById('answerButton');
+
+                          onAnswer_Button.focus();
+                        }
+                      }}
+                    />
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TableCell colSpan={3}>
                     <Button
                       fullWidth
                       variant='contained'
+                      id='answerButton'
                       onClick={onAnswer}
+                      tabIndex='17'
                       disabled={
-                        userAnswer.length < 1 ||
-                        userAnswer_CheckNumberLeft.length < 1 ||
-                        userAnswer_CheckNumberRight.length < 1 ||
-                        userAnswer_CheckResultLeft.length < 1 ||
-                        userAnswer_CheckResultRight.length < 1
+                        userResult.length < 1 ||
+                        userCheckNumber_1.length < 1 ||
+                        userCheckNumber_2.length < 1 ||
+                        userCheckNumber_3.length < 1 ||
+                        userCheckSumNumbers.length < 1 ||
+                        userCheckResult.length < 1
                       }
                     >
                       OK
                     </Button>
                   </TableCell>
                 </TableRow>
-              </TableBody>
+              </TableFooter>
             </Table>
           </TableContainer>
         </Grid>
@@ -836,12 +668,17 @@ function TwoRefNumbers() {
                 </TableCell>
                 <TableCell>
                   <Typography variant='h6' align='center'>
-                    Проверка левого
+                    проверка 1
                   </Typography>
                 </TableCell>
                 <TableCell>
                   <Typography variant='h6' align='center'>
-                    Проверка правого
+                    проверка 2
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    проверка 3
                   </Typography>
                 </TableCell>
                 <TableCell>
@@ -903,12 +740,12 @@ function TwoRefNumbers() {
                             variant='h6'
                             align='center'
                             color={
-                              item.userAnswer - item.resultRight === 0
+                              item.userResult - item.resultRight === 0
                                 ? 'success.main'
                                 : 'error.main'
                             }
                           >
-                            {item.userAnswer}
+                            {item.userResult}
                           </Typography>
                         </Grid>
                         <Grid item>
@@ -931,19 +768,17 @@ function TwoRefNumbers() {
                             variant='h6'
                             align='center'
                             color={
-                              item.userAnswer_CheckNumberLeft -
-                                item.checkNumberLeft ===
-                              0
+                              item.userCheckNumber_1 - item.checkNumber_1 === 0
                                 ? 'success.main'
                                 : 'error.main'
                             }
                           >
-                            {item.userAnswer_CheckNumberLeft}
+                            {item.userCheckNumber_1}
                           </Typography>
                         </Grid>
                         <Grid item>
                           <Typography variant='h6' align='center'>
-                            {item.checkNumberLeft}
+                            {item.checkNumber_1}
                           </Typography>
                         </Grid>
                       </Grid>
@@ -961,19 +796,17 @@ function TwoRefNumbers() {
                             variant='h6'
                             align='center'
                             color={
-                              item.userAnswer_CheckNumberRight -
-                                item.checkNumberRight ===
-                              0
+                              item.userCheckNumber_2 - item.checkNumber_2 === 0
                                 ? 'success.main'
                                 : 'error.main'
                             }
                           >
-                            {item.userAnswer_CheckNumberRight}
+                            {item.userCheckNumber_2}
                           </Typography>
                         </Grid>
                         <Grid item>
                           <Typography variant='h6' align='center'>
-                            {item.checkNumberRight}
+                            {item.checkNumber_2}
                           </Typography>
                         </Grid>
                       </Grid>
@@ -991,14 +824,42 @@ function TwoRefNumbers() {
                             variant='h6'
                             align='center'
                             color={
-                              item.userAnswer_CheckResultLeft -
+                              item.userCheckNumber_2 - item.checkNumber_2 === 0
+                                ? 'success.main'
+                                : 'error.main'
+                            }
+                          >
+                            {item.userCheckNumber_2}
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <Typography variant='h6' align='center'>
+                            {item.checkNumber_2}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </TableCell>
+
+                    <TableCell>
+                      <Grid
+                        container
+                        justifyContent='flex-start'
+                        alignItems='center'
+                        direction='column'
+                      >
+                        <Grid item>
+                          <Typography
+                            variant='h6'
+                            align='center'
+                            color={
+                              item.userCheckSumNumbers -
                                 item.checkResultLeft ===
                               0
                                 ? 'success.main'
                                 : 'error.main'
                             }
                           >
-                            {item.userAnswer_CheckResultLeft}
+                            {item.userCheckSumNumbers}
                           </Typography>
                         </Grid>
                         <Grid item>
@@ -1021,14 +882,12 @@ function TwoRefNumbers() {
                             variant='h6'
                             align='center'
                             color={
-                              item.userAnswer_CheckResultRight -
-                                item.checkResultRight ===
-                              0
+                              item.userCheckResult - item.checkResultRight === 0
                                 ? 'success.main'
                                 : 'error.main'
                             }
                           >
-                            {item.userAnswer_CheckResultRight}
+                            {item.userCheckResult}
                           </Typography>
                         </Grid>
                         <Grid item>

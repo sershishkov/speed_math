@@ -207,6 +207,18 @@ function NavigationList({ toggleDrawer }) {
           <ListItemButton
             sx={{ pl: 4 }}
             component={Link}
+            href='/lessons/level_2/ref-number-20'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Опорное число 20' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
             href='/lessons/level_2/ref-number-100-above'
             onClick={toggleDrawer(false)}
           >
@@ -356,6 +368,17 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Два опорных числа' />
+          </ListItemButton>
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_4/addition'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Сложение' />
           </ListItemButton>
         </List>
       </Collapse>

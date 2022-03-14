@@ -20,6 +20,7 @@ import AlternativeMultiplication from './pages/lessons/level_1/AlternativeMultip
 import SimpleSubtraction from './pages/lessons/level_1/SimpleSubtraction';
 import MultCloseTo100 from './pages/lessons/level_2/MultCloseTo100';
 import ReferenceNumber10 from './pages/lessons/level_2/ReferenceNumber10';
+import ReferenceNumber20 from './pages/lessons/level_2/ReferenceNumber20';
 import ReferenceNumber100Above from './pages/lessons/level_2/ReferenceNumber100Above';
 import ReferenceNumber100Below from './pages/lessons/level_2/ReferenceNumber100Below';
 import ReferenceNumber100Mix from './pages/lessons/level_2/ReferenceNumber100Mix';
@@ -31,6 +32,7 @@ import RefNumber200 from './pages/lessons/level_3/refNumber200/RefNumber200';
 import RefNumber500 from './pages/lessons/level_3/refNumber500/RefNumber500';
 import Decimals from './pages/lessons/level_3/decimals/Decimals';
 import TwoRefNumbers from './pages/lessons/level_4/twoRefNubers/TwoRefNumbers';
+import Addition from './pages/lessons/level_4/addition/Addition';
 
 function App() {
   const dispatch = useDispatch();
@@ -79,6 +81,10 @@ function App() {
               element={<ReferenceNumber10 />}
             />
             <Route
+              path='/lessons/level_2/ref-number-20'
+              element={<ReferenceNumber20 />}
+            />
+            <Route
               path='/lessons/level_2/ref-number-100-above'
               element={<ReferenceNumber100Above />}
             />
@@ -115,6 +121,7 @@ function App() {
               path='/lessons/level_4/two-ref-numbers'
               element={<TwoRefNumbers />}
             />
+            <Route path='/lessons/level_4/addition' element={<Addition />} />
             {/* <Route
               path='/lessons/level_2/use-base-timer'
               element={<UseMyTimer />}
