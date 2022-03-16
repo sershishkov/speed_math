@@ -24,6 +24,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
 
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
 const operators = ['+', '-', '*', '/', '='];
 
 function TwoRefNumbers() {
@@ -51,7 +54,7 @@ function TwoRefNumbers() {
   const [displayStopButton, set__displayStopButton] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
   const [resultsList, set__resultsList] = useState([]);
-
+  const [showHints, set__showHints] = useState(true);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { time, start, pause, reset } = useTimer();
@@ -379,6 +382,20 @@ function TwoRefNumbers() {
             />
           </Grid>
           <Grid item>
+            <FormControlLabel
+              // value={showHints}
+              control={
+                <Switch
+                  checked={showHints}
+                  onChange={(e) => set__showHints(e.target.checked)}
+                  color='primary'
+                />
+              }
+              label={showHints ? 'отключить подсказки' : 'включить посказки'}
+              labelPlacement='start'
+            />
+          </Grid>
+          <Grid item>
             <Button
               disabled={disableStartButton}
               onClick={onStart}
@@ -523,11 +540,21 @@ function TwoRefNumbers() {
                       id='userAnswer'
                       value={userAnswer}
                       onChange={(e) => set__userAnswer(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          const userAnswer_CheckNumberLeft_input =
+                            document.getElementById(
+                              'userAnswer_CheckNumberLeft'
+                            );
+
+                          userAnswer_CheckNumberLeft_input.focus();
+                        }
+                      }}
                     />
                   </TableCell>
                 </TableRow>
 
-                <TableRow>
+                <TableRow sx={{ display: showHints ? 'table-row' : 'none' }}>
                   <TableCell sx={{ pr: 0 }}>
                     <Typography variant='h3' align='right'>
                       -
@@ -581,7 +608,7 @@ function TwoRefNumbers() {
                     <Typography variant='h3' align='center'></Typography>
                   </TableCell>
                 </TableRow>
-                <TableRow>
+                <TableRow sx={{ display: showHints ? 'table-row' : 'none' }}>
                   <TableCell sx={{ pr: 0 }}>
                     <Typography variant='h3' align='right'>
                       -
@@ -677,6 +704,16 @@ function TwoRefNumbers() {
                       onChange={(e) =>
                         set__userAnswer_CheckNumberLeft(e.target.value)
                       }
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          const userAnswer_CheckNumberRight_input =
+                            document.getElementById(
+                              'userAnswer_CheckNumberRight'
+                            );
+
+                          userAnswer_CheckNumberRight_input.focus();
+                        }
+                      }}
                     />
                   </TableCell>
                   <TableCell sx={{ pr: 0 }}></TableCell>
@@ -708,6 +745,16 @@ function TwoRefNumbers() {
                       onChange={(e) =>
                         set__userAnswer_CheckNumberRight(e.target.value)
                       }
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          const userAnswer_CheckResultLeft_input =
+                            document.getElementById(
+                              'userAnswer_CheckResultLeft'
+                            );
+
+                          userAnswer_CheckResultLeft_input.focus();
+                        }
+                      }}
                     />
                   </TableCell>
                   <TableCell sx={{ pr: 0 }}></TableCell>
@@ -747,6 +794,16 @@ function TwoRefNumbers() {
                       onChange={(e) =>
                         set__userAnswer_CheckResultLeft(e.target.value)
                       }
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          const userAnswer_CheckResultRight_input =
+                            document.getElementById(
+                              'userAnswer_CheckResultRight'
+                            );
+
+                          userAnswer_CheckResultRight_input.focus();
+                        }
+                      }}
                     />
                   </TableCell>
 
@@ -779,6 +836,14 @@ function TwoRefNumbers() {
                       onChange={(e) =>
                         set__userAnswer_CheckResultRight(e.target.value)
                       }
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          const onAnswer_Button =
+                            document.getElementById('answerButton');
+
+                          onAnswer_Button.focus();
+                        }
+                      }}
                     />
                   </TableCell>
                 </TableRow>
@@ -786,6 +851,7 @@ function TwoRefNumbers() {
                 <TableRow>
                   <TableCell colSpan={8}>
                     <Button
+                      id='answerButton'
                       fullWidth
                       variant='contained'
                       onClick={onAnswer}

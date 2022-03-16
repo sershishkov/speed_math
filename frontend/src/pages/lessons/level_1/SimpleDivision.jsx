@@ -296,10 +296,19 @@ function SimpleDivision() {
               id='userAnswer'
               value={userAnswer}
               onChange={(e) => set__userAnswer(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  const onAnswer_Button =
+                    document.getElementById('answerButton');
+
+                  onAnswer_Button.focus();
+                }
+              }}
             />
           </Grid>
           <Grid item>
             <Button
+              id='answerButton'
               variant='contained'
               onClick={onAnswer}
               disabled={userAnswer.length < 1}

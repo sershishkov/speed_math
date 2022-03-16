@@ -24,6 +24,8 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const operators = ['+', '-', '*', '/', '='];
 
@@ -44,6 +46,7 @@ function ReferenceNumber100Above() {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+  const [showHints, set__showHints] = useState(true);
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -543,6 +546,20 @@ function ReferenceNumber100Above() {
             />
           </Grid>
           <Grid item>
+            <FormControlLabel
+              // value={showHints}
+              control={
+                <Switch
+                  checked={showHints}
+                  onChange={(e) => set__showHints(e.target.checked)}
+                  color='primary'
+                />
+              }
+              label={showHints ? 'отключить подсказки' : 'включить посказки'}
+              labelPlacement='start'
+            />
+          </Grid>
+          <Grid item>
             <Button
               disabled={disableStartButton}
               onClick={onStart}
@@ -582,7 +599,7 @@ function ReferenceNumber100Above() {
           >
             <Table align='center' aria-label='simple table'>
               <TableBody>
-                <TableRow>
+                <TableRow sx={{ display: showHints ? 'table-row' : 'none' }}>
                   <TableCell sx={{ pr: 0 }}>
                     <Typography variant='h3' align='right'>
                       +
@@ -680,10 +697,19 @@ function ReferenceNumber100Above() {
                       id='userAnswer'
                       value={userAnswer}
                       onChange={(e) => set__userAnswer(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          const onAnswer_Button =
+                            document.getElementById('answerButton');
+
+                          onAnswer_Button.focus();
+                        }
+                      }}
                     />
                   </TableCell>
                   <TableCell>
                     <Button
+                      id='answerButton'
                       variant='contained'
                       onClick={onAnswer}
                       disabled={userAnswer.length < 1}

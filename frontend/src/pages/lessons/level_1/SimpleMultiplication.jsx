@@ -40,7 +40,6 @@ function SimpleMultiplication() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { time, start, pause, reset } = useTimer();
-  const userAnswerInput = document.getElementById('userAnswer');
 
   const onStart = () => {
     set__displayExample(true);
@@ -50,6 +49,8 @@ function SimpleMultiplication() {
     // userAnswerInput.focus();
     nextTask();
     start();
+    const userAnswerInput = document.getElementById('userAnswer');
+    userAnswerInput.focus();
   };
 
   const onStopExercise = () => {
@@ -97,7 +98,7 @@ function SimpleMultiplication() {
 
     if (numberOf_Task < examplesNumber) {
       nextTask();
-
+      const userAnswerInput = document.getElementById('userAnswer');
       userAnswerInput.focus();
     } else {
       set__displayExample(false);
@@ -260,7 +261,13 @@ function SimpleMultiplication() {
         </Grid>
       </Grid>
 
-      <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
+      <Grid
+        item
+        sx={{
+          display: displayExample ? 'block' : 'none',
+          // visibility: displayExample ? 'visible' : 'hidden',
+        }}
+      >
         <Typography variant='h5' align='center'>
           Упражнения
         </Typography>
@@ -290,19 +297,28 @@ function SimpleMultiplication() {
               // margin='normal'
               // required
               // fullWidth
-
+              // focused
               name='userAnswer'
               label='Ответ'
               type='number'
               id='userAnswer'
               value={userAnswer}
               onChange={(e) => set__userAnswer(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  const onOkButton_Button =
+                    document.getElementById('onOkButton');
+
+                  onOkButton_Button.focus();
+                }
+              }}
             />
           </Grid>
           <Grid item>
             <Button
               variant='contained'
               onClick={onAnswer}
+              id='onOkButton'
               disabled={userAnswer.length < 1}
             >
               OK

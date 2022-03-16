@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
 import { genExample__Add_3numbers_WithCheck } from '../../../../utils/generateExample';
@@ -7,6 +7,7 @@ import {
   reset as resetStatistic,
 } from '../../../../features/statistics/statisticSlice';
 import Description1 from './Description1';
+import classes from './styles.module.scss';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -24,7 +25,13 @@ import TableFooter from '@mui/material/TableFooter';
 
 const operators = ['+', '-', '*', '/', '='];
 const initialStateUserAnswers = {
-  userResult: '',
+  userDigit_1: '',
+  userDigit_2: '',
+  userDigit_3: '',
+  userDigit_4: '',
+  userDigit_5: '',
+  userDigit_6: '',
+  userDigit_7: '',
   userCheckNumber_1: '',
   userCheckNumber_2: '',
   userCheckNumber_3: '',
@@ -33,13 +40,19 @@ const initialStateUserAnswers = {
 };
 
 function TwoRefNumbers() {
-  const [min, set__min] = useState(10000);
-  const [max, set__max] = useState(99999);
+  const [min, set__min] = useState(100);
+  const [max, set__max] = useState(999);
 
   const [userAnswers, set__userAnswers] = useState(initialStateUserAnswers);
 
   const {
-    userResult,
+    userDigit_1,
+    userDigit_2,
+    userDigit_3,
+    userDigit_4,
+    userDigit_5,
+    userDigit_6,
+    userDigit_7,
     userCheckNumber_1,
     userCheckNumber_2,
     userCheckNumber_3,
@@ -78,11 +91,6 @@ function TwoRefNumbers() {
     start();
   };
 
-  useEffect(() => {
-    const userResultInput = document.getElementById('userResult');
-    userResultInput.focus();
-  }, [set__displayExample]);
-
   const onStopExercise = () => {
     set__displayStopButton(false);
     set__displayExample(false);
@@ -116,6 +124,9 @@ function TwoRefNumbers() {
   };
 
   const onAnswer = () => {
+    const userResult = Number(
+      `${userDigit_1}${userDigit_2}${userDigit_3}${userDigit_4}${userDigit_5}${userDigit_6}${userDigit_7}`
+    );
     const doneResult = +userResult - +example.resultRight === 0;
     const doneCheck =
       +userCheckNumber_1 === +example.checkNumber_1 &&
@@ -337,15 +348,23 @@ function TwoRefNumbers() {
         </Typography>
 
         <Grid container justifyContent='space-evenly' alignItems='center'>
-          <TableContainer component={Paper} sx={{ border: '1px solid blue' }}>
+          <TableContainer
+            component={Paper}
+            sx={
+              {
+                // border: '1px solid blue'
+              }
+            }
+          >
             <Table
               align='center'
               aria-label='simple table'
               sx={{
-                border: '1px solid red',
+                // border: '1px solid red',
                 width: '50%',
                 minWidth: '300px',
                 margin: 'auto',
+                padding: 0,
               }}
             >
               <TableHead>
@@ -356,7 +375,7 @@ function TwoRefNumbers() {
                     }}
                   >
                     <Typography variant='h6' align='center'>
-                      Сложите!!!
+                      Сложите числа!!!
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -373,33 +392,15 @@ function TwoRefNumbers() {
               </TableHead>
               <TableBody>
                 <TableRow>
-                  <TableCell>
-                    <Typography
-                      variant='h6'
-                      align='right'
-                      sx={{ letterSpacing: '0.5rem' }}
-                    >
+                  <TableCell sx={{ padding: 0 }}>
+                    <Typography variant='h6' className={classes.number_field}>
                       {example ? `${example.number_1}` : ''}
                     </Typography>
                   </TableCell>
-                  <TableCell>
+                  <TableCell align='center'>
                     <TextField
                       tabIndex='12'
-                      sx={{
-                        textAlign: 'right',
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-
-                          color: '#F00',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
-                      }}
+                      className={classes.check_field}
                       name='userCheckNumber_1'
                       // label='Ответ'
                       type='number'
@@ -419,31 +420,15 @@ function TwoRefNumbers() {
                   <TableCell></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>
-                    <Typography
-                      variant='h6'
-                      align='right'
-                      sx={{ letterSpacing: '0.5rem' }}
-                    >
+                  <TableCell sx={{ padding: 0 }}>
+                    <Typography variant='h6' className={classes.number_field}>
                       {example ? `${example.number_2}` : ''}
                     </Typography>
                   </TableCell>
-                  <TableCell>
+                  <TableCell align='center'>
                     <TextField
                       tabIndex='13'
-                      sx={{
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-                          color: '#F00',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
-                      }}
+                      className={classes.check_field}
                       name='userCheckNumber_2'
                       // label='Ответ'
                       type='number'
@@ -460,22 +445,10 @@ function TwoRefNumbers() {
                       }}
                     />
                   </TableCell>
-                  <TableCell>
+                  <TableCell align='center'>
                     <TextField
                       tabIndex='15'
-                      sx={{
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-                          color: '#F00',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
-                      }}
+                      className={classes.check_field}
                       name='userCheckSumNumbers'
                       // label='Ответ'
                       type='number'
@@ -494,38 +467,16 @@ function TwoRefNumbers() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>
-                    <Typography
-                      variant='h6'
-                      align='right'
-                      sx={{ letterSpacing: '0.5rem' }}
-                    >
+                  <TableCell sx={{ padding: 0 }}>
+                    <Typography variant='h6' className={classes.number_field}>
                       {example ? `${example.number_3}` : ''}
                     </Typography>
                   </TableCell>
-                  <TableCell>
+                  <TableCell align='center'>
                     <TextField
-                      align='right'
+                      // align='right'
                       tabIndex='14'
-                      sx={{
-                        // textAlign: 'right',
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-                          color: '#F00',
-                          // textAlign: 'right',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
-                        '& input': {
-                          letterSpacing: '0.5rem',
-                          // textAlign: 'right',
-                        },
-                      }}
+                      className={classes.check_field}
                       name='userCheckNumber_3'
                       // label='Ответ'
                       type='number'
@@ -545,54 +496,142 @@ function TwoRefNumbers() {
                   <TableCell></TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>
-                    <TextField
-                      tabIndex='11'
-                      // margin='normal'
-                      // required
-                      fullWidth
-                      name='userResult'
-                      label='Ответ'
-                      type='number'
-                      id='userResult'
-                      value={userResult}
-                      onChange={onChangeUserAnswers}
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter' || e.key === 'Tab') {
-                          const userCheckNumber_1_Input =
-                            document.getElementById('userCheckNumber_1');
-
-                          userCheckNumber_1_Input.focus();
-                        }
-                      }}
-                      sx={{
-                        '& input': {
-                          textAlign: 'right',
-                          letterSpacing: '0.5rem',
-                          paddingRight: 0,
-                          fontWeight: 'bold',
-                          fontSize: '1.2rem',
-                        },
-                      }}
-                    />
+                  <TableCell sx={{ padding: 0 }}>
+                    <Grid
+                      container
+                      direction='row'
+                      justifyContent='flex-end'
+                      alignItems='center'
+                      className={classes.digit_container}
+                    >
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_1'
+                          id='userDigit_1'
+                          value={userDigit_1}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_2_Input =
+                                document.getElementById('userDigit_2');
+                              userDigit_2_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_2'
+                          id='userDigit_2'
+                          value={userDigit_2}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_3_Input =
+                                document.getElementById('userDigit_3');
+                              userDigit_3_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_3'
+                          id='userDigit_3'
+                          value={userDigit_3}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_4_Input =
+                                document.getElementById('userDigit_4');
+                              userDigit_4_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_4'
+                          id='userDigit_4'
+                          value={userDigit_4}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_5_Input =
+                                document.getElementById('userDigit_5');
+                              userDigit_5_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_5'
+                          id='userDigit_5'
+                          value={userDigit_5}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_6_Input =
+                                document.getElementById('userDigit_6');
+                              userDigit_6_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_6'
+                          id='userDigit_6'
+                          value={userDigit_6}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_7_Input =
+                                document.getElementById('userDigit_7');
+                              userDigit_7_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_7'
+                          id='userDigit_7'
+                          value={userDigit_7}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          min={0}
+                          max={9}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userCheckNumber_1_Input =
+                                document.getElementById('userCheckNumber_1');
+                              userCheckNumber_1_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                    </Grid>
                   </TableCell>
                   <TableCell></TableCell>
-                  <TableCell>
+                  <TableCell align='center'>
                     <TextField
                       tabIndex='16'
-                      sx={{
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-                          color: '#F00',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
-                      }}
+                      className={classes.check_field}
                       name='userCheckResult'
                       // label='Ответ'
                       type='number'
@@ -621,7 +660,7 @@ function TwoRefNumbers() {
                       onClick={onAnswer}
                       tabIndex='17'
                       disabled={
-                        userResult.length < 1 ||
+                        userDigit_7.length < 1 ||
                         userCheckNumber_1.length < 1 ||
                         userCheckNumber_2.length < 1 ||
                         userCheckNumber_3.length < 1 ||
