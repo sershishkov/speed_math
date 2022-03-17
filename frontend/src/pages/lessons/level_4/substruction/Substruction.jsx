@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
-import { genExample__Add_3numbers_WithCheck } from '../../../../utils/generateExample';
+import { genExample__Substr_WithCheck } from '../../../../utils/generateExample';
 import {
   update__statistic,
   reset as resetStatistic,
@@ -39,9 +39,9 @@ const initialStateUserAnswers = {
   userCheckResult: '',
 };
 
-function Addition() {
-  const [min, set__min] = useState(100);
-  const [max, set__max] = useState(999);
+function Substruction() {
+  const [min, set__min] = useState(1000000);
+  const [max, set__max] = useState(9999999);
 
   const [userAnswers, set__userAnswers] = useState(initialStateUserAnswers);
 
@@ -55,7 +55,6 @@ function Addition() {
     userDigit_7,
     userCheckNumber_1,
     userCheckNumber_2,
-    userCheckNumber_3,
     userCheckSumNumbers,
     userCheckResult,
   } = userAnswers;
@@ -104,7 +103,7 @@ function Addition() {
   };
 
   const nextTask = () => {
-    set__example(new genExample__Add_3numbers_WithCheck(min, max));
+    set__example(new genExample__Substr_WithCheck(min, max));
     set_numberOf_Task((prevState) => prevState + 1);
   };
   const onContinue = () => {
@@ -131,24 +130,23 @@ function Addition() {
     const doneCheck =
       +userCheckNumber_1 === +example.checkNumber_1 &&
       +userCheckNumber_2 === +example.checkNumber_2 &&
-      +userCheckNumber_3 === +example.checkNumber_3 &&
       +userCheckSumNumbers === +example.checkResultLeft &&
       +userCheckResult === +example.checkResultRight;
 
     const obj = {
-      example: `${example.number_1} ${operators[0]} ${example.number_2} ${operators[0]} ${example.number_3}`,
+      example: `${example.number_1} ${operators[1]} ${example.number_2}`,
 
       userResult,
       userCheckNumber_1,
       userCheckNumber_2,
-      userCheckNumber_3,
+
       userCheckSumNumbers,
       userCheckResult,
 
       resultRight: example.resultRight,
       checkNumber_1: example.checkNumber_1,
       checkNumber_2: example.checkNumber_2,
-      checkNumber_3: example.checkNumber_3,
+
       checkResultLeft: example.checkResultLeft,
       checkResultRight: example.checkResultRight,
 
@@ -162,9 +160,9 @@ function Addition() {
 
     if (numberOf_Task < examplesNumber) {
       nextTask();
-      const userDigit_1_Input = document.getElementById('userDigit_1');
+      const userDigit_7_Input = document.getElementById('userDigit_7');
 
-      userDigit_1_Input.focus();
+      userDigit_7_Input.focus();
       // console.log(example);
     } else {
       set__displayExample(false);
@@ -210,7 +208,7 @@ function Addition() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_4/two-ref-numbers'
+                  href='/lessons/level_4/addition'
                 >
                   Предыдущий урок
                 </Button>
@@ -219,7 +217,7 @@ function Addition() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_4/substruction'
+                  href='/lessons/level_4/squaring'
                 >
                   Следующий Урок
                 </Button>
@@ -250,7 +248,7 @@ function Addition() {
 
       <Grid item>
         <Typography variant='h3' align='center'>
-          Сложение
+          Вычитание
         </Typography>
       </Grid>
       <Grid item>
@@ -375,7 +373,7 @@ function Addition() {
                     }}
                   >
                     <Typography variant='h6' align='center'>
-                      Сложите числа!!!
+                      вычтитите число!!!
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -437,10 +435,10 @@ function Addition() {
                       onChange={onChangeUserAnswers}
                       onKeyPress={(e) => {
                         if (e.key === 'Enter' || e.key === 'Tab') {
-                          const userCheckNumber_3_Input =
-                            document.getElementById('userCheckNumber_3');
+                          const userCheckSumNumbers_Input =
+                            document.getElementById('userCheckSumNumbers');
 
-                          userCheckNumber_3_Input.focus();
+                          userCheckSumNumbers_Input.focus();
                         }
                       }}
                     />
@@ -466,35 +464,7 @@ function Addition() {
                     />
                   </TableCell>
                 </TableRow>
-                <TableRow>
-                  <TableCell sx={{ padding: 0 }}>
-                    <Typography variant='h6' className={classes.number_field}>
-                      {example ? `${example.number_3}` : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell align='center'>
-                    <TextField
-                      // align='right'
-                      tabIndex='14'
-                      className={classes.check_field}
-                      name='userCheckNumber_3'
-                      // label='Ответ'
-                      type='number'
-                      id='userCheckNumber_3'
-                      value={userCheckNumber_3}
-                      onChange={onChangeUserAnswers}
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter' || e.key === 'Tab') {
-                          const userCheckSumNumbers_Input =
-                            document.getElementById('userCheckSumNumbers');
 
-                          userCheckSumNumbers_Input.focus();
-                        }
-                      }}
-                    />
-                  </TableCell>
-                  <TableCell></TableCell>
-                </TableRow>
                 <TableRow>
                   <TableCell sx={{ padding: 0 }}>
                     <Grid
@@ -514,9 +484,9 @@ function Addition() {
                           className={classes.digit_field}
                           onKeyPress={(e) => {
                             if (e.key === 'Enter') {
-                              const userDigit_2_Input =
-                                document.getElementById('userDigit_2');
-                              userDigit_2_Input.focus();
+                              const userCheckNumber_1_Input =
+                                document.getElementById('userCheckNumber_1');
+                              userCheckNumber_1_Input.focus();
                             }
                           }}
                         />
@@ -531,9 +501,9 @@ function Addition() {
                           className={classes.digit_field}
                           onKeyPress={(e) => {
                             if (e.key === 'Enter') {
-                              const userDigit_3_Input =
-                                document.getElementById('userDigit_3');
-                              userDigit_3_Input.focus();
+                              const userDigit_1_Input =
+                                document.getElementById('userDigit_1');
+                              userDigit_1_Input.focus();
                             }
                           }}
                         />
@@ -548,9 +518,9 @@ function Addition() {
                           className={classes.digit_field}
                           onKeyPress={(e) => {
                             if (e.key === 'Enter') {
-                              const userDigit_4_Input =
-                                document.getElementById('userDigit_4');
-                              userDigit_4_Input.focus();
+                              const userDigit_2_Input =
+                                document.getElementById('userDigit_2');
+                              userDigit_2_Input.focus();
                             }
                           }}
                         />
@@ -565,9 +535,9 @@ function Addition() {
                           className={classes.digit_field}
                           onKeyPress={(e) => {
                             if (e.key === 'Enter') {
-                              const userDigit_5_Input =
-                                document.getElementById('userDigit_5');
-                              userDigit_5_Input.focus();
+                              const userDigit_3_Input =
+                                document.getElementById('userDigit_3');
+                              userDigit_3_Input.focus();
                             }
                           }}
                         />
@@ -582,9 +552,9 @@ function Addition() {
                           className={classes.digit_field}
                           onKeyPress={(e) => {
                             if (e.key === 'Enter') {
-                              const userDigit_6_Input =
-                                document.getElementById('userDigit_6');
-                              userDigit_6_Input.focus();
+                              const userDigit_4_Input =
+                                document.getElementById('userDigit_4');
+                              userDigit_4_Input.focus();
                             }
                           }}
                         />
@@ -599,9 +569,9 @@ function Addition() {
                           className={classes.digit_field}
                           onKeyPress={(e) => {
                             if (e.key === 'Enter') {
-                              const userDigit_7_Input =
-                                document.getElementById('userDigit_7');
-                              userDigit_7_Input.focus();
+                              const userDigit_5_Input =
+                                document.getElementById('userDigit_5');
+                              userDigit_5_Input.focus();
                             }
                           }}
                         />
@@ -618,9 +588,9 @@ function Addition() {
                           max={9}
                           onKeyPress={(e) => {
                             if (e.key === 'Enter') {
-                              const userCheckNumber_1_Input =
-                                document.getElementById('userCheckNumber_1');
-                              userCheckNumber_1_Input.focus();
+                              const userDigit_6_Input =
+                                document.getElementById('userDigit_6');
+                              userDigit_6_Input.focus();
                             }
                           }}
                         />
@@ -663,7 +633,6 @@ function Addition() {
                         userDigit_7.length < 1 ||
                         userCheckNumber_1.length < 1 ||
                         userCheckNumber_2.length < 1 ||
-                        userCheckNumber_3.length < 1 ||
                         userCheckSumNumbers.length < 1 ||
                         userCheckResult.length < 1
                       }
@@ -715,11 +684,7 @@ function Addition() {
                     проверка 2
                   </Typography>
                 </TableCell>
-                <TableCell>
-                  <Typography variant='h6' align='center'>
-                    проверка 3
-                  </Typography>
-                </TableCell>
+
                 <TableCell>
                   <Typography variant='h6' align='center'>
                     контрольное число слева
@@ -863,34 +828,6 @@ function Addition() {
                             variant='h6'
                             align='center'
                             color={
-                              item.userCheckNumber_3 - item.checkNumber_3 === 0
-                                ? 'success.main'
-                                : 'error.main'
-                            }
-                          >
-                            {item.userCheckNumber_3}
-                          </Typography>
-                        </Grid>
-                        <Grid item>
-                          <Typography variant='h6' align='center'>
-                            {item.checkNumber_3}
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </TableCell>
-
-                    <TableCell>
-                      <Grid
-                        container
-                        justifyContent='flex-start'
-                        alignItems='center'
-                        direction='column'
-                      >
-                        <Grid item>
-                          <Typography
-                            variant='h6'
-                            align='center'
-                            color={
                               item.userCheckSumNumbers -
                                 item.checkResultLeft ===
                               0
@@ -1009,4 +946,4 @@ function Addition() {
   );
 }
 
-export default Addition;
+export default Substruction;

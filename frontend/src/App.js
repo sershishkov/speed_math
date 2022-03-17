@@ -33,6 +33,7 @@ import RefNumber500 from './pages/lessons/level_3/refNumber500/RefNumber500';
 import Decimals from './pages/lessons/level_3/decimals/Decimals';
 import TwoRefNumbers from './pages/lessons/level_4/twoRefNubers/TwoRefNumbers';
 import Addition from './pages/lessons/level_4/addition/Addition';
+import Substruction from './pages/lessons/level_4/substruction/Substruction';
 
 function App() {
   const dispatch = useDispatch();
@@ -122,6 +123,10 @@ function App() {
               element={<TwoRefNumbers />}
             />
             <Route path='/lessons/level_4/addition' element={<Addition />} />
+            <Route
+              path='/lessons/level_4/substruction'
+              element={<Substruction />}
+            />
             {/* <Route
               path='/lessons/level_2/use-base-timer'
               element={<UseMyTimer />}

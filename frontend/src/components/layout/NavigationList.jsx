@@ -369,6 +369,7 @@ function NavigationList({ toggleDrawer }) {
             </ListItemIcon>
             <ListItemText primary='Два опорных числа' />
           </ListItemButton>
+
           <ListItemButton
             sx={{ pl: 4 }}
             component={Link}
@@ -379,6 +380,18 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Сложение' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_4/substruction'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Вычитание' />
           </ListItemButton>
         </List>
       </Collapse>

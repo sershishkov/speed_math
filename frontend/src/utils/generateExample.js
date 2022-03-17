@@ -130,3 +130,32 @@ export class genExample__Add_3numbers_WithCheck {
     this.checkResultRight = numberToDigit(+this.resultRight);
   }
 }
+
+export class genExample__Substr_WithCheck {
+  id;
+  number_1;
+  number_2;
+  resultRight;
+
+  checkNumber_1;
+  checkNumber_2;
+
+  checkResultLeft;
+  checkResultRight;
+  constructor(min, max) {
+    this.id = uuidv4();
+    this.number_1 = getRandomIntInclusive(+min, +max);
+    this.number_2 = getRandomIntInclusive(+min, +this.number_1);
+
+    this.resultRight = +this.number_1 - +this.number_2;
+
+    this.checkNumber_1 = numberToDigit(+this.number_1);
+    this.checkNumber_2 = numberToDigit(+this.number_2);
+
+    this.checkResultRight = numberToDigit(+this.resultRight);
+
+    this.checkResultLeft = numberToDigit(
+      +this.checkResultRight + +this.checkNumber_2
+    );
+  }
+}
