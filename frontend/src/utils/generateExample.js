@@ -26,9 +26,9 @@ export class generateExample__SimpleDivision {
   examplesArray = [];
   constructor(max) {
     this.id = uuidv4();
-    for (let i = 1; i <= max; i++) {
-      for (let j = 1; j <= max; j++) {
-        if (i * j <= max) {
+    for (let i = 1; i <= Number(max); i++) {
+      for (let j = 1; j <= Number(max); j++) {
+        if (i * j <= Number(max)) {
           const newObj = {
             tempLeft: i,
             tempRight: j,
@@ -168,7 +168,7 @@ export class genExample__SquaringEnding_5 {
   constructor(max) {
     this.id = uuidv4();
 
-    for (let i = 15; i <= max; i += 10) {
+    for (let i = 15; i <= Number(max); i += 10) {
       this.examplesArray.push(i);
     }
 
@@ -188,6 +188,47 @@ export class genExample__SquaringCloseTo_ {
     this.id = uuidv4();
 
     this.number_1 = getRandomIntInclusive(+min, +max);
+
+    this.resultRight = Math.pow(+this.number_1, 2);
+  }
+}
+
+export class genExample__SquaringEnding_1 {
+  id;
+  number_1;
+  resultRight;
+  examplesArray = [];
+  constructor(max) {
+    this.id = uuidv4();
+
+    for (let i = 11; i <= Number(max); i += 10) {
+      this.examplesArray.push(Number(i));
+    }
+
+    const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
+    this.number_1 = +this.examplesArray[+exampleIndex];
+
+    // console.log(this.number_1);
+    // console.log(this.examplesArray);
+
+    this.resultRight = Math.pow(+this.number_1, 2);
+  }
+}
+
+export class genExample__SquaringEnding_9 {
+  id;
+  number_1;
+  resultRight;
+  examplesArray = [];
+  constructor(max) {
+    this.id = uuidv4();
+
+    for (let i = 19; i <= Number(max); i += 10) {
+      this.examplesArray.push(Number(i));
+    }
+
+    const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
+    this.number_1 = +this.examplesArray[exampleIndex];
 
     this.resultRight = Math.pow(+this.number_1, 2);
   }

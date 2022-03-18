@@ -37,6 +37,8 @@ import Substruction from './pages/lessons/level_4/substruction/Substruction';
 import SquaringEnding5 from './pages/lessons/level_5/squaringEnding5/SquaringEnding5';
 import SquaringClose50 from './pages/lessons/level_5/squaringClose50/SquaringClose50';
 import SquaringClose500 from './pages/lessons/level_5/squaringClose500/SquaringClose500';
+import SquaringEnding1 from './pages/lessons/level_5/squaringEnding1/SquaringEnding1';
+import SquaringEnding9 from './pages/lessons/level_5/squaringEnding9/SquaringEnding9';
 
 function App() {
   const dispatch = useDispatch();
@@ -141,6 +143,14 @@ function App() {
             <Route
               path='/lessons/level_5/squaring-close-to-500'
               element={<SquaringClose500 />}
+            />
+            <Route
+              path='/lessons/level_5/squaring-ending-1'
+              element={<SquaringEnding1 />}
+            />
+            <Route
+              path='/lessons/level_5/squaring-ending-9'
+              element={<SquaringEnding9 />}
             />
             {/* <Route
               path='/lessons/level_2/use-base-timer'

@@ -90,6 +90,7 @@ function NavigationList({ toggleDrawer }) {
           )}
         </List>
       </Collapse>
+
       <ListItemButton
         component={Link}
         href='/lessons'
@@ -440,6 +441,30 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Близко к 500' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_5/squaring-ending-1'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='квадрат 1' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_5/squaring-ending-9'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='квадрат 9' />
           </ListItemButton>
         </List>
       </Collapse>
