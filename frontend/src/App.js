@@ -35,6 +35,8 @@ import TwoRefNumbers from './pages/lessons/level_4/twoRefNubers/TwoRefNumbers';
 import Addition from './pages/lessons/level_4/addition/Addition';
 import Substruction from './pages/lessons/level_4/substruction/Substruction';
 import SquaringEnding5 from './pages/lessons/level_5/squaringEnding5/SquaringEnding5';
+import SquaringClose50 from './pages/lessons/level_5/squaringClose50/SquaringClose50';
+import SquaringClose500 from './pages/lessons/level_5/squaringClose500/SquaringClose500';
 
 function App() {
   const dispatch = useDispatch();
@@ -131,6 +133,14 @@ function App() {
             <Route
               path='/lessons/level_5/squaring-ending-5'
               element={<SquaringEnding5 />}
+            />
+            <Route
+              path='/lessons/level_5/squaring-close-to-50'
+              element={<SquaringClose50 />}
+            />
+            <Route
+              path='/lessons/level_5/squaring-close-to-500'
+              element={<SquaringClose500 />}
             />
             {/* <Route
               path='/lessons/level_2/use-base-timer'

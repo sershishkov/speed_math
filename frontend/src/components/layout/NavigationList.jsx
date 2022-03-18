@@ -417,6 +417,30 @@ function NavigationList({ toggleDrawer }) {
             </ListItemIcon>
             <ListItemText primary='квадрат 5' />
           </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_5/squaring-close-to-50'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Близко к 50' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_5/squaring-close-to-500'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Близко к 500' />
+          </ListItemButton>
         </List>
       </Collapse>
     </List>

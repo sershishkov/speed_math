@@ -160,7 +160,7 @@ export class genExample__Substr_WithCheck {
   }
 }
 
-export class genExample__SuaringEnding_5 {
+export class genExample__SquaringEnding_5 {
   id;
   number_1;
   resultRight;
@@ -174,6 +174,20 @@ export class genExample__SuaringEnding_5 {
 
     const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
     this.number_1 = +this.examplesArray[exampleIndex];
+
+    this.resultRight = Math.pow(+this.number_1, 2);
+  }
+}
+
+export class genExample__SquaringCloseTo_ {
+  id;
+  number_1;
+  resultRight;
+
+  constructor(min, max) {
+    this.id = uuidv4();
+
+    this.number_1 = getRandomIntInclusive(+min, +max);
 
     this.resultRight = Math.pow(+this.number_1, 2);
   }

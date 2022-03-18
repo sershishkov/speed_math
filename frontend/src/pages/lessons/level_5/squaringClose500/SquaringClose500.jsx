@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
-import { genExample__SquaringEnding_5 } from '../../../../utils/generateExample';
+import { genExample__SquaringCloseTo_ } from '../../../../utils/generateExample';
 import {
   update__statistic,
   reset as resetStatistic,
 } from '../../../../features/statistics/statisticSlice';
+import classes from './styles.module.scss';
 import Description1 from './Description1';
 
 import Grid from '@mui/material/Grid';
@@ -22,10 +23,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
 
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
 const operators = ['+', '-', '*', '/', '='];
 
-function SquaringEnding5() {
-  const [max, set__max] = useState(200);
+function SquaringClose500() {
+  const [min, set__min] = useState(490);
+  const [max, set__max] = useState(510);
 
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
@@ -38,6 +43,7 @@ function SquaringEnding5() {
   const [displayStopButton, set__displayStopButton] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
   const [resultsList, set__resultsList] = useState([]);
+  const [showHints, set__showHints] = useState(true);
 
   const { user } = useSelector((state) => state.auth);
   const { time, start, pause, reset } = useTimer();
@@ -66,7 +72,7 @@ function SquaringEnding5() {
   };
 
   const nextTask = () => {
-    set__example(new genExample__SquaringEnding_5(max));
+    set__example(new genExample__SquaringCloseTo_(min, max));
     set_numberOf_Task((prevState) => prevState + 1);
   };
   const onContinue = () => {
@@ -147,7 +153,7 @@ function SquaringEnding5() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_4/substruction'
+                  href='/lessons/level_5/squaring-close-to-50'
                 >
                   Предыдущий урок
                 </Button>
@@ -156,7 +162,7 @@ function SquaringEnding5() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_5/squaring-close-to-50'
+                  href='/lessons/level_5/squaring-ending-1'
                 >
                   Следующий Урок
                 </Button>
@@ -190,7 +196,7 @@ function SquaringEnding5() {
           Возведение в квадрат чисел,
         </Typography>
         <Typography variant='h3' align='center'>
-          оканчивающихся на 5
+          близких по значению к 500
         </Typography>
       </Grid>
       <Grid item>
@@ -230,12 +236,45 @@ function SquaringEnding5() {
             <TextField
               margin='normal'
               required
+              name='min'
+              label='Мин значение'
+              type='number'
+              id='min'
+              onChange={(e) => set__min(e.target.value)}
+              value={min}
+            />
+          </Grid>
+          <Grid
+            item
+            sx={
+              {
+                // display: 'none',
+              }
+            }
+          >
+            <TextField
+              margin='normal'
+              required
               name='max'
-              label='Максимум левого'
+              label='Макс значение'
               type='number'
               id='max'
               onChange={(e) => set__max(e.target.value)}
               value={max}
+            />
+          </Grid>
+          <Grid item>
+            <FormControlLabel
+              // value={showHints}
+              control={
+                <Switch
+                  checked={showHints}
+                  onChange={(e) => set__showHints(e.target.checked)}
+                  color='primary'
+                />
+              }
+              label={showHints ? 'отключить подсказки' : 'включить посказки'}
+              labelPlacement='start'
             />
           </Grid>
 
@@ -278,12 +317,39 @@ function SquaringEnding5() {
             sx={{
               width: '70%',
               margin: 'auto',
+              minWidth: '550px',
             }}
           >
             <Table align='center' aria-label='simple table'>
               <TableBody>
-                <TableRow>
+                <TableRow sx={{ display: showHints ? 'table-row' : 'none' }}>
+                  <TableCell className={classes.example_rounded_cell}>
+                    <Typography
+                      variant='h5'
+                      align='center'
+                      className={classes.example_rounded_field}
+                    >
+                      <span>+</span>
+                      {example && example.number_1 > 500
+                        ? `${+example.number_1 - 500}`
+                        : ''}
+                    </Typography>
+                  </TableCell>
+
                   <TableCell>
+                    <Typography variant='h3' align='center'>
+                      {'   '}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant='h3' align='center'>
+                      {'   '}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+
+                <TableRow>
+                  <TableCell sx={{ padding: 0 }}>
                     <Typography variant='h3' align='center'>
                       {example ? `${example.number_1}` : ''} <sup>2</sup>
                     </Typography>
@@ -318,6 +384,32 @@ function SquaringEnding5() {
                   </TableCell>
                 </TableRow>
 
+                <TableRow sx={{ display: showHints ? 'table-row' : 'none' }}>
+                  <TableCell className={classes.example_rounded_cell}>
+                    <Typography
+                      variant='h5'
+                      align='center'
+                      className={classes.example_rounded_field}
+                    >
+                      <span>-</span>
+                      {example && +example.number_1 < 500
+                        ? `${500 - +example.number_1}`
+                        : ''}
+                    </Typography>
+                  </TableCell>
+
+                  <TableCell>
+                    <Typography variant='h3' align='center'>
+                      {'   '}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant='h3' align='center'>
+                      {'   '}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+
                 <TableRow>
                   <TableCell colSpan={3}>
                     <Button
@@ -325,7 +417,7 @@ function SquaringEnding5() {
                       fullWidth
                       variant='contained'
                       onClick={onAnswer}
-                      disabled={userAnswer.length < 2}
+                      disabled={userAnswer.length < 5}
                     >
                       OK № {numberOf_Task}
                     </Button>
@@ -481,4 +573,4 @@ function SquaringEnding5() {
   );
 }
 
-export default SquaringEnding5;
+export default SquaringClose500;
