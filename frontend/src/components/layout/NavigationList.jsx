@@ -26,6 +26,7 @@ function NavigationList({ toggleDrawer }) {
   const [openLevel_2, set__openLevel_2] = useState(false);
   const [openLevel_3, set__openLevel_3] = useState(false);
   const [openLevel_4, set__openLevel_4] = useState(false);
+  const [openLevel_5, set__openLevel_5] = useState(false);
 
   const onLogout = () => {
     dispatch(logout());
@@ -392,6 +393,29 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Вычитание' />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <ListItemButton onClick={() => set__openLevel_5(!openLevel_5)}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary='Уровень№ 5' />
+        {openLevel_5 ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={openLevel_5} timeout='auto' unmountOnExit>
+        <List disablePadding>
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_5/squaring-ending-5'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='квадрат 5' />
           </ListItemButton>
         </List>
       </Collapse>

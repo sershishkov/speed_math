@@ -34,6 +34,7 @@ import Decimals from './pages/lessons/level_3/decimals/Decimals';
 import TwoRefNumbers from './pages/lessons/level_4/twoRefNubers/TwoRefNumbers';
 import Addition from './pages/lessons/level_4/addition/Addition';
 import Substruction from './pages/lessons/level_4/substruction/Substruction';
+import SquaringEnding5 from './pages/lessons/level_5/squaringEnding5/SquaringEnding5';
 
 function App() {
   const dispatch = useDispatch();
@@ -126,6 +127,10 @@ function App() {
             <Route
               path='/lessons/level_4/substruction'
               element={<Substruction />}
+            />
+            <Route
+              path='/lessons/level_5/squaring-ending-5'
+              element={<SquaringEnding5 />}
             />
             {/* <Route
               path='/lessons/level_2/use-base-timer'

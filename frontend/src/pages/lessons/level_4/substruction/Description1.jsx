@@ -49,41 +49,55 @@ function Description() {
         </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ width: '200px', margin: 'auto' }}>
-            <TableRow>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  56
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  9
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  =
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.description_rounded}
-                >
-                  1
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    56
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    9
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    =
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_rounded}
+                  >
+                    1
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='body1'>
@@ -102,41 +116,55 @@ function Description() {
         </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ width: '200px', margin: 'auto' }}>
-            <TableRow>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  54
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  38
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  =
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.description_rounded}
-                >
-                  2
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    54
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    38
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    =
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_rounded}
+                  >
+                    2
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='body1'>
@@ -149,41 +177,55 @@ function Description() {
         </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ width: '200px', margin: 'auto' }}>
-            <TableRow>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  436
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  87
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  =
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.description_rounded}
-                >
-                  13
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    436
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    87
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    =
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_rounded}
+                  >
+                    13
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='body1'>
@@ -200,41 +242,55 @@ function Description() {
         </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ width: '200px', margin: 'auto' }}>
-            <TableRow>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  134
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  76
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  =
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.description_rounded}
-                >
-                  24
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    134
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    76
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    =
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_rounded}
+                  >
+                    24
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='body1'>
@@ -243,41 +299,55 @@ function Description() {
         </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ width: '200px', margin: 'auto' }}>
-            <TableRow>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  152
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  88
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  =
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.description_rounded}
-                >
-                  12
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    152
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    88
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    =
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_rounded}
+                  >
+                    12
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='h5' align='center'>
@@ -289,41 +359,55 @@ function Description() {
         </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ width: '200px', margin: 'auto' }}>
-            <TableRow>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  13
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  6
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  =
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.description_rounded}
-                >
-                  4
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    13
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    6
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    =
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_rounded}
+                  >
+                    4
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='h5' align='center'>
@@ -334,41 +418,55 @@ function Description() {
         </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ width: '200px', margin: 'auto' }}>
-            <TableRow>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  461
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  275
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  =
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.description_rounded}
-                >
-                  25
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    461
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    275
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    =
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_rounded}
+                  >
+                    25
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='h5' align='center'>
@@ -383,41 +481,55 @@ function Description() {
         </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ width: '200px', margin: 'auto' }}>
-            <TableRow>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  834
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  286
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography variant='h5' className={classes.description_common}>
-                  =
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-              <TableCell className={classes.description_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.description_rounded}
-                >
-                  14
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.description_cell}></TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    834
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    286
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_common}
+                  >
+                    =
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+                <TableCell className={classes.description_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.description_rounded}
+                  >
+                    14
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.description_cell}></TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='h5' align='center'>
@@ -467,142 +579,144 @@ function Description() {
         </Typography>
         <TableContainer>
           <Table className={classes.substr_table}>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  6
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  <sub>1</sub>1
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  <sub>1</sub>4
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                  sx={{
-                    textDecoration: 'line-through',
-                    textDecorationColor: 'red',
-                  }}
-                >
-                  7
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                  sx={{
-                    textDecoration: 'line-through',
-                    textDecorationColor: 'red',
-                  }}
-                >
-                  2
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                  sx={{
-                    textDecoration: 'line-through',
-                    textDecorationColor: 'red',
-                  }}
-                >
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  <sub>1</sub>4
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow
-              className={classes.substr_row}
-              sx={{ borderBottom: '1px solid #000' }}
-            >
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  3
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  8
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  9
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  7
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  3
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  3
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  7
-                </Typography>
-              </TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    6
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    <sub>1</sub>1
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    <sub>1</sub>4
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                    sx={{
+                      textDecoration: 'line-through',
+                      textDecorationColor: 'red',
+                    }}
+                  >
+                    7
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                    sx={{
+                      textDecoration: 'line-through',
+                      textDecorationColor: 'red',
+                    }}
+                  >
+                    2
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                    sx={{
+                      textDecoration: 'line-through',
+                      textDecorationColor: 'red',
+                    }}
+                  >
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    <sub>1</sub>4
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow
+                className={classes.substr_row}
+                sx={{ borderBottom: '1px solid #000' }}
+              >
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    3
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    8
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    9
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    7
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    3
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    3
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    7
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='body1'>
@@ -636,92 +750,94 @@ function Description() {
         </Typography>
         <TableContainer>
           <Table className={classes.substr_table}>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  7
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  <sub>1</sub>2
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  <sub>1</sub>5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  <sub>1</sub>4
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow
-              className={classes.substr_row}
-              sx={{ borderBottom: '1px solid #000' }}
-            >
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  <sup>1</sup>3
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  <sup>1</sup>8
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  <sup>1</sup>9
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  7
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  3
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  3
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  7
-                </Typography>
-              </TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    7
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    <sub>1</sub>2
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    <sub>1</sub>5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    <sub>1</sub>4
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow
+                className={classes.substr_row}
+                sx={{ borderBottom: '1px solid #000' }}
+              >
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    <sup>1</sup>3
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    <sup>1</sup>8
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    <sup>1</sup>9
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    7
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    3
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    3
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    7
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='body1'>
@@ -780,97 +896,99 @@ function Description() {
         </Typography>
         <TableContainer>
           <Table className={classes.substr_table}>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  1
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow
-              className={classes.substr_row}
-              sx={{ borderBottom: '1px solid #000' }}
-            >
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  7
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  4
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    1
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow
+                className={classes.substr_row}
+                sx={{ borderBottom: '1px solid #000' }}
+              >
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    7
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    4
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
 
@@ -898,95 +1016,97 @@ function Description() {
         </Typography>
         <TableContainer>
           <Table className={classes.substr_table}>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  4
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow
-              className={classes.substr_row}
-              sx={{ borderBottom: '1px solid #000' }}
-            >
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  2
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  7
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  4
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  2
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    4
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow
+                className={classes.substr_row}
+                sx={{ borderBottom: '1px solid #000' }}
+              >
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    2
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    7
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    4
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    2
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='body1'>
@@ -1018,90 +1138,92 @@ function Description() {
         </Typography>
         <TableContainer>
           <Table className={classes.substr_table}>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  2
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  3
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow
-              className={classes.substr_row}
-              sx={{ borderBottom: '1px solid #000' }}
-            >
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  0
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  4
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  6
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  2
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  2
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  9
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  4
-                </Typography>
-              </TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    2
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    3
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow
+                className={classes.substr_row}
+                sx={{ borderBottom: '1px solid #000' }}
+              >
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    0
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    4
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    6
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    2
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    2
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    9
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    4
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
 
@@ -1131,92 +1253,94 @@ function Description() {
         </Typography>
         <TableContainer>
           <Table className={classes.substr_table}>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  8
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  4
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  6
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow
-              className={classes.substr_row}
-              sx={{ borderBottom: '1px solid #000' }}
-            >
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  2
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  8
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  9
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  7
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  6
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  8
-                </Typography>
-              </TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    8
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    4
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    6
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow
+                className={classes.substr_row}
+                sx={{ borderBottom: '1px solid #000' }}
+              >
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    2
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    8
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    9
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    7
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    6
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    8
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='body1'>Верен ли полученный ответ?</Typography>
@@ -1225,187 +1349,189 @@ function Description() {
         </Typography>
         <TableContainer>
           <Table sx={{ width: '200px', margin: 'auto' }}>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  8
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                  sx={{
-                    textDecoration: 'line-through',
-                    textDecorationColor: 'red',
-                  }}
-                >
-                  4
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  6
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                  sx={{
-                    textDecoration: 'line-through',
-                    textDecorationColor: 'red',
-                  }}
-                >
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  {'     '}
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  14
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  {'     '}
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow
-              className={classes.substr_row}
-              sx={{ borderBottom: '1px solid #000' }}
-            >
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  -
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                  sx={{
-                    textDecoration: 'line-through',
-                    textDecorationColor: 'red',
-                  }}
-                >
-                  2
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  8
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                  sx={{
-                    textDecoration: 'line-through',
-                    textDecorationColor: 'red',
-                  }}
-                >
-                  9
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                  sx={{
-                    textDecoration: 'line-through',
-                    textDecorationColor: 'red',
-                  }}
-                >
-                  7
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  {'     '}
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  {'     '}
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  {'     '}
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  8
-                </Typography>
-              </TableCell>
-            </TableRow>
-            <TableRow className={classes.substr_row}>
-              <TableCell className={classes.substr_cell}>
-                <Typography
-                  variant='h5'
-                  className={classes.substr_field}
-                ></Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  5
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  6
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  8
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  {'     '}
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  24
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  {'     '}
-                </Typography>
-              </TableCell>
-              <TableCell className={classes.substr_cell}>
-                <Typography variant='h5' className={classes.substr_field}>
-                  6
-                </Typography>
-              </TableCell>
-            </TableRow>
+            <TableBody>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    8
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                    sx={{
+                      textDecoration: 'line-through',
+                      textDecorationColor: 'red',
+                    }}
+                  >
+                    4
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    6
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                    sx={{
+                      textDecoration: 'line-through',
+                      textDecorationColor: 'red',
+                    }}
+                  >
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    {'     '}
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    14
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    {'     '}
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow
+                className={classes.substr_row}
+                sx={{ borderBottom: '1px solid #000' }}
+              >
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    -
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                    sx={{
+                      textDecoration: 'line-through',
+                      textDecorationColor: 'red',
+                    }}
+                  >
+                    2
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    8
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                    sx={{
+                      textDecoration: 'line-through',
+                      textDecorationColor: 'red',
+                    }}
+                  >
+                    9
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                    sx={{
+                      textDecoration: 'line-through',
+                      textDecorationColor: 'red',
+                    }}
+                  >
+                    7
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    {'     '}
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    {'     '}
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    {'     '}
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    8
+                  </Typography>
+                </TableCell>
+              </TableRow>
+              <TableRow className={classes.substr_row}>
+                <TableCell className={classes.substr_cell}>
+                  <Typography
+                    variant='h5'
+                    className={classes.substr_field}
+                  ></Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    5
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    6
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    8
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    {'     '}
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    24
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    {'     '}
+                  </Typography>
+                </TableCell>
+                <TableCell className={classes.substr_cell}>
+                  <Typography variant='h5' className={classes.substr_field}>
+                    6
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
           </Table>
         </TableContainer>
         <Typography variant='body1'>

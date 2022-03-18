@@ -217,7 +217,7 @@ function Substruction() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_4/squaring'
+                  href='/lessons/level_5/squaring-ending-5'
                 >
                   Следующий Урок
                 </Button>
@@ -397,7 +397,6 @@ function Substruction() {
                   </TableCell>
                   <TableCell align='center'>
                     <TextField
-                      tabIndex='12'
                       className={classes.check_field}
                       name='userCheckNumber_1'
                       // label='Ответ'
@@ -425,7 +424,6 @@ function Substruction() {
                   </TableCell>
                   <TableCell align='center'>
                     <TextField
-                      tabIndex='13'
                       className={classes.check_field}
                       name='userCheckNumber_2'
                       // label='Ответ'
@@ -445,7 +443,6 @@ function Substruction() {
                   </TableCell>
                   <TableCell align='center'>
                     <TextField
-                      tabIndex='15'
                       className={classes.check_field}
                       name='userCheckSumNumbers'
                       // label='Ответ'
@@ -600,7 +597,6 @@ function Substruction() {
                   <TableCell></TableCell>
                   <TableCell align='center'>
                     <TextField
-                      tabIndex='16'
                       className={classes.check_field}
                       name='userCheckResult'
                       // label='Ответ'
@@ -628,7 +624,6 @@ function Substruction() {
                       variant='contained'
                       id='answerButton'
                       onClick={onAnswer}
-                      tabIndex='17'
                       disabled={
                         userDigit_7.length < 1 ||
                         userCheckNumber_1.length < 1 ||
@@ -637,7 +632,7 @@ function Substruction() {
                         userCheckResult.length < 1
                       }
                     >
-                      OK
+                      OK № {numberOf_Task}
                     </Button>
                   </TableCell>
                 </TableRow>

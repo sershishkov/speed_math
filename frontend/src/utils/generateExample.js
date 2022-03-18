@@ -159,3 +159,22 @@ export class genExample__Substr_WithCheck {
     );
   }
 }
+
+export class genExample__SuaringEnding_5 {
+  id;
+  number_1;
+  resultRight;
+  examplesArray = [];
+  constructor(max) {
+    this.id = uuidv4();
+
+    for (let i = 15; i <= max; i += 10) {
+      this.examplesArray.push(i);
+    }
+
+    const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
+    this.number_1 = +this.examplesArray[exampleIndex];
+
+    this.resultRight = Math.pow(+this.number_1, 2);
+  }
+}

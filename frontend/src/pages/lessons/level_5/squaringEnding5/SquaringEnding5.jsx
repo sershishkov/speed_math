@@ -1,56 +1,62 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
-import { generateExample__AddMultSub } from '../../../utils/generateExample';
+import { genExample__SuaringEnding_5 } from '../../../../utils/generateExample';
 import {
   update__statistic,
   reset as resetStatistic,
-} from '../../../features/statistics/statisticSlice';
+} from '../../../../features/statistics/statisticSlice';
+import Description1 from './Description1';
+import classes from './styles.module.scss';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Table from '@mui/material/Table';
 import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
-import Paper from '@mui/material/Paper';
+
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const operators = ['+', '-', '*', '/', '='];
 
-function SimpleAddition() {
-  const [min, set__min] = useState(1);
-  const [max, set__max] = useState(100);
+function SquaringEnding5() {
+  const [max, set__max] = useState(200);
+
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
   const [userAnswer, set__userAnswer] = useState('');
+
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
   const [displayStatistics, set__displayStatistics] = useState(false);
-  const [displayStopButton, set__displayStopButton] = useState(false);
   const [disableStartButton, set__disableStartButton] = useState(false);
+  const [displayStopButton, set__displayStopButton] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
   const [resultsList, set__resultsList] = useState([]);
 
-  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { time, start, pause, reset } = useTimer();
-  const userAnswerInput = document.getElementById('userAnswer');
+
+  const dispatch = useDispatch();
 
   const onStart = () => {
     set__displayExample(true);
     set__displayStopButton(true);
     set__displaySettings(false);
     set__disableStartButton(true);
-    // userAnswerInput.focus();
     nextTask();
     start();
   };
+
   const onStopExercise = () => {
     set__displayStopButton(false);
     set__displayExample(false);
@@ -64,13 +70,13 @@ function SimpleAddition() {
   };
 
   const nextTask = () => {
-    set__example(new generateExample__AddMultSub(min, max));
+    set__example(new genExample__SuaringEnding_5(max));
     set_numberOf_Task((prevState) => prevState + 1);
   };
   const onContinue = () => {
     nextTask();
 
-    dispatch(resetStatistic());
+    // dispatch(resetStatistic());
     reset();
 
     set__displayExample(false);
@@ -85,10 +91,11 @@ function SimpleAddition() {
 
   const onAnswer = () => {
     const obj = {
-      example: `${example.numberLeft} ${operators[0]} ${example.numberRight}`,
+      example: `${example.number_1}`,
+
       userAnswer,
-      rightAnswer: example.resultAdd,
-      done: +userAnswer === +example.resultAdd,
+      resultRight: example.resultRight,
+      doneExcercise: +userAnswer - +example.resultRight === 0,
     };
     set__resultsList((prevState) => [...prevState, obj]);
 
@@ -96,8 +103,10 @@ function SimpleAddition() {
 
     if (numberOf_Task < examplesNumber) {
       nextTask();
+      const userAnswerInput = document.getElementById('userAnswer');
 
       userAnswerInput.focus();
+      // console.log(example);
     } else {
       set__displayExample(false);
       set__displayStatistics(true);
@@ -108,7 +117,7 @@ function SimpleAddition() {
   const onSaveResults = () => {
     let rightTasks = 0;
     resultsList.forEach((item) => {
-      if (item.done) {
+      if (item.doneExcercise) {
         rightTasks++;
       }
     });
@@ -139,15 +148,19 @@ function SimpleAddition() {
           <Grid item>
             <Grid container alignItems='center' justifyContent='flex-start'>
               <Grid item sx={{ mr: '5px' }}>
-                <Button variant='contained' component={Link} href='/'>
-                  Главная
+                <Button
+                  variant='contained'
+                  component={Link}
+                  href='/lessons/level_4/substruction'
+                >
+                  Предыдущий урок
                 </Button>
               </Grid>
               <Grid item>
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_1/simple-subtraction'
+                  href='/lessons/level_5/squaring-ending-5'
                 >
                   Следующий Урок
                 </Button>
@@ -175,10 +188,17 @@ function SimpleAddition() {
           </Grid>
         </Grid>
       </Grid>
+
       <Grid item>
         <Typography variant='h3' align='center'>
-          Простое сложение
+          Возведение в квадрат чисел,
         </Typography>
+        <Typography variant='h3' align='center'>
+          оканчивающихся на 5
+        </Typography>
+      </Grid>
+      <Grid item>
+        <Description1 />
       </Grid>
       <Grid item sx={{ display: displaySettings ? 'block' : 'none' }}>
         <Typography variant='h6' align='center'>
@@ -202,30 +222,27 @@ function SimpleAddition() {
               value={examplesNumber}
             />
           </Grid>
-          <Grid item>
-            <TextField
-              margin='normal'
-              required
-              name='min'
-              label='Минимальное значение'
-              type='number'
-              id='min'
-              onChange={(e) => set__min(e.target.value)}
-              value={min}
-            />
-          </Grid>
-          <Grid item>
+
+          <Grid
+            item
+            sx={
+              {
+                // display: 'none',
+              }
+            }
+          >
             <TextField
               margin='normal'
               required
               name='max'
-              label='Максимальное значение'
+              label='Максимум левого'
               type='number'
               id='max'
               onChange={(e) => set__max(e.target.value)}
               value={max}
             />
           </Grid>
+
           <Grid item>
             <Button
               disabled={disableStartButton}
@@ -238,6 +255,7 @@ function SimpleAddition() {
           </Grid>
         </Grid>
       </Grid>
+
       <Grid item sx={{ display: displayStopButton ? 'block' : 'none' }}>
         <Grid container justifyContent={`center`} alignItems='center'>
           <Grid item>
@@ -252,81 +270,115 @@ function SimpleAddition() {
           </Grid>
         </Grid>
       </Grid>
+
       <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
         <Typography variant='h5' align='center'>
           Упражнения
         </Typography>
+
         <Grid container justifyContent='space-evenly' alignItems='center'>
-          <Grid item>
-            <Typography variant='h4' align='center'>
-              {example ? example.numberLeft : ''}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant='h4' align='center'>
-              {operators[0]}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant='h4' align='center'>
-              {example ? example.numberRight : ''}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant='h4' align='center'>
-              {operators[4]}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <TextField
-              // margin='normal'
-              // required
-              // fullWidth
+          <TableContainer
+            component={Paper}
+            sx={{
+              width: '70%',
+              margin: 'auto',
+            }}
+          >
+            <Table align='center' aria-label='simple table'>
+              <TableBody>
+                <TableRow>
+                  <TableCell>
+                    <Typography variant='h3' align='center'>
+                      {example ? `${example.number_1}` : ''} <sup>2</sup>
+                    </Typography>
+                  </TableCell>
 
-              name='userAnswer'
-              label='Ответ'
-              type='number'
-              id='userAnswer'
-              value={userAnswer}
-              onChange={(e) => set__userAnswer(e.target.value)}
-              onKeyPress={(e) => {
-                if (e.key === 'Enter') {
-                  const onAnswer_Button =
-                    document.getElementById('answerButton');
+                  <TableCell>
+                    <Typography variant='h3' align='center'>
+                      {operators[4]}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <TextField
+                      // margin='normal'
+                      // required
+                      // fullWidth
 
-                  onAnswer_Button.focus();
-                }
-              }}
-            />
-          </Grid>
-          <Grid item>
-            <Button
-              id='answerButton'
-              variant='contained'
-              onClick={onAnswer}
-              disabled={userAnswer.length < 1}
-            >
-              OK № {numberOf_Task}
-            </Button>
-          </Grid>
+                      name='userAnswer'
+                      label='Ответ'
+                      type='number'
+                      id='userAnswer'
+                      value={userAnswer}
+                      onChange={(e) => set__userAnswer(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === 'Tab') {
+                          const onAnswer_Button =
+                            document.getElementById('answerButton');
+
+                          onAnswer_Button.focus();
+                        }
+                      }}
+                    />
+                  </TableCell>
+                </TableRow>
+
+                <TableRow>
+                  <TableCell colSpan={3}>
+                    <Button
+                      id='answerButton'
+                      fullWidth
+                      variant='contained'
+                      onClick={onAnswer}
+                      disabled={userAnswer.length < 2}
+                    >
+                      OK № {numberOf_Task}
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
       </Grid>
       <Grid item sx={{ display: displayStatistics ? 'block' : 'none' }}>
         <Typography variant='h4' align='center'>
           Ваши результаты
         </Typography>
+
         <TableContainer component={Paper}>
           <Table
-            sx={{ minWidth: 650 }}
+            sx={{
+              width: '70%',
+              margin: 'auto',
+              minWidth: '550px',
+            }}
             align='center'
             aria-label='simple table'
           >
             <TableHead>
               <TableRow>
-                <TableCell>Пример</TableCell>
-                <TableCell>Ваш ответ</TableCell>
-                <TableCell>Ответ</TableCell>
-                <TableCell>Сдано?</TableCell>
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    Пример
+                  </Typography>
+                </TableCell>
+
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    решение ваше
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    Правильно
+                  </Typography>
+                </TableCell>
+
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    Сдан пример
+                  </Typography>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -334,26 +386,73 @@ function SimpleAddition() {
                 resultsList.length > 0 &&
                 resultsList.map((item, index) => (
                   <TableRow key={index} sx={{}}>
-                    <TableCell>{item.example}</TableCell>
-                    <TableCell>{item.userAnswer}</TableCell>
-                    <TableCell>{item.rightAnswer}</TableCell>
-                    <TableCell
-                      sx={{ color: item.done ? 'success.main' : 'error.main' }}
-                    >
-                      {item.done ? 'ok' : 'ошибка'}
+                    <TableCell>
+                      <Typography variant='h6' align='center'>
+                        {item.example}
+                        <sup>2</sup>
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography
+                        variant='h6'
+                        align='center'
+                        color={
+                          item.userAnswer - item.resultRight === 0
+                            ? 'success.main'
+                            : 'error.main'
+                        }
+                      >
+                        {item.userAnswer}
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography variant='h6' align='center'>
+                        {item.resultRight}
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography
+                        variant='h6'
+                        align='center'
+                        color={
+                          item.doneExcercise ? 'success.main' : 'error.main'
+                        }
+                      >
+                        {item.doneExcercise ? 'ок!' : 'ошибка!'}
+                      </Typography>
                     </TableCell>
                   </TableRow>
                 ))}
             </TableBody>
             <TableFooter>
-              <TableRow>
-                <TableCell colSpan={2}>
+              <TableRow
+                sx={
+                  {
+                    // padding: 0,
+                  }
+                }
+              >
+                <TableCell
+                  colSpan={2}
+                  sx={
+                    {
+                      //  border: '1px solid #0F0'
+                    }
+                  }
+                >
                   <Button
                     fullWidth
                     disabled={!user}
                     onClick={onSaveResults}
                     variant='contained'
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={
+                      {
+                        // padding: 0
+                      }
+                    }
                   >
                     {user
                       ? 'Сохранить результаты'
@@ -361,14 +460,18 @@ function SimpleAddition() {
                   </Button>
                 </TableCell>
                 <TableCell
+                  // align='center'
                   colSpan={2}
-                  sx={{ display: !user ? 'block' : 'none' }}
+                  sx={{
+                    // border: '1px solid #00F',
+                    display: !user ? 'table-cell' : 'none',
+                  }}
                 >
                   <Button
                     fullWidth
                     onClick={onContinue}
                     variant='contained'
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ margin: 'auto' }}
                   >
                     Тренироваться еще
                   </Button>
@@ -382,4 +485,4 @@ function SimpleAddition() {
   );
 }
 
-export default SimpleAddition;
+export default SquaringEnding5;

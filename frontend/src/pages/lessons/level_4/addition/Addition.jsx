@@ -399,7 +399,6 @@ function Addition() {
                   </TableCell>
                   <TableCell align='center'>
                     <TextField
-                      tabIndex='12'
                       className={classes.check_field}
                       name='userCheckNumber_1'
                       // label='Ответ'
@@ -427,7 +426,6 @@ function Addition() {
                   </TableCell>
                   <TableCell align='center'>
                     <TextField
-                      tabIndex='13'
                       className={classes.check_field}
                       name='userCheckNumber_2'
                       // label='Ответ'
@@ -447,7 +445,6 @@ function Addition() {
                   </TableCell>
                   <TableCell align='center'>
                     <TextField
-                      tabIndex='15'
                       className={classes.check_field}
                       name='userCheckSumNumbers'
                       // label='Ответ'
@@ -475,7 +472,7 @@ function Addition() {
                   <TableCell align='center'>
                     <TextField
                       // align='right'
-                      tabIndex='14'
+
                       className={classes.check_field}
                       name='userCheckNumber_3'
                       // label='Ответ'
@@ -630,7 +627,6 @@ function Addition() {
                   <TableCell></TableCell>
                   <TableCell align='center'>
                     <TextField
-                      tabIndex='16'
                       className={classes.check_field}
                       name='userCheckResult'
                       // label='Ответ'
@@ -658,7 +654,6 @@ function Addition() {
                       variant='contained'
                       id='answerButton'
                       onClick={onAnswer}
-                      tabIndex='17'
                       disabled={
                         userDigit_7.length < 1 ||
                         userCheckNumber_1.length < 1 ||
@@ -668,7 +663,7 @@ function Addition() {
                         userCheckResult.length < 1
                       }
                     >
-                      OK
+                      OK № {numberOf_Task}
                     </Button>
                   </TableCell>
                 </TableRow>
