@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
-import { genExample__SquaringEnding_1 } from '../../../../utils/generateExample';
+import { genExample__DivBySimpleNumber } from '../../../../utils/generateExample';
 import {
   update__statistic,
   reset as resetStatistic,
 } from '../../../../features/statistics/statisticSlice';
+import classes from './styles.module.scss';
 import Description1 from './Description1';
 
 import Grid from '@mui/material/Grid';
@@ -22,14 +23,26 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
 
-const operators = ['+', '-', '*', '/', '='];
+// const operators = ['+', '-', '*', '/', '='];
+const initialStateUserAnswers = {
+  userDigit_1: '',
+  userDigit_2: '',
+  userDigit_3: '',
+  userDigit_4: '',
+  userDigit_5: '',
+  userDigit_6: '',
+  userDigit_7: '',
+  userAnswerRem: 0,
+};
 
-function SquaringEnding1() {
-  const [max, set__max] = useState(200);
+function DivBySingleNumber() {
+  const [min, set__min] = useState(100);
+  const [max, set__max] = useState(9999999);
 
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
-  const [userAnswer, set__userAnswer] = useState('');
+  const [arrOfDivident, set__arrOfDivident] = useState([]);
+  const [userAnswers, set__userAnswers] = useState(initialStateUserAnswers);
 
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
@@ -43,6 +56,23 @@ function SquaringEnding1() {
   const { time, start, pause, reset } = useTimer();
 
   const dispatch = useDispatch();
+  const {
+    userDigit_1,
+    userDigit_2,
+    userDigit_3,
+    userDigit_4,
+    userDigit_5,
+    userDigit_6,
+    userDigit_7,
+    userAnswerRem,
+  } = userAnswers;
+
+  const onChangeUserAnswers = (e) => {
+    set__userAnswers({
+      ...userAnswers,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const onStart = () => {
     set__displayExample(true);
@@ -62,11 +92,15 @@ function SquaringEnding1() {
     set_numberOf_Task(0);
     set__disableStartButton(false);
     set__resultsList([]);
-    set__userAnswer('');
+    set__userAnswers(initialStateUserAnswers);
+    set__arrOfDivident([]);
   };
 
   const nextTask = () => {
-    set__example(new genExample__SquaringEnding_1(max));
+    const newExample = new genExample__DivBySimpleNumber(min, max);
+    const newArrOfDivident = newExample.divident.toString().split('');
+    set__example(newExample);
+    set__arrOfDivident(newArrOfDivident);
     set_numberOf_Task((prevState) => prevState + 1);
   };
   const onContinue = () => {
@@ -81,27 +115,35 @@ function SquaringEnding1() {
     set__displaySettings(true);
     set__disableStartButton(false);
     set__resultsList([]);
-    set__userAnswer('');
+    set__userAnswers(initialStateUserAnswers);
+    set__arrOfDivident([]);
     set__displayStopButton(false);
   };
-
+  // console.log(arrOfDivident);
   const onAnswer = () => {
-    const obj = {
-      example: `${example.number_1}`,
+    const userResult = Number(
+      `${userDigit_1}${userDigit_2}${userDigit_3}${userDigit_4}${userDigit_5}${userDigit_6}${userDigit_7}`
+    );
+    const doneResult = +userResult - +example.resultRight === 0;
+    const doneReminder = +userAnswerRem - +example.reminderOfDivision === 0;
 
-      userAnswer,
-      resultRight: +example.resultRight,
-      doneExcercise: +userAnswer - +example.resultRight === 0,
+    const obj = {
+      example: `${example.divident}/${example.divider}`,
+      userResult,
+      userAnswerRem,
+      resultRight: example.resultRight,
+      reminderOfDivision: example.reminderOfDivision,
+      doneExcercise: doneResult && doneReminder,
     };
     set__resultsList((prevState) => [...prevState, obj]);
 
-    set__userAnswer('');
-
+    set__userAnswers(initialStateUserAnswers);
+    set__arrOfDivident([]);
     if (numberOf_Task < examplesNumber) {
       nextTask();
-      const userAnswerInput = document.getElementById('userAnswer');
+      const userDigit_1_Input = document.getElementById('userDigit_1');
 
-      userAnswerInput.focus();
+      userDigit_1_Input.focus();
       // console.log(example);
     } else {
       set__displayExample(false);
@@ -134,7 +176,8 @@ function SquaringEnding1() {
     set__displaySettings(true);
     set__disableStartButton(false);
     set__resultsList([]);
-    set__userAnswer('');
+    set__userAnswers(initialStateUserAnswers);
+    set__arrOfDivident([]);
   };
 
   return (
@@ -147,7 +190,7 @@ function SquaringEnding1() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_5/squaring-close-to-500'
+                  href='/lessons/level_5/squaring-ending-9'
                 >
                   Предыдущий урок
                 </Button>
@@ -156,7 +199,7 @@ function SquaringEnding1() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_5/squaring-ending-9'
+                  href='/lessons/level_6/division-by-single-number'
                 >
                   Следующий Урок
                 </Button>
@@ -187,17 +230,15 @@ function SquaringEnding1() {
 
       <Grid item>
         <Typography variant='h3' align='center'>
-          Возведение в квадрат чисел,
+          Деление на
         </Typography>
         <Typography variant='h3' align='center'>
-          оканчивающихся на 1
+          однозначное число
         </Typography>
       </Grid>
-
       <Grid item>
         <Description1 />
       </Grid>
-
       <Grid item sx={{ display: displaySettings ? 'block' : 'none' }}>
         <Typography variant='h6' align='center'>
           Настройки
@@ -232,8 +273,27 @@ function SquaringEnding1() {
             <TextField
               margin='normal'
               required
+              name='min'
+              label='Мин значение'
+              type='number'
+              id='min'
+              onChange={(e) => set__min(e.target.value)}
+              value={min}
+            />
+          </Grid>
+          <Grid
+            item
+            sx={
+              {
+                // display: 'none',
+              }
+            }
+          >
+            <TextField
+              margin='normal'
+              required
               name='max'
-              label='Максимум левого'
+              label='Макс значение'
               type='number'
               id='max'
               onChange={(e) => set__max(e.target.value)}
@@ -277,37 +337,191 @@ function SquaringEnding1() {
         <Grid container justifyContent='space-evenly' alignItems='center'>
           <TableContainer
             component={Paper}
-            sx={{
-              width: '70%',
-              margin: 'auto',
-            }}
+            className={classes.example_tablecontainer}
           >
-            <Table align='center' aria-label='simple table'>
-              <TableBody>
-                <TableRow>
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {example ? `${example.number_1}` : ''} <sup>2</sup>
+            <Table className={classes.example_table}>
+              <TableBody className={classes.example_table_body}>
+                <TableRow className={classes.example_table_row}>
+                  <TableCell className={classes.example_cell_divider}>
+                    <Typography variant='h6' align='center'>
+                      {example ? `${example.divider}` : ''}
                     </Typography>
                   </TableCell>
+                  <TableCell className={classes.example_cell_divident}>
+                    {arrOfDivident && arrOfDivident.length > 0 ? (
+                      <Grid container className={classes.divident_container}>
+                        {arrOfDivident.map((item, index) => (
+                          <Grid
+                            item
+                            className={classes.divident_item}
+                            key={index}
+                          >
+                            {index !== 0 && (
+                              <TextField
+                                type='number'
+                                name={`dividentHint${index + 1}`}
+                                id={`dividentHint${index + 1}`}
+                                className={classes.divident_hint}
+                              />
+                            )}
 
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {operators[4]}
-                    </Typography>
+                            <Typography
+                              variant='h6'
+                              className={classes.divident_field}
+                            >
+                              {`${item}`}
+                            </Typography>
+                          </Grid>
+                        ))}
+                      </Grid>
+                    ) : (
+                      ''
+                    )}
                   </TableCell>
-                  <TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+                <TableRow className={classes.example_table_row}>
+                  <TableCell></TableCell>
+                  <TableCell className={classes.example_cell_result}>
+                    <Grid
+                      container
+                      direction='row'
+                      justifyContent='flex-start'
+                      alignItems='center'
+                      className={classes.digit_container}
+                    >
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_1'
+                          id='userDigit_1'
+                          value={userDigit_1}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_2_Input =
+                                document.getElementById('userDigit_2');
+                              userDigit_2_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_2'
+                          id='userDigit_2'
+                          value={userDigit_2}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_3_Input =
+                                document.getElementById('userDigit_3');
+                              userDigit_3_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_3'
+                          id='userDigit_3'
+                          value={userDigit_3}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_4_Input =
+                                document.getElementById('userDigit_4');
+                              userDigit_4_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_4'
+                          id='userDigit_4'
+                          value={userDigit_4}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_5_Input =
+                                document.getElementById('userDigit_5');
+                              userDigit_5_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_5'
+                          id='userDigit_5'
+                          value={userDigit_5}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_6_Input =
+                                document.getElementById('userDigit_6');
+                              userDigit_6_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_6'
+                          id='userDigit_6'
+                          value={userDigit_6}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_7_Input =
+                                document.getElementById('userDigit_7');
+                              userDigit_7_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item}>
+                        <TextField
+                          type='number'
+                          name='userDigit_7'
+                          id='userDigit_7'
+                          value={userDigit_7}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field}
+                          min={0}
+                          max={9}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userAnswerRem_Input =
+                                document.getElementById('userAnswerRem');
+                              userAnswerRem_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                    </Grid>
+                  </TableCell>
+                  <TableCell className={classes.example_cell_reminder}>
+                    <span>Остаток:</span>
                     <TextField
-                      // margin='normal'
-                      // required
-                      // fullWidth
-
-                      name='userAnswer'
-                      label='Ответ'
                       type='number'
-                      id='userAnswer'
-                      value={userAnswer}
-                      onChange={(e) => set__userAnswer(e.target.value)}
+                      name='userAnswerRem'
+                      id='userAnswerRem'
+                      // label='Остаток'
+                      value={userAnswerRem}
+                      onChange={onChangeUserAnswers}
                       onKeyPress={(e) => {
                         if (e.key === 'Enter' || e.key === 'Tab') {
                           const onAnswer_Button =
@@ -327,7 +541,10 @@ function SquaringEnding1() {
                       fullWidth
                       variant='contained'
                       onClick={onAnswer}
-                      disabled={userAnswer.length < 2}
+                      disabled={
+                        `${userDigit_1}${userDigit_2}${userDigit_3}${userDigit_4}${userDigit_5}${userDigit_6}${userDigit_7}`
+                          .length < 1
+                      }
                     >
                       OK № {numberOf_Task}
                     </Button>
@@ -369,7 +586,18 @@ function SquaringEnding1() {
                 </TableCell>
                 <TableCell>
                   <Typography variant='h6' align='center'>
-                    Правильно
+                    Комп
+                  </Typography>
+                </TableCell>
+
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    остаток ваше
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant='h6' align='center'>
+                    Комп
                   </Typography>
                 </TableCell>
 
@@ -388,7 +616,6 @@ function SquaringEnding1() {
                     <TableCell>
                       <Typography variant='h6' align='center'>
                         {item.example}
-                        <sup>2</sup>
                       </Typography>
                     </TableCell>
 
@@ -397,18 +624,38 @@ function SquaringEnding1() {
                         variant='h6'
                         align='center'
                         color={
-                          item.userAnswer - item.resultRight === 0
+                          item.userResult - item.resultRight === 0
                             ? 'success.main'
                             : 'error.main'
                         }
                       >
-                        {item.userAnswer}
+                        {item.userResult}
                       </Typography>
                     </TableCell>
 
                     <TableCell>
                       <Typography variant='h6' align='center'>
                         {item.resultRight}
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography
+                        variant='h6'
+                        align='center'
+                        color={
+                          item.userAnswerRem - item.reminderOfDivision === 0
+                            ? 'success.main'
+                            : 'error.main'
+                        }
+                      >
+                        {item.userAnswerRem}
+                      </Typography>
+                    </TableCell>
+
+                    <TableCell>
+                      <Typography variant='h6' align='center'>
+                        {item.reminderOfDivision}
                       </Typography>
                     </TableCell>
 
@@ -435,7 +682,7 @@ function SquaringEnding1() {
                 }
               >
                 <TableCell
-                  colSpan={2}
+                  colSpan={3}
                   sx={
                     {
                       //  border: '1px solid #0F0'
@@ -460,7 +707,7 @@ function SquaringEnding1() {
                 </TableCell>
                 <TableCell
                   // align='center'
-                  colSpan={2}
+                  colSpan={3}
                   sx={{
                     // border: '1px solid #00F',
                     display: !user ? 'table-cell' : 'none',
@@ -484,4 +731,4 @@ function SquaringEnding1() {
   );
 }
 
-export default SquaringEnding1;
+export default DivBySingleNumber;

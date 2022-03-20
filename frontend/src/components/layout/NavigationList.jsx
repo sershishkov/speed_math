@@ -27,6 +27,7 @@ function NavigationList({ toggleDrawer }) {
   const [openLevel_3, set__openLevel_3] = useState(false);
   const [openLevel_4, set__openLevel_4] = useState(false);
   const [openLevel_5, set__openLevel_5] = useState(false);
+  const [openLevel_6, set__openLevel_6] = useState(false);
 
   const onLogout = () => {
     dispatch(logout());
@@ -465,6 +466,29 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='квадрат 9' />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <ListItemButton onClick={() => set__openLevel_6(!openLevel_6)}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary='Уровень№ 6' />
+        {openLevel_6 ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={openLevel_6} timeout='auto' unmountOnExit>
+        <List disablePadding>
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_6/division-by-single-number'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Деление на однозначное число' />
           </ListItemButton>
         </List>
       </Collapse>

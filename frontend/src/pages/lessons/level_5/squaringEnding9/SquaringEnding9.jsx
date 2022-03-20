@@ -285,7 +285,7 @@ function SquaringEnding9() {
                 <TableRow>
                   <TableCell>
                     <Typography variant='h3' align='center'>
-                      {example ? example.number_1 : ''} <sup>2</sup>
+                      {example ? `${example.number_1}` : ''} <sup>2</sup>
                     </Typography>
                   </TableCell>
 

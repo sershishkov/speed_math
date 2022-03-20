@@ -206,7 +206,9 @@ export class genExample__SquaringEnding_1 {
     }
 
     const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
-    this.number_1 = +this.examplesArray[+exampleIndex];
+    this.number_1 = isNaN(+this.examplesArray[+exampleIndex])
+      ? 11
+      : this.examplesArray[+exampleIndex];
 
     // console.log(this.number_1);
     // console.log(this.examplesArray);
@@ -231,5 +233,22 @@ export class genExample__SquaringEnding_9 {
     this.number_1 = +this.examplesArray[exampleIndex];
 
     this.resultRight = Math.pow(+this.number_1, 2);
+  }
+}
+
+export class genExample__DivBySimpleNumber {
+  id;
+
+  divident;
+  divider;
+  resultRight;
+  reminderOfDivision;
+  constructor(min, max) {
+    this.id = uuidv4();
+
+    this.divident = getRandomIntInclusive(+min, +max);
+    this.divider = getRandomIntInclusive(1, 9);
+    this.resultRight = Math.floor(this.divident / this.divider);
+    this.reminderOfDivision = this.divident % this.divider;
   }
 }

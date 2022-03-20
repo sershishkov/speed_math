@@ -39,6 +39,7 @@ import SquaringClose50 from './pages/lessons/level_5/squaringClose50/SquaringClo
 import SquaringClose500 from './pages/lessons/level_5/squaringClose500/SquaringClose500';
 import SquaringEnding1 from './pages/lessons/level_5/squaringEnding1/SquaringEnding1';
 import SquaringEnding9 from './pages/lessons/level_5/squaringEnding9/SquaringEnding9';
+import DivBySingleNumber from './pages/lessons/level_6/divBySingleNumber/DivBySingleNumber';
 
 function App() {
   const dispatch = useDispatch();
@@ -151,6 +152,10 @@ function App() {
             <Route
               path='/lessons/level_5/squaring-ending-9'
               element={<SquaringEnding9 />}
+            />
+            <Route
+              path='/lessons/level_6/division-by-single-number'
+              element={<DivBySingleNumber />}
             />
             {/* <Route
               path='/lessons/level_2/use-base-timer'
