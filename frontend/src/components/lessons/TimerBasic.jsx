@@ -11,7 +11,7 @@ function TimerBasic({
 }) {
   const { time, start, reset } = useTimer();
 
-  const onStart = () => {
+  timerBasicStartHandler = () => {
     start();
   };
 

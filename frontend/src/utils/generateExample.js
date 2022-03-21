@@ -168,12 +168,14 @@ export class genExample__SquaringEnding_5 {
   constructor(max) {
     this.id = uuidv4();
 
-    for (let i = 15; i <= Number(max); i += 10) {
+    for (let i = 15; i < Number(max); i += 10) {
       this.examplesArray.push(i);
     }
 
     const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
-    this.number_1 = +this.examplesArray[exampleIndex];
+    this.number_1 = isNaN(+this.examplesArray[exampleIndex])
+      ? 15
+      : +this.examplesArray[exampleIndex];
 
     this.resultRight = Math.pow(+this.number_1, 2);
   }
@@ -230,7 +232,9 @@ export class genExample__SquaringEnding_9 {
     }
 
     const exampleIndex = getRandomIntInclusive(0, this.examplesArray.length);
-    this.number_1 = +this.examplesArray[exampleIndex];
+    this.number_1 = isNaN(+this.examplesArray[exampleIndex])
+      ? 19
+      : +this.examplesArray[exampleIndex];
 
     this.resultRight = Math.pow(+this.number_1, 2);
   }
@@ -250,5 +254,27 @@ export class genExample__DivBySimpleNumber {
     this.divider = getRandomIntInclusive(1, 9);
     this.resultRight = Math.floor(this.divident / this.divider);
     this.reminderOfDivision = this.divident % this.divider;
+  }
+}
+export class genExample__DivByMultipliers {
+  id;
+
+  divident;
+  divider_1;
+  divider_2;
+  divider_Total;
+  resultRight;
+  reminderOfDivision;
+
+  constructor(max) {
+    this.id = uuidv4();
+
+    this.divider_1 = getRandomIntInclusive(1, 9);
+    this.divider_2 = getRandomIntInclusive(1, 9);
+    this.divider_Total = +this.divider_1 * +this.divider_2;
+    this.divident = getRandomIntInclusive(this.divider_Total, +max);
+
+    this.resultRight = Math.floor(this.divident / this.divider_Total);
+    this.reminderOfDivision = this.divident % this.divider_Total;
   }
 }

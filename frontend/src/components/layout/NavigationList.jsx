@@ -266,18 +266,6 @@ function NavigationList({ toggleDrawer }) {
             </ListItemIcon>
             <ListItemText primary='Проверка ответов' />
           </ListItemButton>
-
-          {/* <ListItemButton
-            sx={{ pl: 4 }}
-            component={Link}
-            href='/lessons/level_2/use-base-timer'
-            onClick={toggleDrawer(false)}
-          >
-            <ListItemIcon>
-              <SendIcon />
-            </ListItemIcon>
-            <ListItemText primary='timer' />
-          </ListItemButton> */}
         </List>
       </Collapse>
 
@@ -489,6 +477,17 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Деление на однозначное число' />
+          </ListItemButton>
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_6/division-by-multipliers'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Деление по множителям' />
           </ListItemButton>
         </List>
       </Collapse>

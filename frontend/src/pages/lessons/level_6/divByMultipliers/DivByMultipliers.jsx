@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
-import { genExample__DivBySimpleNumber } from '../../../../utils/generateExample';
+import { genExample__DivByMultipliers } from '../../../../utils/generateExample';
 import {
   update__statistic,
   reset as resetStatistic,
@@ -32,11 +32,21 @@ const initialStateUserAnswers = {
   userDigit_5: '',
   userDigit_6: '',
   userDigit_7: '',
-  userAnswerRem: 0,
+  userAnswerRem: '',
+
+  tempUserDigit_1: '',
+  tempUserDigit_2: '',
+  tempUserDigit_3: '',
+  tempUserDigit_4: '',
+  tempUserDigit_5: '',
+  tempUserDigit_6: '',
+  tempUserDigit_7: '',
+  tempAnswerRem_1: '',
+  tempAnswerRem_2: '',
 };
 
-function DivBySingleNumber() {
-  const [min, set__min] = useState(100);
+function DivByMultipliers() {
+  // const [min, set__min] = useState(100);
   const [max, set__max] = useState(9999999);
 
   const [examplesNumber, set__examplesNumber] = useState(10);
@@ -65,6 +75,15 @@ function DivBySingleNumber() {
     userDigit_6,
     userDigit_7,
     userAnswerRem,
+    tempUserDigit_1,
+    tempUserDigit_2,
+    tempUserDigit_3,
+    tempUserDigit_4,
+    tempUserDigit_5,
+    tempUserDigit_6,
+    tempUserDigit_7,
+    tempAnswerRem_1,
+    tempAnswerRem_2,
   } = userAnswers;
 
   const onChangeUserAnswers = (e) => {
@@ -97,7 +116,7 @@ function DivBySingleNumber() {
   };
 
   const nextTask = () => {
-    const newExample = new genExample__DivBySimpleNumber(min, max);
+    const newExample = new genExample__DivByMultipliers(max);
     const newArrOfDivident = newExample.divident.toString().split('');
     set__example(newExample);
     set__arrOfDivident(newArrOfDivident);
@@ -128,7 +147,7 @@ function DivBySingleNumber() {
     const doneReminder = +userAnswerRem - +example.reminderOfDivision === 0;
 
     const obj = {
-      example: `${example.divident}/${example.divider}`,
+      example: `${example.divident}/${example.divider_Total}`,
       userResult,
       userAnswerRem,
       resultRight: example.resultRight,
@@ -190,7 +209,7 @@ function DivBySingleNumber() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_5/squaring-ending-9'
+                  href='/lessons/level_6/division-by-single-number'
                 >
                   Предыдущий урок
                 </Button>
@@ -230,10 +249,10 @@ function DivBySingleNumber() {
 
       <Grid item>
         <Typography variant='h3' align='center'>
-          Деление на
+          Деление в столбик
         </Typography>
         <Typography variant='h3' align='center'>
-          однозначное число
+          по множителям
         </Typography>
       </Grid>
       <Grid item>
@@ -262,7 +281,7 @@ function DivBySingleNumber() {
             />
           </Grid>
 
-          <Grid
+          {/* <Grid
             item
             sx={
               {
@@ -280,7 +299,7 @@ function DivBySingleNumber() {
               onChange={(e) => set__min(e.target.value)}
               value={min}
             />
-          </Grid>
+          </Grid> */}
           <Grid
             item
             sx={
@@ -333,6 +352,9 @@ function DivBySingleNumber() {
         <Typography variant='h5' align='center'>
           Упражнения
         </Typography>
+        <Typography variant='h5' align='center' sx={{ mt: '1rem' }}>
+          {example ? `${example.divident} / ${example.divider_Total} =` : ''}
+        </Typography>
 
         <Grid container justifyContent='space-evenly' alignItems='center'>
           <TableContainer
@@ -344,7 +366,7 @@ function DivBySingleNumber() {
                 <TableRow className={classes.example_table_row}>
                   <TableCell className={classes.example_cell_divider}>
                     <Typography variant='h6' align='center'>
-                      {example ? `${example.divider}` : ''}
+                      {example ? `${example.divider_1}` : ''}
                     </Typography>
                   </TableCell>
                   <TableCell className={classes.example_cell_divident}>
@@ -380,6 +402,170 @@ function DivBySingleNumber() {
                   </TableCell>
                   <TableCell></TableCell>
                 </TableRow>
+                <TableRow className={classes.example_table_row}>
+                  <TableCell className={classes.example_cell_divider}>
+                    <Typography variant='h6' align='center'>
+                      {example ? `${example.divider_2}` : ''}
+                    </Typography>
+                  </TableCell>
+                  <TableCell className={classes.example_cell_result_temp}>
+                    <Grid
+                      container
+                      direction='row'
+                      justifyContent='flex-start'
+                      alignItems='center'
+                      className={classes.digit_container_temp}
+                    >
+                      <Grid item className={classes.digit_item_temp}>
+                        <TextField
+                          type='number'
+                          name='tempUserDigit_1'
+                          id='tempUserDigit_1'
+                          value={tempUserDigit_1}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field_temp}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_2_Input =
+                                document.getElementById('userDigit_2');
+                              userDigit_2_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item_temp}>
+                        <TextField
+                          type='number'
+                          name={`dividentHint${tempUserDigit_2}`}
+                          id={`dividentHint${tempUserDigit_2}`}
+                          className={classes.divident_hint_temp}
+                        />
+                        <TextField
+                          type='number'
+                          name='userDigit_2'
+                          id='userDigit_2'
+                          value={userDigit_2}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field_temp}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_3_Input =
+                                document.getElementById('userDigit_3');
+                              userDigit_3_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item_temp}>
+                        <TextField
+                          type='number'
+                          name='userDigit_3'
+                          id='userDigit_3'
+                          value={userDigit_3}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field_temp}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_4_Input =
+                                document.getElementById('userDigit_4');
+                              userDigit_4_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item_temp}>
+                        <TextField
+                          type='number'
+                          name='userDigit_4'
+                          id='userDigit_4'
+                          value={userDigit_4}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field_temp}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_5_Input =
+                                document.getElementById('userDigit_5');
+                              userDigit_5_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item_temp}>
+                        <TextField
+                          type='number'
+                          name='userDigit_5'
+                          id='userDigit_5'
+                          value={userDigit_5}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field_temp}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_6_Input =
+                                document.getElementById('userDigit_6');
+                              userDigit_6_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item_temp}>
+                        <TextField
+                          type='number'
+                          name='userDigit_6'
+                          id='userDigit_6'
+                          value={userDigit_6}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field_temp}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userDigit_7_Input =
+                                document.getElementById('userDigit_7');
+                              userDigit_7_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                      <Grid item className={classes.digit_item_temp}>
+                        <TextField
+                          type='number'
+                          name='userDigit_7'
+                          id='userDigit_7'
+                          value={userDigit_7}
+                          onChange={onChangeUserAnswers}
+                          className={classes.digit_field_temp}
+                          min={0}
+                          max={9}
+                          onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                              const userAnswerRem_Input =
+                                document.getElementById('userAnswerRem');
+                              userAnswerRem_Input.focus();
+                            }
+                          }}
+                        />
+                      </Grid>
+                    </Grid>
+                  </TableCell>
+                  <TableCell className={classes.example_cell_reminder_temp}>
+                    <span>Остаток:</span>
+                    <TextField
+                      type='number'
+                      name='tempAnswerRem_1'
+                      id='tempAnswerRem_1'
+                      // label='Остаток'
+                      value={tempAnswerRem_1}
+                      onChange={onChangeUserAnswers}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === 'Tab') {
+                          const onAnswer_Button =
+                            document.getElementById('answerButton');
+
+                          onAnswer_Button.focus();
+                        }
+                      }}
+                    />
+                  </TableCell>
+                </TableRow>
+
                 <TableRow className={classes.example_table_row}>
                   <TableCell></TableCell>
                   <TableCell className={classes.example_cell_result}>
@@ -515,6 +701,33 @@ function DivBySingleNumber() {
                   </TableCell>
                   <TableCell className={classes.example_cell_reminder}>
                     <span>Остаток:</span>
+                    <TextField
+                      type='number'
+                      name='tempAnswerRem_2'
+                      id='tempAnswerRem_2'
+                      // label='Остаток'
+                      value={tempAnswerRem_2}
+                      onChange={onChangeUserAnswers}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' || e.key === 'Tab') {
+                          const onAnswer_Button =
+                            document.getElementById('answerButton');
+
+                          onAnswer_Button.focus();
+                        }
+                      }}
+                    />
+                  </TableCell>
+                </TableRow>
+
+                <TableRow className={classes.example_table_row}>
+                  <TableCell></TableCell>
+
+                  <TableCell
+                    className={classes.example_cell_result}
+                  ></TableCell>
+                  <TableCell className={classes.example_cell_reminder}>
+                    <span>Остаток пример:</span>
                     <TextField
                       type='number'
                       name='userAnswerRem'
@@ -731,4 +944,4 @@ function DivBySingleNumber() {
   );
 }
 
-export default DivBySingleNumber;
+export default DivByMultipliers;

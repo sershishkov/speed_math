@@ -25,7 +25,7 @@ import ReferenceNumber100Above from './pages/lessons/level_2/ReferenceNumber100A
 import ReferenceNumber100Below from './pages/lessons/level_2/ReferenceNumber100Below';
 import ReferenceNumber100Mix from './pages/lessons/level_2/ReferenceNumber100Mix';
 import CheckingAnswers from './pages/lessons/level_2/CheckingAnswers';
-// import UseMyTimer from './pages/lessons/level_2/UseMyTimer';
+
 import RefNumber20 from './pages/lessons/level_3/refNumber20/RefNumber20';
 import RefNumber50 from './pages/lessons/level_3/refNumber50/RefNumber50';
 import RefNumber200 from './pages/lessons/level_3/refNumber200/RefNumber200';
@@ -40,6 +40,7 @@ import SquaringClose500 from './pages/lessons/level_5/squaringClose500/SquaringC
 import SquaringEnding1 from './pages/lessons/level_5/squaringEnding1/SquaringEnding1';
 import SquaringEnding9 from './pages/lessons/level_5/squaringEnding9/SquaringEnding9';
 import DivBySingleNumber from './pages/lessons/level_6/divBySingleNumber/DivBySingleNumber';
+import DivByMultipliers from './pages/lessons/level_6/divByMultipliers/DivByMultipliers';
 
 function App() {
   const dispatch = useDispatch();
@@ -157,10 +158,10 @@ function App() {
               path='/lessons/level_6/division-by-single-number'
               element={<DivBySingleNumber />}
             />
-            {/* <Route
-              path='/lessons/level_2/use-base-timer'
-              element={<UseMyTimer />}
-            /> */}
+            <Route
+              path='/lessons/level_6/division-by-multipliers'
+              element={<DivByMultipliers />}
+            />
           </Routes>
           <Footer />
         </Container>
