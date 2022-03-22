@@ -410,10 +410,10 @@ function DivByMultipliers() {
                   </TableCell>
                   <TableCell className={classes.example_cell_result_temp}>
                     <Grid
-                      container
-                      direction='row'
-                      justifyContent='flex-start'
-                      alignItems='center'
+                      // container
+                      // direction='row'
+                      // justifyContent='flex-start'
+                      // alignItems='center'
                       className={classes.digit_container_temp}
                     >
                       <Grid item className={classes.digit_item_temp}>
@@ -442,9 +442,9 @@ function DivByMultipliers() {
                         />
                         <TextField
                           type='number'
-                          name='userDigit_2'
-                          id='userDigit_2'
-                          value={userDigit_2}
+                          name='tempUserDigit_2'
+                          id='tempUserDigit_2'
+                          value={tempUserDigit_2}
                           onChange={onChangeUserAnswers}
                           className={classes.digit_field_temp}
                           onKeyPress={(e) => {
@@ -459,9 +459,15 @@ function DivByMultipliers() {
                       <Grid item className={classes.digit_item_temp}>
                         <TextField
                           type='number'
-                          name='userDigit_3'
-                          id='userDigit_3'
-                          value={userDigit_3}
+                          name={`dividentHint${tempUserDigit_3}`}
+                          id={`dividentHint${tempUserDigit_3}`}
+                          className={classes.divident_hint_temp}
+                        />
+                        <TextField
+                          type='number'
+                          name='tempUserDigit_3'
+                          id='tempUserDigit_3'
+                          value={tempUserDigit_3}
                           onChange={onChangeUserAnswers}
                           className={classes.digit_field_temp}
                           onKeyPress={(e) => {
@@ -476,9 +482,15 @@ function DivByMultipliers() {
                       <Grid item className={classes.digit_item_temp}>
                         <TextField
                           type='number'
-                          name='userDigit_4'
-                          id='userDigit_4'
-                          value={userDigit_4}
+                          name={`dividentHint${tempUserDigit_4}`}
+                          id={`dividentHint${tempUserDigit_4}`}
+                          className={classes.divident_hint_temp}
+                        />
+                        <TextField
+                          type='number'
+                          name='tempUserDigit_4'
+                          id='tempUserDigit_4'
+                          value={tempUserDigit_4}
                           onChange={onChangeUserAnswers}
                           className={classes.digit_field_temp}
                           onKeyPress={(e) => {
@@ -493,9 +505,15 @@ function DivByMultipliers() {
                       <Grid item className={classes.digit_item_temp}>
                         <TextField
                           type='number'
-                          name='userDigit_5'
-                          id='userDigit_5'
-                          value={userDigit_5}
+                          name={`dividentHint${tempUserDigit_5}`}
+                          id={`dividentHint${tempUserDigit_5}`}
+                          className={classes.divident_hint_temp}
+                        />
+                        <TextField
+                          type='number'
+                          name='tempUserDigit_5'
+                          id='tempUserDigit_5'
+                          value={tempUserDigit_5}
                           onChange={onChangeUserAnswers}
                           className={classes.digit_field_temp}
                           onKeyPress={(e) => {
@@ -510,9 +528,15 @@ function DivByMultipliers() {
                       <Grid item className={classes.digit_item_temp}>
                         <TextField
                           type='number'
-                          name='userDigit_6'
-                          id='userDigit_6'
-                          value={userDigit_6}
+                          name={`dividentHint${tempUserDigit_6}`}
+                          id={`dividentHint${tempUserDigit_6}`}
+                          className={classes.divident_hint_temp}
+                        />
+                        <TextField
+                          type='number'
+                          name='tempUserDigit_6'
+                          id='tempUserDigit_6'
+                          value={tempUserDigit_6}
                           onChange={onChangeUserAnswers}
                           className={classes.digit_field_temp}
                           onKeyPress={(e) => {
@@ -527,9 +551,15 @@ function DivByMultipliers() {
                       <Grid item className={classes.digit_item_temp}>
                         <TextField
                           type='number'
-                          name='userDigit_7'
-                          id='userDigit_7'
-                          value={userDigit_7}
+                          name={`dividentHint${tempUserDigit_7}`}
+                          id={`dividentHint${tempUserDigit_7}`}
+                          className={classes.divident_hint_temp}
+                        />
+                        <TextField
+                          type='number'
+                          name='tempUserDigit_7'
+                          id='tempUserDigit_7'
+                          value={tempUserDigit_7}
                           onChange={onChangeUserAnswers}
                           className={classes.digit_field_temp}
                           min={0}
@@ -545,7 +575,7 @@ function DivByMultipliers() {
                       </Grid>
                     </Grid>
                   </TableCell>
-                  <TableCell className={classes.example_cell_reminder_temp}>
+                  <TableCell className={classes.example_cell_reminder}>
                     <span>Остаток:</span>
                     <TextField
                       type='number'
