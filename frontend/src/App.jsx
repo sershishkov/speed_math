@@ -42,6 +42,8 @@ import SquaringEnding9 from './pages/lessons/level_5/squaringEnding9/SquaringEnd
 import DivBySingleNumber from './pages/lessons/level_6/divBySingleNumber/DivBySingleNumber';
 import DivByMultipliers from './pages/lessons/level_6/divByMultipliers/DivByMultipliers';
 
+// import MyTimer from './pages/lessons/level_1/MyTimer';
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -162,7 +164,9 @@ function App() {
               path='/lessons/level_6/division-by-multipliers'
               element={<DivByMultipliers />}
             />
+            {/* <Route path='/lessons/level_6/timer-basic' element={<MyTimer />} /> */}
           </Routes>
+
           <Footer />
         </Container>
       </Router>

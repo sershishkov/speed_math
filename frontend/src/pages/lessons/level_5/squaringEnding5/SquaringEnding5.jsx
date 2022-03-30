@@ -25,7 +25,7 @@ import TableFooter from '@mui/material/TableFooter';
 const operators = ['+', '-', '*', '/', '='];
 
 function SquaringEnding5() {
-  const [max, set__max] = useState(200);
+  const [max, set__max] = useState(100);
 
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
