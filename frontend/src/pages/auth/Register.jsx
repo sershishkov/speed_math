@@ -75,7 +75,7 @@ const Register = () => {
       direction='column'
     >
       <Grid item className='item item-heading'>
-        <Typography variant='h1' align='center'>
+        <Typography variant='h3' align='center'>
           <FaUser /> Register
         </Typography>
       </Grid>

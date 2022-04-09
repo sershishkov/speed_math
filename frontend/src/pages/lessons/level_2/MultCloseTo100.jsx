@@ -156,7 +156,7 @@ function MultCloseTo100() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_1/alternative-multiplication'
+                  href='/lessons/level_1/simple-multiplication'
                 >
                   Предыдущий урок
                 </Button>

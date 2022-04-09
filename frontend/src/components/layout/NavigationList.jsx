@@ -92,17 +92,6 @@ function NavigationList({ toggleDrawer }) {
         </List>
       </Collapse>
 
-      <ListItemButton
-        component={Link}
-        href='/lessons'
-        onClick={toggleDrawer(false)}
-      >
-        <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon>
-        <ListItemText primary='Уроки' />
-      </ListItemButton>
-
       <ListItemButton onClick={() => set__openLevel_1(!openLevel_1)}>
         <ListItemIcon>
           <InboxIcon />
@@ -158,18 +147,6 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Умножение' />
-          </ListItemButton>
-
-          <ListItemButton
-            sx={{ pl: 4 }}
-            component={Link}
-            href='/lessons/level_1/alternative-multiplication'
-            onClick={toggleDrawer(false)}
-          >
-            <ListItemIcon>
-              <SendIcon />
-            </ListItemIcon>
-            <ListItemText primary='Умножение альтернативное' />
           </ListItemButton>
         </List>
       </Collapse>

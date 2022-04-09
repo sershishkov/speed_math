@@ -14,9 +14,17 @@ function Landing() {
   };
 
   return (
-    <Grid container direction='column'>
+    <Grid
+      container
+      direction='column'
+      sx={
+        {
+          // border: '1px solid red'
+        }
+      }
+    >
       <Grid item>
-        <Typography variant='h1' align='center'>
+        <Typography variant='h5' align='center'>
           Считайте в уме как компютер
         </Typography>
       </Grid>
@@ -26,7 +34,7 @@ function Landing() {
           onChange={handleChange('panel1')}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel1'>
-            <Typography variant='h4'>Введение</Typography>
+            <Typography variant='h5'>Введение</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant='body1'>
@@ -62,7 +70,7 @@ function Landing() {
           onChange={handleChange('panel2')}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel2'>
-            <Typography variant='h4'>
+            <Typography variant='h5'>
               Зачем учить основам арифметики и теории чисел?
             </Typography>
           </AccordionSummary>
@@ -145,7 +153,7 @@ function Landing() {
           onChange={handleChange('panel3')}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel3'>
-            <Typography variant='h4'>Математический склад ума</Typography>
+            <Typography variant='h5'>Математический склад ума</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant='body1'>

@@ -12,11 +12,10 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 
 import Container from '@mui/material/Container';
-import LessonsList from './pages/lessons/LessonsList';
+
 import SimpleAddition from './pages/lessons/level_1/SimpleAddition';
 import SimpleDivision from './pages/lessons/level_1/SimpleDivision';
 import SimpleMultiplication from './pages/lessons/level_1/SimpleMultiplication';
-import AlternativeMultiplication from './pages/lessons/level_1/AlternativeMultiplication';
 import SimpleSubtraction from './pages/lessons/level_1/SimpleSubtraction';
 import MultCloseTo100 from './pages/lessons/level_2/MultCloseTo100';
 import ReferenceNumber10 from './pages/lessons/level_2/ReferenceNumber10';
@@ -42,8 +41,6 @@ import SquaringEnding9 from './pages/lessons/level_5/squaringEnding9/SquaringEnd
 import DivBySingleNumber from './pages/lessons/level_6/divBySingleNumber/DivBySingleNumber';
 import DivByMultipliers from './pages/lessons/level_6/divByMultipliers/DivByMultipliers';
 
-// import MyTimer from './pages/lessons/level_1/MyTimer';
-
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -55,13 +52,19 @@ function App() {
     <>
       <Router>
         <Header />
-        <Container sx={{ mt: '68px' }}>
+        <Container
+          sx={{
+            mt: '68px',
+            minWidth: '360px',
+            maxWidth: '900px',
+            // border: '1px solid red',
+          }}
+        >
           <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
 
-            <Route path='/lessons' element={<LessonsList />} />
             <Route
               path='/lessons/level_1/simple-addition'
               element={<SimpleAddition />}
@@ -74,10 +77,7 @@ function App() {
               path='/lessons/level_1/simple-multiplication'
               element={<SimpleMultiplication />}
             />
-            <Route
-              path='/lessons/level_1/alternative-multiplication'
-              element={<AlternativeMultiplication />}
-            />
+
             <Route
               path='/lessons/level_1/simple-subtraction'
               element={<SimpleSubtraction />}
@@ -164,7 +164,6 @@ function App() {
               path='/lessons/level_6/division-by-multipliers'
               element={<DivByMultipliers />}
             />
-            {/* <Route path='/lessons/level_6/timer-basic' element={<MyTimer />} /> */}
           </Routes>
 
           <Footer />
