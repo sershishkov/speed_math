@@ -132,6 +132,9 @@ function SimpleAddition() {
         displaySettings={displaySettings}
         displayMin={true}
         displayMax={true}
+        displayShowHints={false}
+        // showHints={showHints}
+        // onChangeShowHints={onChangeShowHints}
       />
 
       <ExerciseSimple

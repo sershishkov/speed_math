@@ -34,7 +34,7 @@ function Landing() {
           onChange={handleChange('panel1')}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel1'>
-            <Typography variant='h5'>Введение</Typography>
+            <Typography variant='h6'>Введение</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant='body1'>
@@ -70,7 +70,7 @@ function Landing() {
           onChange={handleChange('panel2')}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel2'>
-            <Typography variant='h5'>
+            <Typography variant='h6'>
               Зачем учить основам арифметики и теории чисел?
             </Typography>
           </AccordionSummary>
@@ -153,7 +153,7 @@ function Landing() {
           onChange={handleChange('panel3')}
         >
           <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel3'>
-            <Typography variant='h5'>Математический склад ума</Typography>
+            <Typography variant='h6'>Математический склад ума</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography variant='body1'>

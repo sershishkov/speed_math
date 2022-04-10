@@ -22,6 +22,11 @@ function Description2() {
     <Accordion
       expanded={expanded === 'panel1'}
       onChange={handleChange('panel1')}
+      sx={{
+        minWidth: '300px',
+        width: '95%',
+        margin: 'auto',
+      }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel1'>
         <Typography variant='h6'>

@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
 
-import classes from './styles.module.scss';
-
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
-
-import Grid from '@mui/material/Grid';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 
 function Description() {
   const [expanded, setExpanded] = useState(false);
@@ -25,6 +15,11 @@ function Description() {
     <Accordion
       expanded={expanded === 'panel1'}
       onChange={handleChange('panel1')}
+      sx={{
+        minWidth: '300px',
+        width: '95%',
+        margin: 'auto',
+      }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel1'>
         <Typography variant='h6'>Введение</Typography>

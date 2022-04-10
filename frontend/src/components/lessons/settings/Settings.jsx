@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import InputSettings from '../../ui/inputs/InputSettings';
+import ShowHintSwitch from '../../ui/check/ShowHintSwitch';
 import ButtonGo from '../../ui/buttons/ButtonGo';
 
 function Settings({
@@ -16,6 +17,9 @@ function Settings({
   onStart,
   displayMin,
   displayMax,
+  displayShowHints,
+  showHints,
+  onChangeShowHints,
 }) {
   useEffect(() => {
     if (displaySettings) {
@@ -91,6 +95,13 @@ function Settings({
                 nextElement.focus();
               }
             }}
+          />
+        </Grid>
+
+        <Grid item sx={{ display: displayShowHints ? 'block' : 'none' }}>
+          <ShowHintSwitch
+            showHints={showHints}
+            onChangeShowHints={onChangeShowHints}
           />
         </Grid>
         <Grid item>
