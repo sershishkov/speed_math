@@ -8,29 +8,17 @@ import {
 } from '../../../../features/statistics/statisticSlice';
 import Description from './Description';
 
+import { operators } from '../../../../utils/constants';
+import Header from '../../../../components/lessons/header/Header';
+import Settings from '../../../../components/lessons/settings/Settings';
+import ExercieMultWithHintsCheck from '../../../../components/lessons/exercises/ExercieMultWithHintsCheck';
+import ReportResultAndCheck from '../../../../components/lessons/reports/ReportResultAndCheck';
+
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TableFooter from '@mui/material/TableFooter';
-
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-
-const operators = ['+', '-', '*', '/', '='];
 
 function RefNumber200() {
   const [min, set__min] = useState(190);
   const [max, set__max] = useState(220);
-  const [referenceNumber, set__referenceNumber] = useState(200);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
   const [userAnswer, set__userAnswer] = useState('');
@@ -45,8 +33,6 @@ function RefNumber200() {
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
   const [displayStatistics, set__displayStatistics] = useState(false);
-  const [disableStartButton, set__disableStartButton] = useState(false);
-  const [displayStopButton, set__displayStopButton] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
   const [resultsList, set__resultsList] = useState([]);
   const [showHints, set__showHints] = useState(true);
@@ -56,21 +42,17 @@ function RefNumber200() {
 
   const onStart = () => {
     set__displayExample(true);
-    set__displayStopButton(true);
     set__displaySettings(false);
-    set__disableStartButton(true);
     nextTask();
     start();
   };
 
   const onStopExercise = () => {
-    set__displayStopButton(false);
     set__displayExample(false);
     set__displaySettings(true);
     reset();
     set__displayStatistics(false);
     set_numberOf_Task(0);
-    set__disableStartButton(false);
     set__resultsList([]);
     set__userAnswer('');
     set__userAnswer_CheckNumberLeft('');
@@ -93,10 +75,8 @@ function RefNumber200() {
     set__displayStatistics(false);
     set_numberOf_Task(0);
     set__displaySettings(true);
-    set__disableStartButton(false);
     set__resultsList([]);
     set__userAnswer('');
-    set__displayStopButton(false);
     set__userAnswer_CheckNumberLeft('');
     set__userAnswer_CheckNumberRight('');
     set__userAnswer_CheckResultLeft('');
@@ -148,7 +128,6 @@ function RefNumber200() {
       set__displayExample(false);
       set__displayStatistics(true);
       pause();
-      set__displayStopButton(false);
     }
   };
   const onSaveResults = () => {
@@ -173,7 +152,6 @@ function RefNumber200() {
     set__displayStatistics(false);
     set_numberOf_Task(0);
     set__displaySettings(true);
-    set__disableStartButton(false);
     set__resultsList([]);
     set__userAnswer('');
     set__userAnswer_CheckNumberLeft('');
@@ -184,871 +162,65 @@ function RefNumber200() {
 
   return (
     <Grid container direction='column'>
-      <Grid item>
-        <Grid container alignItems='center' justifyContent='space-between'>
-          <Grid item>
-            <Grid container alignItems='center' justifyContent='flex-start'>
-              <Grid item sx={{ mr: '5px' }}>
-                <Button
-                  variant='contained'
-                  component={Link}
-                  href='/lessons/level_3/ref-number-50'
-                >
-                  Предыдущий урок
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant='contained'
-                  component={Link}
-                  href='/lessons/level_3/ref-number-500'
-                >
-                  Следующий Урок
-                </Button>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <Grid container alignItems='center' justifyContent='flex-end'>
-              <Grid item>
-                <Typography variant='h6' align='center'>
-                  {time > 60
-                    ? Math.floor(time / 60) < 10
-                      ? `0${Math.floor(time / 60)}`
-                      : Math.floor(time / 60)
-                    : '00'}
-                  :
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant='h6' align='center'>
-                  {time % 60 < 10 ? `0${time % 60}` : `${time % 60}`}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      <Grid item>
-        <Typography variant='h3' align='center'>
-          Умножение чисел с опорным числом 200
-        </Typography>
-        <Typography variant='h3' align='center'>
-          (над и под опорным числом)
-        </Typography>
-      </Grid>
-      <Grid item>
-        <Description />
-      </Grid>
-      <Grid item sx={{ display: displaySettings ? 'block' : 'none' }}>
-        <Typography variant='h6' align='center'>
-          Настройки
-        </Typography>
-        <Grid
-          container
-          justifyContent='center'
-          alignItems='center'
-          direction='column'
-        >
-          <Grid item>
-            <TextField
-              margin='normal'
-              required
-              name='examples_number'
-              label='Количество упражнений'
-              type='number'
-              id='examples_number'
-              onChange={(e) => set__examplesNumber(e.target.value)}
-              value={examplesNumber}
-            />
-          </Grid>
-          <Grid
-            item
-            sx={{
-              display: 'none',
-            }}
-          >
-            <TextField
-              margin='normal'
-              required
-              name='min'
-              label='Минимальное значение'
-              type='number'
-              id='min'
-              onChange={(e) => set__min(e.target.value)}
-              value={min}
-            />
-          </Grid>
-          <Grid
-            item
-            sx={{
-              display: 'none',
-            }}
-          >
-            <TextField
-              margin='normal'
-              required
-              name='max'
-              label='Максимальное значение'
-              type='number'
-              id='max'
-              onChange={(e) => set__max(e.target.value)}
-              value={max}
-            />
-          </Grid>
-          <Grid
-            item
-            sx={{
-              display: 'none',
-            }}
-          >
-            <TextField
-              margin='normal'
-              required
-              name='referenceNumber'
-              label='Максимальное значение'
-              type='number'
-              id='referenceNumber'
-              onChange={(e) => set__referenceNumber(e.target.value)}
-              value={referenceNumber}
-            />
-          </Grid>
-          <Grid item>
-            <FormControlLabel
-              // value={showHints}
-              control={
-                <Switch
-                  checked={showHints}
-                  onChange={(e) => set__showHints(e.target.checked)}
-                  color='primary'
-                />
-              }
-              label={showHints ? 'отключить подсказки' : 'включить посказки'}
-              labelPlacement='start'
-            />
-          </Grid>
-          <Grid item>
-            <Button
-              disabled={disableStartButton}
-              onClick={onStart}
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Поехали
-            </Button>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      <Grid item sx={{ display: displayStopButton ? 'block' : 'none' }}>
-        <Grid container justifyContent={`center`} alignItems='center'>
-          <Grid item>
-            <Button
-              variant='contained'
-              color='error'
-              sx={{ margin: 'auto' }}
-              onClick={onStopExercise}
-            >
-              Остановить упражнения
-            </Button>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
-        <Typography variant='h5' align='center'>
-          Упражнения
-        </Typography>
-
-        <Grid container justifyContent='space-evenly' alignItems='center'>
-          <TableContainer
-            component={Paper}
-            sx={{
-              width: '70%',
-              margin: 'auto',
-            }}
-          >
-            <Table align='center' aria-label='simple table'>
-              <TableBody>
-                <TableRow sx={{ display: showHints ? 'table-row' : 'none' }}>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'>
-                      +
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example && example.numberLeft > referenceNumber
-                        ? +example.numberLeft - referenceNumber
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'>
-                      +
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example && example.numberRight > referenceNumber
-                        ? example.numberRight - referenceNumber
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'></Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'></Typography>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      color='error'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #f00',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '1.5rem',
-                        lineHeight: 1.8,
-                      }}
-                    >
-                      {referenceNumber}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {example ? example.numberLeft : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {operators[2]}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {example ? example.numberRight : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'>
-                      {operators[4]}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <TextField
-                      // margin='normal'
-                      // required
-                      // fullWidth
-
-                      name='userAnswer'
-                      label='Ответ'
-                      type='number'
-                      id='userAnswer'
-                      value={userAnswer}
-                      onChange={(e) => set__userAnswer(e.target.value)}
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                          const userAnswer_CheckNumberLeft_input =
-                            document.getElementById(
-                              'userAnswer_CheckNumberLeft'
-                            );
-
-                          userAnswer_CheckNumberLeft_input.focus();
-                        }
-                      }}
-                    />
-                  </TableCell>
-                </TableRow>
-
-                <TableRow sx={{ display: showHints ? 'table-row' : 'none' }}>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'>
-                      -
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example && example.numberLeft < referenceNumber
-                        ? referenceNumber - example.numberLeft
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'>
-                      -
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant='h3'
-                      align='center'
-                      sx={{
-                        borderRadius: '50%',
-                        border: '2px solid #000',
-                        width: '3rem',
-                        height: '3rem',
-                        fontSize: '2.3rem',
-                      }}
-                    >
-                      {example && example.numberRight < referenceNumber
-                        ? referenceNumber - example.numberRight
-                        : ''}
-                    </Typography>
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'></Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant='h3' align='center'></Typography>
-                  </TableCell>
-                </TableRow>
-
-                <TableRow>
-                  <TableCell colSpan={8}>
-                    <Typography variant='h4' align='center'>
-                      Проверка решения
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-
-                <TableRow>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'></Typography>
-                  </TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{
-                      padding: 0,
-                    }}
-                  >
-                    <TextField
-                      sx={{
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-                          color: '#F00',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
-                      }}
-                      name='userAnswer_CheckNumberLeft'
-                      // label='Ответ'
-                      type='number'
-                      id='userAnswer_CheckNumberLeft'
-                      value={userAnswer_CheckNumberLeft}
-                      onChange={(e) =>
-                        set__userAnswer_CheckNumberLeft(e.target.value)
-                      }
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                          const userAnswer_CheckNumberRight_input =
-                            document.getElementById(
-                              'userAnswer_CheckNumberRight'
-                            );
-
-                          userAnswer_CheckNumberRight_input.focus();
-                        }
-                      }}
-                    />
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}></TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{
-                      padding: 0,
-                    }}
-                  >
-                    <TextField
-                      sx={{
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-                          color: '#F00',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
-                      }}
-                      name='userAnswer_CheckNumberRight'
-                      // label='Ответ'
-                      type='number'
-                      id='userAnswer_CheckNumberRight'
-                      value={userAnswer_CheckNumberRight}
-                      onChange={(e) =>
-                        set__userAnswer_CheckNumberRight(e.target.value)
-                      }
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                          const userAnswer_CheckResultLeft_input =
-                            document.getElementById(
-                              'userAnswer_CheckResultLeft'
-                            );
-
-                          userAnswer_CheckResultLeft_input.focus();
-                        }
-                      }}
-                    />
-                  </TableCell>
-                  <TableCell sx={{ pr: 0 }}></TableCell>
-                  <TableCell></TableCell>
-                </TableRow>
-
-                <TableRow>
-                  <TableCell sx={{ pr: 0 }}>
-                    <Typography variant='h3' align='right'></Typography>
-                  </TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{
-                      padding: 0,
-                    }}
-                    colSpan={3}
-                  >
-                    <TextField
-                      sx={{
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-                          color: '#F00',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
-                      }}
-                      name='userAnswer_CheckResultLeft'
-                      // label='Ответ'
-                      type='number'
-                      id='userAnswer_CheckResultLeft'
-                      value={userAnswer_CheckResultLeft}
-                      onChange={(e) =>
-                        set__userAnswer_CheckResultLeft(e.target.value)
-                      }
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                          const userAnswer_CheckResultRight_input =
-                            document.getElementById(
-                              'userAnswer_CheckResultRight'
-                            );
-
-                          userAnswer_CheckResultRight_input.focus();
-                        }
-                      }}
-                    />
-                  </TableCell>
-
-                  <TableCell sx={{ pr: 0 }}></TableCell>
-                  <TableCell
-                    align='center'
-                    sx={{
-                      padding: 0,
-                    }}
-                  >
-                    <TextField
-                      sx={{
-                        '& div': {
-                          borderRadius: '50%',
-                          width: '3rem',
-                          height: '3rem',
-                          border: '2px solid #0F0',
-                          fontSize: '2rem',
-                          color: '#F00',
-                          '&:hover': {
-                            border: '2px solid #F00',
-                          },
-                        },
-                      }}
-                      name='userAnswer_CheckResultRight'
-                      // label='Ответ'
-                      type='number'
-                      id='userAnswer_CheckResultRight'
-                      value={userAnswer_CheckResultRight}
-                      onChange={(e) =>
-                        set__userAnswer_CheckResultRight(e.target.value)
-                      }
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                          const onAnswer_Button =
-                            document.getElementById('answerButton');
-
-                          onAnswer_Button.focus();
-                        }
-                      }}
-                    />
-                  </TableCell>
-                </TableRow>
-
-                <TableRow>
-                  <TableCell colSpan={8}>
-                    <Button
-                      fullWidth
-                      id='answerButton'
-                      variant='contained'
-                      onClick={onAnswer}
-                      disabled={
-                        userAnswer.length < 1 ||
-                        userAnswer_CheckNumberLeft.length < 1 ||
-                        userAnswer_CheckNumberRight.length < 1 ||
-                        userAnswer_CheckResultLeft.length < 1 ||
-                        userAnswer_CheckResultRight.length < 1
-                      }
-                    >
-                      OK № {numberOf_Task}
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Grid>
-      </Grid>
-      <Grid item sx={{ display: displayStatistics ? 'block' : 'none' }}>
-        <Typography variant='h4' align='center'>
-          Ваши результаты
-        </Typography>
-
-        <TableContainer component={Paper}>
-          <Table
-            sx={{ width: '90%', margin: 'auto', minWidth: '550px' }}
-            align='center'
-            aria-label='simple table'
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  <Typography variant='h6' align='center'>
-                    Пример
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h6' align='center'>
-                    чей ответ?
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h6' align='center'>
-                    решение
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h6' align='center'>
-                    Проверка левого
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h6' align='center'>
-                    Проверка правого
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h6' align='center'>
-                    контрольное число слева
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h6' align='center'>
-                    контрольное число справа
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h6' align='center'>
-                    Сдан пример
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {resultsList &&
-                resultsList.length > 0 &&
-                resultsList.map((item, index) => (
-                  <TableRow key={index} sx={{}}>
-                    <TableCell>
-                      <Typography variant='h6' align='center'>
-                        {item.example}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Grid
-                        container
-                        justifyContent='flex-start'
-                        alignItems='center'
-                        direction='column'
-                      >
-                        <Grid item>
-                          <Typography variant='h6' align='center'>
-                            Ваш
-                          </Typography>
-                        </Grid>
-                        <Grid item>
-                          <Typography variant='h6' align='center'>
-                            Комп
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </TableCell>
-
-                    <TableCell>
-                      <Grid
-                        container
-                        justifyContent='flex-start'
-                        alignItems='center'
-                        direction='column'
-                      >
-                        <Grid item>
-                          <Typography
-                            variant='h6'
-                            align='center'
-                            color={
-                              item.userAnswer - item.resultRight === 0
-                                ? 'success.main'
-                                : 'error.main'
-                            }
-                          >
-                            {item.userAnswer}
-                          </Typography>
-                        </Grid>
-                        <Grid item>
-                          <Typography variant='h6' align='center'>
-                            {item.resultRight}
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </TableCell>
-
-                    <TableCell>
-                      <Grid
-                        container
-                        justifyContent='flex-start'
-                        alignItems='center'
-                        direction='column'
-                      >
-                        <Grid item>
-                          <Typography
-                            variant='h6'
-                            align='center'
-                            color={
-                              item.userAnswer_CheckNumberLeft -
-                                item.checkNumberLeft ===
-                              0
-                                ? 'success.main'
-                                : 'error.main'
-                            }
-                          >
-                            {item.userAnswer_CheckNumberLeft}
-                          </Typography>
-                        </Grid>
-                        <Grid item>
-                          <Typography variant='h6' align='center'>
-                            {item.checkNumberLeft}
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </TableCell>
-
-                    <TableCell>
-                      <Grid
-                        container
-                        justifyContent='flex-start'
-                        alignItems='center'
-                        direction='column'
-                      >
-                        <Grid item>
-                          <Typography
-                            variant='h6'
-                            align='center'
-                            color={
-                              item.userAnswer_CheckNumberRight -
-                                item.checkNumberRight ===
-                              0
-                                ? 'success.main'
-                                : 'error.main'
-                            }
-                          >
-                            {item.userAnswer_CheckNumberRight}
-                          </Typography>
-                        </Grid>
-                        <Grid item>
-                          <Typography variant='h6' align='center'>
-                            {item.checkNumberRight}
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </TableCell>
-
-                    <TableCell>
-                      <Grid
-                        container
-                        justifyContent='flex-start'
-                        alignItems='center'
-                        direction='column'
-                      >
-                        <Grid item>
-                          <Typography
-                            variant='h6'
-                            align='center'
-                            color={
-                              item.userAnswer_CheckResultLeft -
-                                item.checkResultLeft ===
-                              0
-                                ? 'success.main'
-                                : 'error.main'
-                            }
-                          >
-                            {item.userAnswer_CheckResultLeft}
-                          </Typography>
-                        </Grid>
-                        <Grid item>
-                          <Typography variant='h6' align='center'>
-                            {item.checkResultLeft}
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </TableCell>
-
-                    <TableCell>
-                      <Grid
-                        container
-                        justifyContent='flex-start'
-                        alignItems='center'
-                        direction='column'
-                      >
-                        <Grid item>
-                          <Typography
-                            variant='h6'
-                            align='center'
-                            color={
-                              item.userAnswer_CheckResultRight -
-                                item.checkResultRight ===
-                              0
-                                ? 'success.main'
-                                : 'error.main'
-                            }
-                          >
-                            {item.userAnswer_CheckResultRight}
-                          </Typography>
-                        </Grid>
-                        <Grid item>
-                          <Typography variant='h6' align='center'>
-                            {item.checkResultRight}
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                    </TableCell>
-
-                    <TableCell>
-                      <Typography
-                        variant='h6'
-                        align='center'
-                        color={
-                          item.doneExcercise ? 'success.main' : 'error.main'
-                        }
-                      >
-                        {item.doneExcercise ? 'ок!' : 'ошибка!'}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-            <TableFooter>
-              <TableRow
-                sx={
-                  {
-                    // padding: 0,
-                  }
-                }
-              >
-                <TableCell
-                  colSpan={4}
-                  sx={
-                    {
-                      //  border: '1px solid #0F0'
-                    }
-                  }
-                >
-                  <Button
-                    fullWidth
-                    disabled={!user}
-                    onClick={onSaveResults}
-                    variant='contained'
-                    sx={
-                      {
-                        // padding: 0
-                      }
-                    }
-                  >
-                    {user
-                      ? 'Сохранить результаты'
-                      : 'Не возможно сохранить результаты - вы не авторизованы'}
-                  </Button>
-                </TableCell>
-                <TableCell
-                  // align='center'
-                  colSpan={4}
-                  sx={{
-                    // border: '1px solid #00F',
-                    display: !user ? 'table-cell' : 'none',
-                  }}
-                >
-                  <Button
-                    fullWidth
-                    onClick={onContinue}
-                    variant='contained'
-                    sx={{ margin: 'auto' }}
-                  >
-                    Тренироваться еще
-                  </Button>
-                </TableCell>
-              </TableRow>
-            </TableFooter>
-          </Table>
-        </TableContainer>
-      </Grid>
+      <Header
+        hrefPrev='/lessons/level_3/ref-number-50'
+        hrefNext='/lessons/level_3/ref-number-500'
+        time={time}
+        title=' Умножение чисел с опорным числом 200 (над и под опорным числом)'
+      />
+      <Description />
+      <Settings
+        onChangeExamplesNumber={(e) => set__examplesNumber(e.target.value)}
+        onChangeMin={(e) => set__min(e.target.value)}
+        onChangeMax={(e) => set__max(e.target.value)}
+        onStart={onStart}
+        examplesNumber={examplesNumber}
+        min={min}
+        max={max}
+        displaySettings={displaySettings}
+        displayMin={false}
+        displayMax={false}
+        displayShowHints={true}
+        showHints={showHints}
+        onChangeShowHints={(e) => set__showHints(e.target.checked)}
+      />
+      <ExercieMultWithHintsCheck
+        displayExample={displayExample}
+        onStopExercise={onStopExercise}
+        example={example}
+        operator={operators[2]}
+        userAnswer={userAnswer}
+        onChangeUserAnswer={(e) => set__userAnswer(e.target.value)}
+        onAnswer={onAnswer}
+        numberOf_Task={numberOf_Task}
+        showHints={showHints}
+        showPlusHints={true}
+        showMinusHints={true}
+        refNumber={200}
+        userAnswer_CheckNumberLeft={userAnswer_CheckNumberLeft}
+        userAnswer_CheckNumberRight={userAnswer_CheckNumberRight}
+        userAnswer_CheckResultLeft={userAnswer_CheckResultLeft}
+        userAnswer_CheckResultRight={userAnswer_CheckResultRight}
+        setAnswer_CheckNumberLeft={(e) =>
+          set__userAnswer_CheckNumberLeft(e.target.value)
+        }
+        setAnswer_CheckNumberRight={(e) =>
+          set__userAnswer_CheckNumberRight(e.target.value)
+        }
+        setAnswer_CheckResultLeft={(e) =>
+          set__userAnswer_CheckResultLeft(e.target.value)
+        }
+        setAnswer_CheckResultRight={(e) =>
+          set__userAnswer_CheckResultRight(e.target.value)
+        }
+      />
+      <ReportResultAndCheck
+        displayStatistics={displayStatistics}
+        resultsList={resultsList}
+        user={user}
+        onSaveResults={onSaveResults}
+        onContinue={onContinue}
+      />
     </Grid>
   );
 }

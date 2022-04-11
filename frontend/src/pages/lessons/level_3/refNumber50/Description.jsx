@@ -1,1329 +1,241 @@
-import React, { useState } from 'react';
-
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Typography from '@mui/material/Typography';
-
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import DescAccent from '../../../../components/ui/description/DescAccent';
+import DescrBody from '../../../../components/ui/description/DescrBody';
+import ExampleTableMult from '../../../../components/lessons/description/ExampleTableMult';
+import DescAccordion from '../../../../components/ui/description/DescAccordion';
+import Grid from '@mui/material/Grid';
 
 function Description() {
-  const [expanded, setExpanded] = useState(false);
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
   return (
-    <Accordion
-      expanded={expanded === 'panel1'}
-      onChange={handleChange('panel1')}
+    <Grid
+      item
       sx={{
-        minWidth: '300px',
-        width: '95%',
-        margin: 'auto',
+        width: '100%',
       }}
     >
-      <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel1'>
-        <Typography variant='h4'>Введение</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography variant='h3' align='center'>
-          Умножение еще больших чисел
-        </Typography>
+      <DescAccordion title='Введение'>
+        <DescAccent>Умножение еще больших чисел</DescAccent>
 
-        <Typography variant='body1'>
+        <DescrBody>
           В предыдущем разделе речь шла о способе перемножения пар чисел вплоть
           до 30 х 30. Как быть, если надо перемножить числа еще большей
           величины? В этом случае в качестве опорного числа можно использовать
           50. Умножать на него легко, поскольку 50 — это половина 100, или 100,
           деленное на 2. Поэтому, чтобы умножить на 50, можно умножить число
           сначала на 100, а затем разделить результат на 2
-        </Typography>
-        <Typography variant='body1'>Давайте попробуем на примере:</Typography>
+        </DescrBody>
+        <DescrBody>Давайте попробуем на примере:</DescrBody>
 
-        <TableContainer
-          component={Paper}
-          sx={{ width: 600, margin: '1rem auto' }}
-        >
-          <Table
-            // sx={{ minWidth: 650 }}
-            align='center'
-            aria-label='simple table'
-          >
-            <TableBody>
-              <TableRow
-                sx={{
-                  display: 'none',
-                }}
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  ></Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    12
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'></Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    color='error'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #f00',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '1.5rem',
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    50
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    46
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    X
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    48
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    =
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {/* 2200 */}
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow
-                sx={
-                  {
-                    // display: 'none',
-                  }
-                }
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    4
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    2
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {/* +8 */}
-                  </Typography>
-                </TableCell>
-              </TableRow>
+        <ExampleTableMult
+          hintPlusLeft=''
+          hintPlusRight=''
+          refNumber='50'
+          numberLeft='46'
+          numberRight='48'
+          valueIntermediate=''
+          hintMinusLeft='4'
+          hintMinusRight='2'
+          valueToAdd=''
+          valueToMinus=''
+          valueResult=''
+          displayRowPlusHits={false}
+          displayRowMinusHints={true}
+          displayRowResults={false}
+        />
 
-              <TableRow
-                sx={{
-                  display: 'none',
-                }}
-              >
-                <TableCell colSpan={5}>
-                  <Typography variant='h3' align='right'>
-                    Ответ
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    2208
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <Typography variant='body1'>Вычитаем накрест:</Typography>
-        <Typography variant='h3' align='center'>
-          46 — 2 = 44 или 48 — 4 = 44
-        </Typography>
-        <Typography variant='body1'>Умножим 44 на 100:</Typography>
-        <Typography variant='h3' align='center'>
-          44 x 100 = 4400
-        </Typography>
-        <Typography variant='body1'>
+        <DescrBody>Вычитаем накрест:</DescrBody>
+        <DescAccent>46 — 2 = 44 или 48 — 4 = 44</DescAccent>
+        <DescrBody>Умножим 44 на 100:</DescrBody>
+        <DescAccent>44 x 100 = 4400</DescAccent>
+        <DescrBody>
           Про себя проговариваем при этом так: «44 на 100 равно 4400». Теперь
           берем половину, что равносильно умножению 44 на 50, и получаем 2200.
-        </Typography>
-        <Typography variant='h3' align='center'>
-          4400 : 2 = 2200
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescAccent>4400 : 2 = 2200</DescAccent>
+        <DescrBody>
           Теперь перемножим числа в кружках и прибавим результат к 2200:
-        </Typography>
-        <Typography variant='h3' align='center'>
-          4 х 2 = 8
-        </Typography>
-        <Typography variant='h3' align='center'>
-          2200 + 8 = 2208
-        </Typography>
-        <Typography variant='body1'>
-          Окончательно решение выглядит так:
-        </Typography>
+        </DescrBody>
+        <DescAccent>4 х 2 = 8</DescAccent>
+        <DescAccent>2200 + 8 = 2208</DescAccent>
+        <DescrBody>Окончательно решение выглядит так:</DescrBody>
 
-        <TableContainer
-          component={Paper}
-          sx={{ width: 600, margin: '1rem auto' }}
-        >
-          <Table
-            // sx={{ minWidth: 650 }}
-            align='center'
-            aria-label='simple table'
-          >
-            <TableBody>
-              <TableRow
-                sx={{
-                  display: 'none',
-                }}
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  ></Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    12
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'></Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    color='error'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #f00',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '1.5rem',
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    50
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    46
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    X
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    48
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    =
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    2200
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow
-                sx={
-                  {
-                    // display: 'none',
-                  }
-                }
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    4
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    2
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    +8
-                  </Typography>
-                </TableCell>
-              </TableRow>
+        <ExampleTableMult
+          hintPlusLeft=''
+          hintPlusRight=''
+          refNumber='50'
+          numberLeft='46'
+          numberRight='48'
+          valueIntermediate='2200'
+          hintMinusLeft='4'
+          hintMinusRight='2'
+          valueToAdd=''
+          valueToMinus='+8'
+          valueResult='2208'
+          displayRowPlusHits={false}
+          displayRowMinusHints={true}
+          displayRowResults={true}
+        />
 
-              <TableRow
-                sx={
-                  {
-                    // display: 'none',
-                  }
-                }
-              >
-                <TableCell colSpan={5}>
-                  <Typography variant='h3' align='right'>
-                    Ответ
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    2208
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <DescrBody>Что может быть проще? Разберем еще один пример:</DescrBody>
 
-        <Typography variant='body1'>
-          Что может быть проще? Разберем еще один пример:
-        </Typography>
+        <ExampleTableMult
+          hintPlusLeft='3'
+          hintPlusRight='7'
+          refNumber='50'
+          numberLeft='53'
+          numberRight='57'
+          valueIntermediate=''
+          hintMinusLeft=''
+          hintMinusRight=''
+          valueToAdd=''
+          valueToMinus=''
+          valueResult=''
+          displayRowPlusHits={true}
+          displayRowMinusHints={false}
+          displayRowResults={false}
+        />
 
-        <TableContainer
-          component={Paper}
-          sx={{ width: 600, margin: '1rem auto' }}
-        >
-          <Table
-            // sx={{ minWidth: 650 }}
-            align='center'
-            aria-label='simple table'
-          >
-            <TableBody>
-              <TableRow
-                sx={
-                  {
-                    // display: 'none',
-                  }
-                }
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    3
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    7
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {/* +21 */}
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    color='error'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #f00',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '1.5rem',
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    50
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    53
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    X
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    57
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    =
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {/* 3000 */}
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow
-                sx={{
-                  display: 'none',
-                }}
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    4
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    2
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    +8
-                  </Typography>
-                </TableCell>
-              </TableRow>
-
-              <TableRow
-                sx={{
-                  display: 'none',
-                }}
-              >
-                <TableCell colSpan={5}>
-                  <Typography variant='h3' align='right'>
-                    Ответ
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    3021
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <Typography variant='body1'>
+        <DescrBody>
           Складываем накрест, затем умножаем результат на опорное число
           (умножаем при этом на 100, а затем делим на 2):
-        </Typography>
+        </DescrBody>
 
-        <Typography variant='h3' align='center'>
-          57 + 3 = 60
-        </Typography>
-        <Typography variant='h3' align='center'>
-          60 х 100 = 6000
-        </Typography>
-        <Typography variant='h3' align='center'>
-          6000 : 2 = 3000
-        </Typography>
+        <DescAccent>57 + 3 = 60</DescAccent>
+        <DescAccent>60 х 100 = 6000</DescAccent>
+        <DescAccent>6000 : 2 = 3000</DescAccent>
 
-        <Typography variant='body1'>
+        <DescrBody>
           Перемножаем числа в кружках и прибавляем результат к 3000:
-        </Typography>
+        </DescrBody>
 
-        <Typography variant='h3' align='center'>
-          3 х 7 = 21
-        </Typography>
-        <Typography variant='h3' align='center'>
-          3000 + 21 = 3021
-        </Typography>
+        <DescAccent>3 х 7 = 21</DescAccent>
+        <DescAccent>3000 + 21 = 3021</DescAccent>
 
-        <Typography variant='body1'>
-          Полностью решенный пример теперь выглядит так:
-        </Typography>
+        <DescrBody>Полностью решенный пример теперь выглядит так:</DescrBody>
 
-        <TableContainer
-          component={Paper}
-          sx={{ width: 600, margin: '1rem auto' }}
-        >
-          <Table
-            // sx={{ minWidth: 650 }}
-            align='center'
-            aria-label='simple table'
-          >
-            <TableBody>
-              <TableRow
-                sx={
-                  {
-                    // display: 'none',
-                  }
-                }
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    3
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    7
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    +21
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    color='error'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #f00',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '1.5rem',
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    50
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    53
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    X
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    57
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    =
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    3000
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow
-                sx={{
-                  display: 'none',
-                }}
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    4
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    2
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    +8
-                  </Typography>
-                </TableCell>
-              </TableRow>
+        <ExampleTableMult
+          hintPlusLeft='3'
+          hintPlusRight='7'
+          refNumber='50'
+          numberLeft='53'
+          numberRight='57'
+          valueIntermediate='3000'
+          hintMinusLeft=''
+          hintMinusRight=''
+          valueToAdd='+21'
+          valueToMinus=''
+          valueResult='3021'
+          displayRowPlusHits={true}
+          displayRowMinusHints={false}
+          displayRowResults={true}
+        />
 
-              <TableRow
-                sx={
-                  {
-                    // display: 'none',
-                  }
-                }
-              >
-                <TableCell colSpan={5}>
-                  <Typography variant='h3' align='right'>
-                    Ответ
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    3021
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <DescrBody>Решим следующий пример:</DescrBody>
 
-        <Typography variant='body1'>Решим следующий пример:</Typography>
+        <ExampleTableMult
+          hintPlusLeft='2'
+          hintPlusRight='13'
+          refNumber='50'
+          numberLeft='52'
+          numberRight='63'
+          valueIntermediate=''
+          hintMinusLeft=''
+          hintMinusRight=''
+          valueToAdd=''
+          valueToMinus=''
+          valueResult=''
+          displayRowPlusHits={true}
+          displayRowMinusHints={false}
+          displayRowResults={false}
+        />
 
-        <TableContainer
-          component={Paper}
-          sx={{ width: 600, margin: '1rem auto' }}
-        >
-          <Table
-            // sx={{ minWidth: 650 }}
-            align='center'
-            aria-label='simple table'
-          >
-            <TableBody>
-              <TableRow
-                sx={
-                  {
-                    // display: 'none',
-                  }
-                }
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    2
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    13
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {/* +26 */}
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    color='error'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #f00',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '1.5rem',
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    50
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    52
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    X
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    63
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    =
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {/* 3250 */}
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow
-                sx={{
-                  display: 'none',
-                }}
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    4
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    2
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    +8
-                  </Typography>
-                </TableCell>
-              </TableRow>
-
-              <TableRow
-                sx={{
-                  display: 'none',
-                }}
-              >
-                <TableCell colSpan={5}>
-                  <Typography variant='h3' align='right'>
-                    Ответ
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    3276
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <Typography variant='body1'>
+        <DescrBody>
           Складываем накрест и умножаем результат на опорное число (умножаем
           сначала на 100, а затем делим результат на 2):
-        </Typography>
+        </DescrBody>
 
-        <Typography variant='h3' align='center'>
-          63 + 2 = 65
-        </Typography>
-        <Typography variant='h3' align='center'>
-          65 x 100 = 6500
-        </Typography>
+        <DescAccent>63 + 2 = 65</DescAccent>
+        <DescAccent>65 x 100 = 6500</DescAccent>
 
-        <Typography variant='body1'>Теперь надо разделить на 2.</Typography>
-        <Typography variant='body1'>
+        <DescrBody>Теперь надо разделить на 2.</DescrBody>
+        <DescrBody>
           Никаких проблем! Говорим про себя: «Половина от шести тысяч — это три
           тысячи. Половина от пятисот — это двести пятьдесят. Всего получается
           три тысячи двести пятьдесят».
-        </Typography>
-        <Typography variant='body1'>
-          Теперь перемножим числа в кружках:
-        </Typography>
-        <Typography variant='h3' align='center'>
-          2 х 13 = 26
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescrBody>Теперь перемножим числа в кружках:</DescrBody>
+        <DescAccent>2 х 13 = 26</DescAccent>
+        <DescrBody>
           Прибавив 26 к промежуточному результату 3250, получаем 3276. Полностью
           решенный пример теперь выглядит так:
-        </Typography>
+        </DescrBody>
 
-        <TableContainer
-          component={Paper}
-          sx={{ width: 600, margin: '1rem auto' }}
-        >
-          <Table
-            // sx={{ minWidth: 650 }}
-            align='center'
-            aria-label='simple table'
-          >
-            <TableBody>
-              <TableRow
-                sx={
-                  {
-                    // display: 'none',
-                  }
-                }
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    2
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    13
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    +26
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    color='error'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #f00',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '1.5rem',
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    50
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    52
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    X
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    63
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    =
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    3250
-                  </Typography>
-                </TableCell>
-              </TableRow>
-              <TableRow
-                sx={{
-                  display: 'none',
-                }}
-              >
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    4
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    2
-                  </Typography>
-                </TableCell>
-                <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    +8
-                  </Typography>
-                </TableCell>
-              </TableRow>
+        <ExampleTableMult
+          hintPlusLeft='2'
+          hintPlusRight='13'
+          refNumber='50'
+          numberLeft='52'
+          numberRight='63'
+          valueIntermediate='3250'
+          hintMinusLeft=''
+          hintMinusRight=''
+          valueToAdd='+26'
+          valueToMinus=''
+          valueResult='3276'
+          displayRowPlusHits={true}
+          displayRowMinusHints={false}
+          displayRowResults={true}
+        />
 
-              <TableRow
-                sx={
-                  {
-                    // display: 'none',
-                  }
-                }
-              >
-                <TableCell colSpan={5}>
-                  <Typography variant='h3' align='right'>
-                    Ответ
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant='h3' align='center'>
-                    3276
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <DescAccent>Проверка ответов</DescAccent>
+        <DescrBody>
+          Применим то, чему мы научились , чтобы проверить, верный ли получили
+          ответ:
+        </DescrBody>
+        <DescAccent>52 х 63 =</DescAccent>
+        <DescrBody>
+          Числами-подстановками для 52 и 63 будут 7 и 9 соответственно
+        </DescrBody>
+        <DescAccent>7 х 9 = 63</DescAccent>
+        <DescAccent>6 + 3 = 9</DescAccent>
+        <DescrBody>9 — это наше контрольное число.</DescrBody>
+        <DescrBody>Цифры исходного ответа (3) дают в сумме 9:</DescrBody>
+        <DescAccent>3 + 2 + 7 + 6 = 18</DescAccent>
+        <DescAccent>1 + 8 = 9</DescAccent>
+        <DescrBody>
+          Полученное число равно контрольному, значит, ответ мы получили верный.
+        </DescrBody>
 
-        <section>
-          <Typography variant='h3' align='center'>
-            Проверка ответов
-          </Typography>
-          <Typography variant='body1'>
-            Применим то, чему мы научились , чтобы проверить, верный ли получили
-            ответ:
-          </Typography>
-          <Typography variant='h3' align='center'>
-            52 х 63 =
-          </Typography>
-          <Typography variant='body1'>
-            Числами-подстановками для 52 и 63 будут 7 и 9 соответственно
-          </Typography>
-          <Typography variant='h3' align='center'>
-            7 х 9 = 63
-          </Typography>
-          <Typography variant='h3' align='center'>
-            6 + 3 = 9
-          </Typography>
-          <Typography variant='body1'>
-            9 — это наше контрольное число.
-          </Typography>
-          <Typography variant='body1'>
-            Цифры исходного ответа (3) дают в сумме 9:
-          </Typography>
-          <Typography variant='h3' align='center'>
-            3 + 2 + 7 + 6 = 18
-          </Typography>
-          <Typography variant='h3' align='center'>
-            1 + 8 = 9
-          </Typography>
-          <Typography variant='body1'>
-            Полученное число равно контрольному, значит, ответ мы получили
-            верный.
-          </Typography>
-        </section>
+        <DescAccent>Удвоение и деление пополам</DescAccent>
 
-        <Typography variant='h3' align='center'>
-          Удвоение и деление пополам
-        </Typography>
-
-        <Typography variant='body1'>
+        <DescrBody>
           Чтобы использовать 20 и 50 в качестве опорных чисел, необходимо уметь
           без проблем удваивать числа и делить их пополам.
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescrBody>
           Иногда, когда нам, например, приходится делить пополам двузначное
           число, у которого число десятков является нечетным, ответ не
           напрашивается сам собой. К примеру:
-        </Typography>
-        <Typography variant='h3' align='center'>
-          78 : 2 =
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescAccent>78 : 2 =</DescAccent>
+        <DescrBody>
           Чтобы разделить пополам 78, вы могли бы 70 разделить на 2, потом 8, а
           затем сложить полученные результаты. Но есть способ еще проще.
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescrBody>
           78 = 80 — 2. Половина от 80 — 2 равняется 40 — 1. Это и есть ответ:
-        </Typography>
-        <Typography variant='h3' align='center'>
-          40 - 1 = 39
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescAccent>40 - 1 = 39</DescAccent>
+        <DescrBody>
           Чтобы удвоить 38, мысленно представьте это число в виде 40 — 2.
           Удвоенная величина будет 80 — 4, то есть 76.
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescrBody>
           Этот же подход может быть использован для умножения и деления довольно
           больших чисел на З и 4.К примеру:
-        </Typography>
-        <Typography variant='h3' align='center'>
-          19 х 3 = (20 - 1) х 3 = 60 - 3 = 57
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
+        </DescrBody>
+        <DescAccent>19 х 3 = (20 - 1) х 3 = 60 - 3 = 57</DescAccent>
+      </DescAccordion>
+    </Grid>
   );
 }
 
