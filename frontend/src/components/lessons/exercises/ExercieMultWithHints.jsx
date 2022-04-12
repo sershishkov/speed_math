@@ -7,12 +7,16 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 
 import { operators } from '../../../utils/constants';
 import ButtonStop from '../../ui/buttons/ButtonStop';
 import ButtonOk from '../../ui/buttons/ButtonOk';
+
+import DescrCellMain from '../../ui/description/DescrCellMain';
+import ExerciseHeader from '../../ui/description/ExerciseHeader';
+import DescrCellRoundHintNumber from '../../ui/description/DescrCellRoundHintNumber';
+import DescrCellRoundRefNumber from '../../ui/description/DescrCellRoundRefNumber';
+import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
 
 function ExercieMultWithHints({
   displayExample,
@@ -39,9 +43,7 @@ function ExercieMultWithHints({
       <Grid item sx={{ flex: 1, padding: '10px' }}>
         <ButtonStop onClick={onStopExercise} />
       </Grid>
-      <Typography variant='h5' align='center'>
-        Упражнения
-      </Typography>
+      <ExerciseHeader align='center'>Упражнения</ExerciseHeader>
 
       <Grid container justifyContent='space-evenly' alignItems='center'>
         <TableContainer component={Paper} sx={{ width: '90%', margin: 'auto' }}>
@@ -53,93 +55,55 @@ function ExercieMultWithHints({
                 }}
               >
                 <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
+                  <DescrCellMain align='right'>+</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    {example && example.numberLeft > refNumber
-                      ? +example.numberLeft - refNumber
-                      : ''}
-                  </Typography>
+                  <DescrCellRoundHintNumber
+                    text={
+                      example && example.numberLeft > refNumber
+                        ? +example.numberLeft - refNumber
+                        : ''
+                    }
+                  />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    +
-                  </Typography>
+                  <DescrCellMain align='right'>+</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    {example && example.numberRight > refNumber
-                      ? example.numberRight - refNumber
-                      : ''}
-                  </Typography>
+                  <DescrCellRoundHintNumber
+                    text={
+                      example && example.numberRight > refNumber
+                        ? example.numberRight - refNumber
+                        : ''
+                    }
+                  />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
+                  <DescrCellMain align='right'></DescrCellMain>
                 </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    color='error'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #f00',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '1.5rem',
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    {refNumber}
-                  </Typography>
+                  <DescrCellRoundRefNumber text={refNumber} />
                 </TableCell>
                 <TableCell>
-                  <Typography variant='h3' align='center'>
+                  <DescrCellMain align='center'>
                     {example ? example.numberLeft : ''}
-                  </Typography>
+                  </DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {operator}
-                  </Typography>
+                  <DescrCellMain align='center'>{operator}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography variant='h3' align='center'>
+                  <DescrCellMain align='center'>
                     {example ? example.numberRight : ''}
-                  </Typography>
+                  </DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {operators[4]}
-                  </Typography>
+                  <DescrCellMain align='center'>{operators[4]}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <TextField
+                  <InputUserAnswerSimple
                     name='userAnswer'
                     label='Ответ'
                     type='number'
@@ -163,54 +127,36 @@ function ExercieMultWithHints({
                 }}
               >
                 <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
-                    -
-                  </Typography>
+                  <DescrCellMain align='right'>-</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    {example && example.numberLeft < refNumber
-                      ? refNumber - example.numberLeft
-                      : ''}
-                  </Typography>
+                  <DescrCellRoundHintNumber
+                    text={
+                      example && example.numberLeft < refNumber
+                        ? refNumber - example.numberLeft
+                        : ''
+                    }
+                  />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'>
+                  <DescrCellMain variant='h3' align='right'>
                     -
-                  </Typography>
+                  </DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography
-                    variant='h3'
-                    align='center'
-                    sx={{
-                      borderRadius: '50%',
-                      border: '2px solid #000',
-                      width: '3rem',
-                      height: '3rem',
-                      fontSize: '2.3rem',
-                    }}
-                  >
-                    {example && example.numberRight < refNumber
-                      ? refNumber - example.numberRight
-                      : ''}
-                  </Typography>
+                  <DescrCellRoundHintNumber
+                    text={
+                      example && example.numberRight < refNumber
+                        ? refNumber - example.numberRight
+                        : ''
+                    }
+                  />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <Typography variant='h3' align='right'></Typography>
+                  <DescrCellMain align='right'></DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography variant='h3' align='center'></Typography>
+                  <DescrCellMain align='center'></DescrCellMain>
                 </TableCell>
               </TableRow>
               <TableRow>

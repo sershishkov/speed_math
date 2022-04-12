@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import ButtonStop from '../../ui/buttons/ButtonStop';
 import ButtonOk from '../../ui/buttons/ButtonOk';
 import { operators } from '../../../utils/constants';
+import DescrCellMain from '../../ui/description/DescrCellMain';
+import ExerciseHeader from '../../ui/description/ExerciseHeader';
+import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
 
 function ExerciseSimple({
   displayExample,
@@ -31,34 +32,28 @@ function ExerciseSimple({
           <ButtonStop onClick={onStopExercise} />
         </Grid>
         <Grid item sx={{ flex: 1 }}>
-          <Typography variant='h5' align='center'>
-            Упражнения
-          </Typography>
+          <ExerciseHeader align='center'>Упражнения</ExerciseHeader>
         </Grid>
         <Grid item>
           <Grid container alignItems='center'>
             <Grid item sx={{ flex: 1 }}>
-              <Typography variant='h4' align='center'>
+              <DescrCellMain align='center'>
                 {example ? example.numberLeft : ''}
-              </Typography>
+              </DescrCellMain>
             </Grid>
             <Grid item sx={{ flex: 0.3 }}>
-              <Typography variant='h4' align='center'>
-                {operator}
-              </Typography>
+              <DescrCellMain align='center'>{operator}</DescrCellMain>
             </Grid>
             <Grid item sx={{ flex: 1 }}>
-              <Typography variant='h4' align='center'>
+              <DescrCellMain align='center'>
                 {example ? example.numberRight : ''}
-              </Typography>
+              </DescrCellMain>
             </Grid>
             <Grid item sx={{ flex: 0.3 }}>
-              <Typography variant='h4' align='center'>
-                {operators[4]}
-              </Typography>
+              <DescrCellMain align='center'>{operators[4]}</DescrCellMain>
             </Grid>
             <Grid item sx={{ flex: 1.1 }}>
-              <TextField
+              <InputUserAnswerSimple
                 name='userAnswer'
                 label='Ответ'
                 type='number'

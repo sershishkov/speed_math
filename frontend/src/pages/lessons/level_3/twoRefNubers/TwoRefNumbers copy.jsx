@@ -39,14 +39,14 @@ function TwoRefNumbers() {
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
   const [userAnswer, set__userAnswer] = useState('');
-  const [userAnswer_CheckNumberLeft, set__userAnswer_CheckNumberLeft] =
-    useState('');
-  const [userAnswer_CheckNumberRight, set__userAnswer_CheckNumberRight] =
-    useState('');
-  const [userAnswer_CheckResultLeft, set__userAnswer_CheckResultLeft] =
-    useState('');
-  const [userAnswer_CheckResultRight, set__userAnswer_CheckResultRight] =
-    useState('');
+  // const [userAnswer_CheckNumberLeft, set__userAnswer_CheckNumberLeft] =
+  //   useState('');
+  // const [userAnswer_CheckNumberRight, set__userAnswer_CheckNumberRight] =
+  //   useState('');
+  // const [userAnswer_CheckResultLeft, set__userAnswer_CheckResultLeft] =
+  //   useState('');
+  // const [userAnswer_CheckResultRight, set__userAnswer_CheckResultRight] =
+  //   useState('');
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
   const [displayStatistics, set__displayStatistics] = useState(false);
@@ -78,10 +78,10 @@ function TwoRefNumbers() {
     set__disableStartButton(false);
     set__resultsList([]);
     set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
+    // set__userAnswer_CheckNumberLeft('');
+    // set__userAnswer_CheckNumberRight('');
+    // set__userAnswer_CheckResultLeft('');
+    // set__userAnswer_CheckResultRight('');
   };
 
   const nextTask = () => {
@@ -109,28 +109,28 @@ function TwoRefNumbers() {
     set__resultsList([]);
     set__userAnswer('');
     set__displayStopButton(false);
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
+    // set__userAnswer_CheckNumberLeft('');
+    // set__userAnswer_CheckNumberRight('');
+    // set__userAnswer_CheckResultLeft('');
+    // set__userAnswer_CheckResultRight('');
   };
 
   const onAnswer = () => {
     const doneExample = +userAnswer === +example.resultRight;
-    const doneCheck =
-      +userAnswer_CheckNumberLeft === +example.checkNumberLeft &&
-      +userAnswer_CheckNumberRight === +example.checkNumberRight &&
-      +userAnswer_CheckResultLeft === +example.checkResultLeft &&
-      +userAnswer_CheckResultRight === +example.checkResultRight;
+    // const doneCheck =
+    //   +userAnswer_CheckNumberLeft === +example.checkNumberLeft &&
+    //   +userAnswer_CheckNumberRight === +example.checkNumberRight &&
+    //   +userAnswer_CheckResultLeft === +example.checkResultLeft &&
+    //   +userAnswer_CheckResultRight === +example.checkResultRight;
 
     const obj = {
       example: `${example.numberLeft} ${operators[2]} ${example.numberRight}`,
 
       userAnswer,
-      userAnswer_CheckNumberLeft,
-      userAnswer_CheckNumberRight,
-      userAnswer_CheckResultLeft,
-      userAnswer_CheckResultRight,
+      // userAnswer_CheckNumberLeft,
+      // userAnswer_CheckNumberRight,
+      // userAnswer_CheckResultLeft,
+      // userAnswer_CheckResultRight,
 
       resultRight: example.resultRight,
       checkNumberLeft: example.checkNumberLeft,
@@ -139,16 +139,17 @@ function TwoRefNumbers() {
       checkResultRight: example.checkResultRight,
 
       doneExample,
-      doneCheck,
-      doneExcercise: doneExample && doneCheck,
+      // doneCheck,
+      // doneExcercise: doneExample && doneCheck,
+      doneExcercise: doneExample,
     };
     set__resultsList((prevState) => [...prevState, obj]);
 
     set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
+    // set__userAnswer_CheckNumberLeft('');
+    // set__userAnswer_CheckNumberRight('');
+    // set__userAnswer_CheckResultLeft('');
+    // set__userAnswer_CheckResultRight('');
 
     if (numberOf_Task < examplesNumber) {
       nextTask();
@@ -188,10 +189,10 @@ function TwoRefNumbers() {
     set__disableStartButton(false);
     set__resultsList([]);
     set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
+    // set__userAnswer_CheckNumberLeft('');
+    // set__userAnswer_CheckNumberRight('');
+    // set__userAnswer_CheckResultLeft('');
+    // set__userAnswer_CheckResultRight('');
   };
 
   return (
@@ -542,12 +543,10 @@ function TwoRefNumbers() {
                       onChange={(e) => set__userAnswer(e.target.value)}
                       onKeyPress={(e) => {
                         if (e.key === 'Enter') {
-                          const userAnswer_CheckNumberLeft_input =
-                            document.getElementById(
-                              'userAnswer_CheckNumberLeft'
-                            );
+                          const answerButton =
+                            document.getElementById('answerButton');
 
-                          userAnswer_CheckNumberLeft_input.focus();
+                          answerButton.focus();
                         }
                       }}
                     />
@@ -672,7 +671,7 @@ function TwoRefNumbers() {
                   </TableCell>
                 </TableRow>
 
-                <TableRow>
+                {/* <TableRow>
                   <TableCell sx={{ pr: 0 }}>
                     <Typography variant='h3' align='right'></Typography>
                   </TableCell>
@@ -759,9 +758,9 @@ function TwoRefNumbers() {
                   </TableCell>
                   <TableCell sx={{ pr: 0 }}></TableCell>
                   <TableCell></TableCell>
-                </TableRow>
+                </TableRow> */}
 
-                <TableRow>
+                {/* <TableRow>
                   <TableCell sx={{ pr: 0 }}>
                     <Typography variant='h3' align='right'></Typography>
                   </TableCell>
@@ -846,7 +845,7 @@ function TwoRefNumbers() {
                       }}
                     />
                   </TableCell>
-                </TableRow>
+                </TableRow> */}
 
                 <TableRow>
                   <TableCell colSpan={8}>
@@ -856,11 +855,12 @@ function TwoRefNumbers() {
                       variant='contained'
                       onClick={onAnswer}
                       disabled={
-                        userAnswer.length < 1 ||
-                        userAnswer_CheckNumberLeft.length < 1 ||
-                        userAnswer_CheckNumberRight.length < 1 ||
-                        userAnswer_CheckResultLeft.length < 1 ||
-                        userAnswer_CheckResultRight.length < 1
+                        userAnswer.length < 1
+                        // ||
+                        // userAnswer_CheckNumberLeft.length < 1 ||
+                        // userAnswer_CheckNumberRight.length < 1 ||
+                        // userAnswer_CheckResultLeft.length < 1 ||
+                        // userAnswer_CheckResultRight.length < 1
                       }
                     >
                       OK № {numberOf_Task}
@@ -872,6 +872,7 @@ function TwoRefNumbers() {
           </TableContainer>
         </Grid>
       </Grid>
+
       <Grid item sx={{ display: displayStatistics ? 'block' : 'none' }}>
         <Typography variant='h4' align='center'>
           Ваши результаты

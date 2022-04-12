@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import Landing from './pages/Landing';
+import Landing from './pages/lessons/landing/Landing';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 
@@ -17,6 +17,7 @@ import SimpleAddition from './pages/lessons/level_1/SimpleAddition';
 import SimpleDivision from './pages/lessons/level_1/SimpleDivision';
 import SimpleMultiplication from './pages/lessons/level_1/SimpleMultiplication';
 import SimpleSubtraction from './pages/lessons/level_1/SimpleSubtraction';
+
 import MultCloseTo100 from './pages/lessons/level_2/multCloseTo100/MultCloseTo100';
 import ReferenceNumber10 from './pages/lessons/level_2/referenceNumber10/ReferenceNumber10';
 import ReferenceNumber20 from './pages/lessons/level_2/referenceNumber20/ReferenceNumber20';
@@ -30,14 +31,17 @@ import RefNumber50 from './pages/lessons/level_3/refNumber50/RefNumber50';
 import RefNumber200 from './pages/lessons/level_3/refNumber200/RefNumber200';
 import RefNumber500 from './pages/lessons/level_3/refNumber500/RefNumber500';
 import Decimals from './pages/lessons/level_3/decimals/Decimals';
-import TwoRefNumbers from './pages/lessons/level_4/twoRefNubers/TwoRefNumbers';
+import TwoRefNumbers from './pages/lessons/level_3/twoRefNubers/TwoRefNumbers';
+
 import Addition from './pages/lessons/level_4/addition/Addition';
 import Substruction from './pages/lessons/level_4/substruction/Substruction';
+
 import SquaringEnding5 from './pages/lessons/level_5/squaringEnding5/SquaringEnding5';
 import SquaringClose50 from './pages/lessons/level_5/squaringClose50/SquaringClose50';
 import SquaringClose500 from './pages/lessons/level_5/squaringClose500/SquaringClose500';
 import SquaringEnding1 from './pages/lessons/level_5/squaringEnding1/SquaringEnding1';
 import SquaringEnding9 from './pages/lessons/level_5/squaringEnding9/SquaringEnding9';
+
 import DivBySingleNumber from './pages/lessons/level_6/divBySingleNumber/DivBySingleNumber';
 import DivByMultipliers from './pages/lessons/level_6/divByMultipliers/DivByMultipliers';
 
@@ -128,7 +132,7 @@ function App() {
             />
             <Route path='/lessons/level_3/decimals' element={<Decimals />} />
             <Route
-              path='/lessons/level_4/two-ref-numbers'
+              path='/lessons/level_3/two-ref-numbers'
               element={<TwoRefNumbers />}
             />
             <Route path='/lessons/level_4/addition' element={<Addition />} />

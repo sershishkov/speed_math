@@ -6,39 +6,35 @@ import {
   update__statistic,
   reset as resetStatistic,
 } from '../../../../features/statistics/statisticSlice';
-import Description from './Description';
+import Description1 from './Description1';
+import Description2 from './Description2';
+import Description3 from './Description3';
 
 import { operators } from '../../../../utils/constants';
 import Header from '../../../../components/lessons/header/Header';
 import Settings from '../../../../components/lessons/settings/Settings';
-import ExercieMultWithHintsCheck from '../../../../components/lessons/exercises/ExercieMultWithHintsCheck';
-import ReportResultAndCheck from '../../../../components/lessons/reports/ReportResultAndCheck';
+import ExerciseMultWithHintsTwoRef from '../../../../components/lessons/exercises/ExerciseMultWithHintsTwoRef';
+import ReportOnlyResult from '../../../../components/lessons/reports/ReportOnlyResult';
 
 import Grid from '@mui/material/Grid';
 
-function Decimals() {
-  const minLeft = 7;
-  const maxLeft = 9;
-  const minRight = 80;
+function TwoRefNumbers() {
+  const minLeft = 11;
+  const maxLeft = 19;
+  const minRight = 90;
   const maxRight = 99;
+  const referenceNumber1 = 20;
+  const referenceNumber2 = 5;
+
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
   const [userAnswer, set__userAnswer] = useState('');
-  const [userAnswer_CheckNumberLeft, set__userAnswer_CheckNumberLeft] =
-    useState('');
-  const [userAnswer_CheckNumberRight, set__userAnswer_CheckNumberRight] =
-    useState('');
-  const [userAnswer_CheckResultLeft, set__userAnswer_CheckResultLeft] =
-    useState('');
-  const [userAnswer_CheckResultRight, set__userAnswer_CheckResultRight] =
-    useState('');
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
   const [displayStatistics, set__displayStatistics] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
   const [resultsList, set__resultsList] = useState([]);
   const [showHints, set__showHints] = useState(true);
-
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { time, start, pause, reset } = useTimer();
@@ -58,10 +54,6 @@ function Decimals() {
     set_numberOf_Task(0);
     set__resultsList([]);
     set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
   };
 
   const nextTask = () => {
@@ -87,51 +79,25 @@ function Decimals() {
     set__displaySettings(true);
     set__resultsList([]);
     set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
   };
 
   const onAnswer = () => {
-    const doneExample = +userAnswer === +example.resultRight;
-    const doneCheck =
-      +userAnswer_CheckNumberLeft === +example.checkNumberLeft &&
-      +userAnswer_CheckNumberRight === +example.checkNumberRight &&
-      +userAnswer_CheckResultLeft === +example.checkResultLeft &&
-      +userAnswer_CheckResultRight === +example.checkResultRight;
-
     const obj = {
       example: `${example.numberLeft} ${operators[2]} ${example.numberRight}`,
-
       userAnswer,
-      userAnswer_CheckNumberLeft,
-      userAnswer_CheckNumberRight,
-      userAnswer_CheckResultLeft,
-      userAnswer_CheckResultRight,
-
-      resultRight: example.resultRight,
-      checkNumberLeft: example.checkNumberLeft,
-      checkNumberRight: example.checkNumberRight,
-      checkResultLeft: example.checkResultLeft,
-      checkResultRight: example.checkResultRight,
-
-      doneExample,
-      doneCheck,
-      doneExcercise: doneExample && doneCheck,
+      rightAnswer: example.resultRight,
+      done: +userAnswer === +example.resultRight,
     };
     set__resultsList((prevState) => [...prevState, obj]);
 
     set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
 
     if (numberOf_Task < examplesNumber) {
       nextTask();
       const userAnswerInput = document.getElementById('userAnswer');
+
       userAnswerInput.focus();
+      // console.log(example);
     } else {
       set__displayExample(false);
       set__displayStatistics(true);
@@ -155,36 +121,34 @@ function Decimals() {
     dispatch(update__statistic(statisticData));
     dispatch(resetStatistic());
     reset();
+
     set__displayExample(false);
     set__displayStatistics(false);
     set_numberOf_Task(0);
     set__displaySettings(true);
     set__resultsList([]);
     set__userAnswer('');
-    set__userAnswer_CheckNumberLeft('');
-    set__userAnswer_CheckNumberRight('');
-    set__userAnswer_CheckResultLeft('');
-    set__userAnswer_CheckResultRight('');
   };
 
   return (
     <Grid container direction='column'>
       <Header
-        hrefPrev='/lessons/level_3/ref-number-500'
-        hrefNext='/lessons/level_3/two-ref-numbers'
+        hrefPrev='/lessons/level_3/decimals'
+        hrefNext='/lessons/level_4/addition'
         time={time}
-        title='Произведение десятичных дробей'
+        title='Умножение с помощью двух опорных чисел'
       />
-
-      <Description />
+      <Description1 />
+      <Description2 />
+      <Description3 />
       <Settings
         onChangeExamplesNumber={(e) => set__examplesNumber(e.target.value)}
         onChangeMin={() => {}}
         onChangeMax={() => {}}
         onStart={onStart}
         examplesNumber={examplesNumber}
-        min={minLeft}
-        max={maxLeft}
+        min={0}
+        max={0}
         displaySettings={displaySettings}
         displayMin={false}
         displayMax={false}
@@ -192,7 +156,7 @@ function Decimals() {
         showHints={showHints}
         onChangeShowHints={(e) => set__showHints(e.target.checked)}
       />
-      <ExercieMultWithHintsCheck
+      <ExerciseMultWithHintsTwoRef
         displayExample={displayExample}
         onStopExercise={onStopExercise}
         example={example}
@@ -204,33 +168,19 @@ function Decimals() {
         showHints={showHints}
         showPlusHints={false}
         showMinusHints={true}
-        refNumber={100}
-        userAnswer_CheckNumberLeft={userAnswer_CheckNumberLeft}
-        userAnswer_CheckNumberRight={userAnswer_CheckNumberRight}
-        userAnswer_CheckResultLeft={userAnswer_CheckResultLeft}
-        userAnswer_CheckResultRight={userAnswer_CheckResultRight}
-        setAnswer_CheckNumberLeft={(e) =>
-          set__userAnswer_CheckNumberLeft(e.target.value)
-        }
-        setAnswer_CheckNumberRight={(e) =>
-          set__userAnswer_CheckNumberRight(e.target.value)
-        }
-        setAnswer_CheckResultLeft={(e) =>
-          set__userAnswer_CheckResultLeft(e.target.value)
-        }
-        setAnswer_CheckResultRight={(e) =>
-          set__userAnswer_CheckResultRight(e.target.value)
-        }
+        referenceNumber1={referenceNumber1}
+        referenceNumber2={referenceNumber2}
       />
-      <ReportResultAndCheck
-        displayStatistics={displayStatistics}
-        resultsList={resultsList}
-        user={user}
+
+      <ReportOnlyResult
         onSaveResults={onSaveResults}
         onContinue={onContinue}
+        resultsList={resultsList}
+        user={user}
+        display={displayStatistics}
       />
     </Grid>
   );
 }
 
-export default Decimals;
+export default TwoRefNumbers;

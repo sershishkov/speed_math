@@ -313,6 +313,18 @@ function NavigationList({ toggleDrawer }) {
             </ListItemIcon>
             <ListItemText primary='Десятичные' />
           </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_3/two-ref-numbers'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Два опорных числа' />
+          </ListItemButton>
         </List>
       </Collapse>
 
@@ -325,18 +337,6 @@ function NavigationList({ toggleDrawer }) {
       </ListItemButton>
       <Collapse in={openLevel_4} timeout='auto' unmountOnExit>
         <List disablePadding>
-          <ListItemButton
-            sx={{ pl: 4 }}
-            component={Link}
-            href='/lessons/level_4/two-ref-numbers'
-            onClick={toggleDrawer(false)}
-          >
-            <ListItemIcon>
-              <SendIcon />
-            </ListItemIcon>
-            <ListItemText primary='Два опорных числа' />
-          </ListItemButton>
-
           <ListItemButton
             sx={{ pl: 4 }}
             component={Link}

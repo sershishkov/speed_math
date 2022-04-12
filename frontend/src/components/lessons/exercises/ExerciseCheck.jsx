@@ -7,13 +7,13 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 
 import { operators } from '../../../utils/constants';
 import ButtonStop from '../../ui/buttons/ButtonStop';
 import ButtonOk from '../../ui/buttons/ButtonOk';
-import InputCircleCheck from '../../ui/inputs/inputCircleCheck';
+import ExerciseHeader from '../../ui/description/ExerciseHeader';
+import InputCircleCheck from '../../ui/inputs/InputCircleCheck';
+import DescrCellMain from '../../ui/description/DescrCellMain';
 
 function ExerciseCheck({
   displayExample,
@@ -47,9 +47,7 @@ function ExerciseCheck({
         <ButtonStop onClick={onStopExercise} />
       </Grid>
 
-      <Typography variant='h5' align='center'>
-        Упражнения
-      </Typography>
+      <ExerciseHeader align='center'>Упражнения</ExerciseHeader>
 
       <Grid container justifyContent='space-evenly' alignItems='center'>
         <TableContainer
@@ -63,29 +61,25 @@ function ExerciseCheck({
             <TableBody>
               <TableRow>
                 <TableCell>
-                  <Typography variant='h3' align='center'>
+                  <DescrCellMain align='center'>
                     {example ? example.numberLeft : ''}
-                  </Typography>
+                  </DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {operator}
-                  </Typography>
+                  <DescrCellMain align='center'>{operator}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography variant='h3' align='center'>
+                  <DescrCellMain align='center'>
                     {example ? example.numberRight : ''}
-                  </Typography>
+                  </DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography variant='h3' align='center'>
-                    {operators[4]}
-                  </Typography>
+                  <DescrCellMain align='center'>{operators[4]}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <Typography variant='h3' align='center'>
+                  <DescrCellMain align='center'>
                     {example ? example.resultRight : ''}
-                  </Typography>
+                  </DescrCellMain>
                 </TableCell>
               </TableRow>
 

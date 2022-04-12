@@ -18,8 +18,7 @@ function DescAccordion({ children, title }) {
       onChange={handleChange('panel1')}
       sx={{
         minWidth: '300px',
-        width: '95%',
-        margin: 'auto',
+        // border: '1px solid green',
       }}
     >
       <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel1'>

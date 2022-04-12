@@ -210,7 +210,7 @@ function Addition() {
                 <Button
                   variant='contained'
                   component={Link}
-                  href='/lessons/level_4/two-ref-numbers'
+                  href='/lessons/level_3/two-ref-numbers'
                 >
                   Предыдущий урок
                 </Button>

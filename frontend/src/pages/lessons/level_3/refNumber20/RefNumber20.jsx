@@ -168,6 +168,7 @@ function RefNumber20() {
         title='Умножение чисел с опорным числом 20 (над и под опорным числом)'
       />
       <Description />
+
       <Settings
         onChangeExamplesNumber={(e) => set__examplesNumber(e.target.value)}
         onChangeMin={(e) => set__min(e.target.value)}

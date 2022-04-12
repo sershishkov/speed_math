@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
 import { genExample__SquaringCloseTo_ } from '../../../../utils/generateExample';
@@ -142,6 +142,14 @@ function SquaringClose50() {
     set__resultsList([]);
     set__userAnswer('');
   };
+
+  useEffect(() => {
+    if (displayExample) {
+      const userAnswerInput = document.getElementById('userAnswer');
+
+      userAnswerInput.focus();
+    }
+  }, [displayExample]);
 
   return (
     <Grid container direction='column'>

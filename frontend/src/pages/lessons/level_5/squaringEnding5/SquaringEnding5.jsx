@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
 import { genExample__SquaringEnding_5 } from '../../../../utils/generateExample';
@@ -136,6 +136,13 @@ function SquaringEnding5() {
     set__resultsList([]);
     set__userAnswer('');
   };
+  useEffect(() => {
+    if (displayExample) {
+      const userAnswerInput = document.getElementById('userAnswer');
+
+      userAnswerInput.focus();
+    }
+  }, [displayExample]);
 
   return (
     <Grid container direction='column'>
