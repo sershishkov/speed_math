@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import ButtonSave from '../../ui/buttons/ButtonSave';
 import ButtonRepeat from '../../ui/buttons/ButtonRepeat';
 
@@ -19,6 +20,16 @@ function ReportOnlyResult({
   onSaveResults,
   onContinue,
 }) {
+  useEffect(() => {
+    if (user && display) {
+      const buttonSave = document.getElementById('buttonSave');
+      buttonSave.focus();
+    } else if (!user && display) {
+      const buttonRepeat = document.getElementById('buttonRepeat');
+      buttonRepeat.focus();
+    }
+  }, [user, display]);
+
   return (
     <Grid item sx={{ display: display ? 'block' : 'none' }}>
       <Typography variant='h4' align='center'>
@@ -57,10 +68,14 @@ function ReportOnlyResult({
                 <Grid
                   container
                   alignItems='center'
-                  flexDirection='column-reverse'
+                  flexDirection={user ? 'column' : 'column-reverse'}
                 >
                   <Grid item sx={{ width: '100%' }}>
-                    <ButtonSave disabled={!user} onClick={onSaveResults}>
+                    <ButtonSave
+                      disabled={!user}
+                      onClick={onSaveResults}
+                      id='buttonSave'
+                    >
                       {user
                         ? 'Сохранить результаты'
                         : 'Не возможно сохранить результаты - вы не авторизованы'}
@@ -70,7 +85,7 @@ function ReportOnlyResult({
                     item
                     sx={{ display: !user ? 'block' : 'none', width: '100%' }}
                   >
-                    <ButtonRepeat onClick={onContinue} />
+                    <ButtonRepeat onClick={onContinue} id='buttonRepeat' />
                   </Grid>
                 </Grid>
               </TableCell>

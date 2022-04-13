@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 
-function ButtonSave({ children, onClick, disabled }) {
+function ButtonSave({ children, onClick, disabled, id }) {
   return (
     <Button
       fullWidth
@@ -10,6 +10,7 @@ function ButtonSave({ children, onClick, disabled }) {
       onClick={onClick}
       disabled={disabled}
       sx={{ mt: 3, mb: 2 }}
+      id={id}
     >
       <SaveIcon />
       {children}

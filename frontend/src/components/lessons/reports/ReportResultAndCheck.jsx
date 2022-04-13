@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import ButtonSave from '../../ui/buttons/ButtonSave';
 import ButtonRepeat from '../../ui/buttons/ButtonRepeat';
 
@@ -19,6 +21,16 @@ function ReportResultAndCheck({
   onSaveResults,
   onContinue,
 }) {
+  useEffect(() => {
+    if (user && displayStatistics) {
+      const buttonSave = document.getElementById('buttonSave');
+      buttonSave.focus();
+    } else if (!user && displayStatistics) {
+      const buttonRepeat = document.getElementById('buttonRepeat');
+      buttonRepeat.focus();
+    }
+  }, [user, displayStatistics]);
+
   return (
     <Grid item sx={{ display: displayStatistics ? 'block' : 'none' }}>
       <Typography variant='h4' align='center'>
@@ -274,7 +286,11 @@ function ReportResultAndCheck({
                   flexDirection='column-reverse'
                 >
                   <Grid item sx={{ width: '100%' }}>
-                    <ButtonSave disabled={!user} onClick={onSaveResults}>
+                    <ButtonSave
+                      disabled={!user}
+                      onClick={onSaveResults}
+                      id='buttonSave'
+                    >
                       {user
                         ? 'Сохранить результаты'
                         : 'Не возможно сохранить результаты - вы не авторизованы'}
@@ -284,7 +300,7 @@ function ReportResultAndCheck({
                     item
                     sx={{ display: !user ? 'block' : 'none', width: '100%' }}
                   >
-                    <ButtonRepeat onClick={onContinue} />
+                    <ButtonRepeat onClick={onContinue} id='buttonRepeat' />
                   </Grid>
                 </Grid>
               </TableCell>
