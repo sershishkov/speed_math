@@ -47,7 +47,9 @@ function ExerciseCheck({
         <ButtonStop onClick={onStopExercise} />
       </Grid>
 
-      <ExerciseHeader align='center'>Упражнения</ExerciseHeader>
+      <ExerciseHeader align='center'>
+        Решите пример № {numberOf_Task}
+      </ExerciseHeader>
 
       <Grid container justifyContent='space-evenly' alignItems='center'>
         <TableContainer

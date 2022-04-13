@@ -9,9 +9,17 @@ export class generateExample__AddMultSub {
   resultMult;
   resultSub;
   constructor(min, max) {
+    const tempLeft = getRandomIntInclusive(+min, +max);
+    const tempRight = getRandomIntInclusive(+min, +max);
     this.id = uuidv4();
-    this.numberLeft = getRandomIntInclusive(+min, +max);
-    this.numberRight = getRandomIntInclusive(+min, +max);
+    if (tempLeft <= tempRight) {
+      this.numberLeft = tempRight;
+      this.numberRight = tempLeft;
+    } else {
+      this.numberLeft = tempLeft;
+      this.numberRight = tempRight;
+    }
+
     this.resultAdd = +this.numberLeft + +this.numberRight;
     this.resultMult = +this.numberLeft * +this.numberRight;
     this.resultSub = +this.numberLeft - +this.numberRight;

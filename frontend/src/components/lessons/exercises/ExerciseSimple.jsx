@@ -32,7 +32,9 @@ function ExerciseSimple({
           <ButtonStop onClick={onStopExercise} />
         </Grid>
         <Grid item sx={{ flex: 1 }}>
-          <ExerciseHeader align='center'>Упражнения</ExerciseHeader>
+          <ExerciseHeader align='center'>
+            Решите пример № {numberOf_Task}
+          </ExerciseHeader>
         </Grid>
         <Grid item>
           <Grid container alignItems='center'>
