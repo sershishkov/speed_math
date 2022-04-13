@@ -24,7 +24,9 @@ function DescAccordion({ children, title }) {
       <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel1'>
         <DescrTitle>{title}</DescrTitle>
       </AccordionSummary>
-      <AccordionDetails>{children}</AccordionDetails>
+      <AccordionDetails onClick={() => setExpanded(false)}>
+        {children}
+      </AccordionDetails>
     </Accordion>
   );
 }

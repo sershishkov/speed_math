@@ -46,7 +46,15 @@ function ExercieMultWithHints({
       <ExerciseHeader align='center'>Упражнения</ExerciseHeader>
 
       <Grid container justifyContent='space-evenly' alignItems='center'>
-        <TableContainer component={Paper} sx={{ width: '90%', margin: 'auto' }}>
+        <TableContainer
+          component={Paper}
+          sx={
+            {
+              // width: '90%',
+              //  margin: 'auto'
+            }
+          }
+        >
           <Table align='center' aria-label='simple table'>
             <TableBody>
               <TableRow

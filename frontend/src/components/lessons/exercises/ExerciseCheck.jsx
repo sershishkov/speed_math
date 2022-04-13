@@ -52,10 +52,12 @@ function ExerciseCheck({
       <Grid container justifyContent='space-evenly' alignItems='center'>
         <TableContainer
           component={Paper}
-          sx={{
-            width: '70%',
-            margin: 'auto',
-          }}
+          sx={
+            {
+              // width: '70%',
+              // margin: 'auto',
+            }
+          }
         >
           <Table align='center' aria-label='simple table'>
             <TableBody>

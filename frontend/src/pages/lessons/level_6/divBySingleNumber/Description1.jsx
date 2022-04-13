@@ -1,11 +1,5 @@
-import React, { useState } from 'react';
-
 import classes from './styles.module.scss';
 
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 
 import TableContainer from '@mui/material/TableContainer';
@@ -13,43 +7,38 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
+// import DescAccent from '../../../../components/ui/description/DescAccent';
+import DescrBody from '../../../../components/ui/description/DescrBody';
+
+import DescAccordion from '../../../../components/ui/description/DescAccordion';
+import Grid from '@mui/material/Grid';
 
 function Description() {
-  const [expanded, setExpanded] = useState(false);
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
   return (
-    <Accordion
-      expanded={expanded === 'panel1'}
-      onChange={handleChange('panel1')}
+    <Grid
+      item
       sx={{
-        minWidth: '300px',
-        width: '95%',
-        margin: 'auto',
+        width: '100%',
       }}
     >
-      <AccordionSummary expandIcon={<ExpandMoreIcon />} id='panel1'>
-        <Typography variant='h6'>Введение</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography variant='body1'>
+      <DescAccordion title='Введение'>
+        <DescrBody>
           Если вы чувствуете себя уверенно с данным видом деления, тогда можете
           смело пропустить эту главу. Однако у многих людей бывают проблемы с
           решением даже простых задач на деление.
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescrBody>
           Если вам надо разделить 32 доллара на четырех человек, вы разделите 32
           на 4, чтобы узнать, сколько долларов получить каждый. Поскольку 4 на 8
           равно 32 (4 х 8 = 32), каждый человек должен получить 8 долларов. Это
           простая задача на деление. Если бы вам пришлось делить 32 доллара на
           восемь человек, тогда каждый получил бы по 4 доллара.
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescrBody>
           Если нам нужно раздать 35 книг четырем студентам, то каждый из них
           получил бы по восемь книг, и осталось бы еще три. Мы называем их
           остатком. Вычисление можно было бы записать так:
-        </Typography>
+        </DescrBody>
         <TableContainer className={classes.desc_tablecontainer}>
           <Table className={classes.desc_table}>
             <TableBody className={classes.desc_table_body}>
@@ -79,10 +68,10 @@ function Description() {
           </Table>
         </TableContainer>
 
-        <Typography variant='body1'>
+        <DescrBody>
           А вот как мы стали бы делить большее по величине число. Чтобы
           разделить 4921 на 4, запишем задачу следующим образом:
-        </Typography>
+        </DescrBody>
 
         <TableContainer className={classes.desc_tablecontainer}>
           <Table className={classes.desc_table}>
@@ -99,14 +88,14 @@ function Description() {
           </Table>
         </TableContainer>
 
-        <Typography variant='body1'>
+        <DescrBody>
           Начинаем решать с левой цифры числа, которое мы делим (делимое). 4 —
           это первая цифра слева. Начинаем с вопроса: на что нужно умножить 4,
           чтобы получить в ответе 4? Ответом будет 1, поскольку 1 х 4 = 4.
           Запишем 1 под цифрой 4. 4 делится на 4 без остатка, так что переносить
           ничего не придется.
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescrBody>
           Теперь переходим к следующей цифре: 9. На что нужно умножить 4, чтобы
           получить 9? Нет целого числа, которое даст 9 после умножения на 4.
           Теперь спросим себя, какое число надо умножить на 4, чтобы получить
@@ -114,13 +103,13 @@ function Description() {
           одновременно ближе всех других чисел к 9.Записываем 2 под цифрой 9, а
           остаток 1 переносим в следующий разряд и указываем перед следующей за
           9 цифрой в виде маленькой 1 вверху.
-        </Typography>
-        <Typography variant='body1'>
+        </DescrBody>
+        <DescrBody>
           Теперь делим 12 на 4. Какое число после умножения на 4 дает 12?
           Ответом является 3 (3 х 4 = 12). Записываем 3 под цифрой 2. Следующая
           цифра меньше, чем 4, поэтому деление не может быть выполнено. Иными
           словами 1 при делении на 4 дает О и в остатке 1.
-        </Typography>
+        </DescrBody>
 
         <TableContainer className={classes.desc_tablecontainer}>
           <Table className={classes.desc_table}>
@@ -152,10 +141,8 @@ function Description() {
             </TableBody>
           </Table>
         </TableContainer>
-        <Typography variant='body1'></Typography>
-        <Typography variant='body1'></Typography>
-      </AccordionDetails>
-    </Accordion>
+      </DescAccordion>
+    </Grid>
   );
 }
 
