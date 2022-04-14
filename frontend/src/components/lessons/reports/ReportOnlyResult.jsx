@@ -45,6 +45,7 @@ function ReportOnlyResult({
               <TableCell align='center'>Сдано?</TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
             {resultsList &&
               resultsList.length > 0 &&
