@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 
 function ExerciseHeader({ children, align }) {
   return (
-    <Typography variant='h4' align={align}>
+    <Typography variant='h5' align={align}>
       {children}
     </Typography>
   );

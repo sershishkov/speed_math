@@ -255,11 +255,11 @@ export class genExample__DivBySimpleNumber {
   divider;
   resultRight;
   reminderOfDivision;
-  constructor(min, max) {
+  constructor(max) {
     this.id = uuidv4();
 
-    this.divident = getRandomIntInclusive(+min, +max);
-    this.divider = getRandomIntInclusive(1, 9);
+    this.divident = getRandomIntInclusive(1111111, +max);
+    this.divider_Total = getRandomIntInclusive(2, 9);
     this.resultRight = Math.floor(this.divident / this.divider);
     this.reminderOfDivision = this.divident % this.divider;
   }
@@ -276,11 +276,18 @@ export class genExample__DivByMultipliers {
 
   constructor(max) {
     this.id = uuidv4();
+    const tempDivider_1 = getRandomIntInclusive(2, 9);
+    const tempDivider_2 = getRandomIntInclusive(2, 9);
+    if (tempDivider_1 >= tempDivider_2) {
+      this.divider_1 = tempDivider_2;
+      this.divider_2 = tempDivider_1;
+    } else {
+      this.divider_1 = tempDivider_1;
+      this.divider_2 = tempDivider_2;
+    }
 
-    this.divider_1 = getRandomIntInclusive(1, 9);
-    this.divider_2 = getRandomIntInclusive(1, 9);
     this.divider_Total = +this.divider_1 * +this.divider_2;
-    this.divident = getRandomIntInclusive(this.divider_Total, +max);
+    this.divident = getRandomIntInclusive(1111111, +max);
 
     this.resultRight = Math.floor(this.divident / this.divider_Total);
     this.reminderOfDivision = this.divident % this.divider_Total;
