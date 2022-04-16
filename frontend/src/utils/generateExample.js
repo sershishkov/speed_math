@@ -258,10 +258,10 @@ export class genExample__DivBySimpleNumber {
   constructor(max) {
     this.id = uuidv4();
 
-    this.divident = getRandomIntInclusive(1111111, +max);
+    this.divident = getRandomIntInclusive(1000000, +max);
     this.divider_Total = getRandomIntInclusive(2, 9);
-    this.resultRight = Math.floor(this.divident / this.divider);
-    this.reminderOfDivision = this.divident % this.divider;
+    this.resultRight = Math.floor(this.divident / this.divider_Total);
+    this.reminderOfDivision = this.divident % this.divider_Total;
   }
 }
 export class genExample__DivByMultipliers {
@@ -287,7 +287,7 @@ export class genExample__DivByMultipliers {
     }
 
     this.divider_Total = +this.divider_1 * +this.divider_2;
-    this.divident = getRandomIntInclusive(1111111, +max);
+    this.divident = getRandomIntInclusive(1000000, +max);
 
     this.resultRight = Math.floor(this.divident / this.divider_Total);
     this.reminderOfDivision = this.divident % this.divider_Total;

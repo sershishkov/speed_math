@@ -468,7 +468,7 @@ function ExerciseDivisionSimple({
                         tabIndex={showMiddleRow ? '15' : '1'}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
-                            console.log(e);
+                            // console.log(e);
                             if (showMiddleRow) {
                               const dividentHint =
                                 document.getElementById('dividentHintTemp2');
@@ -479,12 +479,6 @@ function ExerciseDivisionSimple({
                               dividentHint.focus();
                             }
                           }
-                          // if (e.charCode === 39) {
-                          //   console.log(e);
-                          //   const dividentHint =
-                          //     document.getElementById('userDigit_2');
-                          //   dividentHint.focus();
-                          // }
                         }}
                       />
                     </WrapForInputQuatent>

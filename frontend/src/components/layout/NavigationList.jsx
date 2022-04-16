@@ -452,7 +452,7 @@ function NavigationList({ toggleDrawer }) {
             <ListItemIcon>
               <SendIcon />
             </ListItemIcon>
-            <ListItemText primary='Деление на однозначное число' />
+            <ListItemText primary='Деление в столбик' />
           </ListItemButton>
           <ListItemButton
             sx={{ pl: 4 }}

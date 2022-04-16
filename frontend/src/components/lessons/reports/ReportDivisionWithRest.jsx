@@ -39,9 +39,9 @@ function ReportDivisionWithRest({
       <TableContainer component={Paper}>
         <Table
           sx={{
-            width: '70%',
+            width: 'max-content',
             margin: 'auto',
-            minWidth: '550px',
+            // minWidth: '550px',
           }}
           align='center'
           aria-label='simple table'
@@ -56,29 +56,24 @@ function ReportDivisionWithRest({
 
               <TableCell>
                 <Typography variant='h6' align='center'>
-                  решение ваше
+                  Чей ответ?
                 </Typography>
               </TableCell>
               <TableCell>
                 <Typography variant='h6' align='center'>
-                  Комп
-                </Typography>
-              </TableCell>
-
-              <TableCell>
-                <Typography variant='h6' align='center'>
-                  остаток ваше
-                </Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant='h6' align='center'>
-                  Комп
+                  Пример
                 </Typography>
               </TableCell>
 
               <TableCell>
                 <Typography variant='h6' align='center'>
-                  Сдан пример
+                  Остаток
+                </Typography>
+              </TableCell>
+
+              <TableCell>
+                <Typography variant='h6' align='center'>
+                  Сдано?
                 </Typography>
               </TableCell>
             </TableRow>
@@ -95,43 +90,64 @@ function ReportDivisionWithRest({
                   </TableCell>
 
                   <TableCell>
-                    <Typography
-                      variant='h6'
-                      align='center'
-                      color={
-                        item.userResult - item.resultRight === 0
-                          ? 'success.main'
-                          : 'error.main'
-                      }
-                    >
-                      {item.userResult}
-                    </Typography>
+                    <Grid container flexDirection='column' alignItems='center'>
+                      <Grid item>
+                        <Typography variant='h6' align='center'>
+                          Ваш
+                        </Typography>
+                      </Grid>
+                      <Grid item>
+                        <Typography variant='h6' align='center'>
+                          Комп
+                        </Typography>
+                      </Grid>
+                    </Grid>
                   </TableCell>
 
                   <TableCell>
-                    <Typography variant='h6' align='center'>
-                      {item.resultRight}
-                    </Typography>
+                    <Grid container flexDirection='column' alignItems='center'>
+                      <Grid item>
+                        <Typography
+                          variant='h6'
+                          align='center'
+                          color={
+                            item.userResult - item.resultRight === 0
+                              ? 'success.main'
+                              : 'error.main'
+                          }
+                        >
+                          {item.userResult}
+                        </Typography>
+                      </Grid>
+                      <Grid item>
+                        <Typography variant='h6' align='center'>
+                          {item.resultRight}
+                        </Typography>
+                      </Grid>
+                    </Grid>
                   </TableCell>
 
                   <TableCell>
-                    <Typography
-                      variant='h6'
-                      align='center'
-                      color={
-                        item.userAnswerRem - item.reminderOfDivision === 0
-                          ? 'success.main'
-                          : 'error.main'
-                      }
-                    >
-                      {item.userAnswerRem}
-                    </Typography>
-                  </TableCell>
-
-                  <TableCell>
-                    <Typography variant='h6' align='center'>
-                      {item.reminderOfDivision}
-                    </Typography>
+                    <Grid container flexDirection='column' alignItems='center'>
+                      <Grid item>
+                        <Typography
+                          variant='h6'
+                          align='center'
+                          color={
+                            item.userAnswerRem - item.reminderOfDivision === 0
+                              ? 'success.main'
+                              : 'error.main'
+                          }
+                        >
+                          {item.userAnswerRem}
+                        </Typography>
+                      </Grid>
+                      <Grid item>
+                        <Typography variant='h6' align='center'>
+                          {item.reminderOfDivision}
+                        </Typography>
+                      </Grid>
+                    </Grid>
                   </TableCell>
 
                   <TableCell>
@@ -148,7 +164,7 @@ function ReportDivisionWithRest({
           </TableBody>
           <TableFooter>
             <TableRow>
-              <TableCell colSpan={6}>
+              <TableCell colSpan={5}>
                 <Grid
                   container
                   alignItems='center'
