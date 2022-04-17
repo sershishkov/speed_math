@@ -27,6 +27,7 @@ function NavigationList({ toggleDrawer }) {
   const [openLevel_4, set__openLevel_4] = useState(false);
   const [openLevel_5, set__openLevel_5] = useState(false);
   const [openLevel_6, set__openLevel_6] = useState(false);
+  const [openLevel_7, set__openLevel_7] = useState(false);
 
   const onLogout = () => {
     dispatch(logout());
@@ -464,6 +465,125 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Деление по множителям' />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <ListItemButton onClick={() => set__openLevel_7(!openLevel_7)}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary='Уровень№ 7' />
+        {openLevel_7 ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={openLevel_7} timeout='auto' unmountOnExit>
+        <List disablePadding>
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_7/myltiply-by-11'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение на 11' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_7/myltiply-by-12'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение на 12' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_7/myltiply-by-6'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение на 6' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_7/myltiply-by-7'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение на 7' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_7/myltiply-by-5'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение на 5' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_7/myltiply-by-9'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение на 9' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_7/myltiply-by-8'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение на 8' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_7/myltiply-by-4'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение на 4' />
+          </ListItemButton>
+
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_7/myltiply-by-3'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение на 3' />
           </ListItemButton>
         </List>
       </Collapse>

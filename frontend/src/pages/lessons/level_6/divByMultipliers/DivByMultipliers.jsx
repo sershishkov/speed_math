@@ -218,7 +218,7 @@ function DivByMultipliers() {
     <Grid container direction='column'>
       <Header
         hrefPrev='/lessons/level_6/division-by-single-number'
-        hrefNext='/lessons/level_6/division-by-multipliers'
+        hrefNext='/lessons/level_7/myltiply-by-11'
         time={time}
         title='Деление в столбик по множителям'
       />

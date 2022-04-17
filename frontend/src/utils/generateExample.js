@@ -293,3 +293,18 @@ export class genExample__DivByMultipliers {
     this.reminderOfDivision = this.divident % this.divider_Total;
   }
 }
+
+export class generateExample__MultBy {
+  id;
+  numberLeft;
+  numberRight;
+  resultMult;
+  constructor(min, max, numberRight) {
+    this.id = uuidv4();
+
+    this.numberLeft = getRandomIntInclusive(+min, +max);
+    this.numberRight = +numberRight;
+
+    this.resultMult = +this.numberLeft * +this.numberRight;
+  }
+}
