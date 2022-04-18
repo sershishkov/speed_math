@@ -10,27 +10,53 @@ import {
 import { operators } from '../../../../utils/constants';
 import Header from '../../../../components/lessons/header/Header';
 import Settings from '../../../../components/lessons/settings/Settings';
-import ExerciseSimple from '../../../../components/lessons/exercises/ExerciseSimple';
+import ExerciseMultBy from '../../../../components/lessons/exercises/ExerciseMultBy';
 import ReportOnlyResult from '../../../../components/lessons/reports/ReportOnlyResult';
 import Description1 from './Description1';
 import Grid from '@mui/material/Grid';
+const initialStateUserAnswers = {
+  userDigit_1: '',
+  userDigit_2: '',
+  userDigit_3: '',
+  userDigit_4: '',
+  userDigit_5: '',
+  userDigit_6: '',
+  userDigit_7: '',
+};
 
 function MultiplyBy12() {
   const numberRight = 12;
-  const [min, set__min] = useState(100);
-  const [max, set__max] = useState(9999);
+  const [min, set__min] = useState(10000);
+  const [max, set__max] = useState(99999);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
-  const [userAnswer, set__userAnswer] = useState('');
+  const [userAnswers, set__userAnswers] = useState(initialStateUserAnswers);
   const [displayExample, set__displayExample] = useState(false);
   const [displaySettings, set__displaySettings] = useState(true);
   const [displayStatistics, set__displayStatistics] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
   const [resultsList, set__resultsList] = useState([]);
 
+  const {
+    userDigit_1,
+    userDigit_2,
+    userDigit_3,
+    userDigit_4,
+    userDigit_5,
+    userDigit_6,
+    userDigit_7,
+  } = userAnswers;
+
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { time, start, pause, reset } = useTimer();
+
+  const onChangeUserAnswers = (e) => {
+    set__userAnswers({
+      ...userAnswers,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const onStart = () => {
     set__displayExample(true);
@@ -46,7 +72,7 @@ function MultiplyBy12() {
     set__displayStatistics(false);
     set_numberOf_Task(0);
     set__resultsList([]);
-    set__userAnswer('');
+    set__userAnswers(initialStateUserAnswers);
   };
 
   const nextTask = () => {
@@ -64,10 +90,13 @@ function MultiplyBy12() {
     set_numberOf_Task(0);
     set__displaySettings(true);
     set__resultsList([]);
-    set__userAnswer('');
+    set__userAnswers(initialStateUserAnswers);
   };
 
   const onAnswer = () => {
+    const userAnswer = Number(
+      `${userDigit_1}${userDigit_2}${userDigit_3}${userDigit_4}${userDigit_5}${userDigit_6}${userDigit_7}`
+    );
     const obj = {
       example: `${example.numberLeft} ${operators[2]} ${example.numberRight}`,
       userAnswer,
@@ -76,11 +105,11 @@ function MultiplyBy12() {
     };
     set__resultsList((prevState) => [...prevState, obj]);
 
-    set__userAnswer('');
+    set__userAnswers(initialStateUserAnswers);
 
     if (numberOf_Task < examplesNumber) {
       nextTask();
-      const userAnswerInput = document.getElementById('userAnswer');
+      const userAnswerInput = document.getElementById('userDigit_7');
       userAnswerInput.focus();
     } else {
       set__displayExample(false);
@@ -111,7 +140,7 @@ function MultiplyBy12() {
     set_numberOf_Task(0);
     set__displaySettings(true);
     set__resultsList([]);
-    set__userAnswer('');
+    set__userAnswers(initialStateUserAnswers);
   };
 
   return (
@@ -123,7 +152,6 @@ function MultiplyBy12() {
         title='Умножение на 12'
       />
       <Description1 />
-
       <Settings
         onChangeExamplesNumber={(e) => set__examplesNumber(e.target.value)}
         onChangeMin={(e) => set__min(e.target.value)}
@@ -140,17 +168,21 @@ function MultiplyBy12() {
         // onChangeShowHints={onChangeShowHints}
       />
 
-      <ExerciseSimple
-        onStopExercise={onStopExercise}
-        onChangeUserAnswer={(e) => set__userAnswer(e.target.value)}
-        onAnswer={onAnswer}
-        example={example}
-        operator={operators[2]}
-        userAnswer={userAnswer}
-        numberOf_Task={numberOf_Task}
+      <ExerciseMultBy
         displayExample={displayExample}
+        onStopExercise={onStopExercise}
+        example={example}
+        onAnswer={onAnswer}
+        onChangeUserAnswers={onChangeUserAnswers}
+        numberOf_Task={numberOf_Task}
+        userDigit_1={userDigit_1}
+        userDigit_2={userDigit_2}
+        userDigit_3={userDigit_3}
+        userDigit_4={userDigit_4}
+        userDigit_5={userDigit_5}
+        userDigit_6={userDigit_6}
+        userDigit_7={userDigit_7}
       />
-
       <ReportOnlyResult
         onSaveResults={onSaveResults}
         onContinue={onContinue}
