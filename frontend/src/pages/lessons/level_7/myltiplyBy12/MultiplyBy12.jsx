@@ -123,6 +123,7 @@ function MultiplyBy12() {
         title='Умножение на 12'
       />
       <Description1 />
+
       <Settings
         onChangeExamplesNumber={(e) => set__examplesNumber(e.target.value)}
         onChangeMin={(e) => set__min(e.target.value)}

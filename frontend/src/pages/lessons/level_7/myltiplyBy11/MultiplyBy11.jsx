@@ -13,6 +13,7 @@ import Settings from '../../../../components/lessons/settings/Settings';
 import ExerciseSimple from '../../../../components/lessons/exercises/ExerciseSimple';
 import ReportOnlyResult from '../../../../components/lessons/reports/ReportOnlyResult';
 import Description1 from './Description1';
+import Description2 from './Description2';
 import Grid from '@mui/material/Grid';
 
 function MultiplyBy11() {
@@ -123,6 +124,8 @@ function MultiplyBy11() {
         title='Умножение на 11'
       />
       <Description1 />
+      <Description2 />
+
       <Settings
         onChangeExamplesNumber={(e) => set__examplesNumber(e.target.value)}
         onChangeMin={(e) => set__min(e.target.value)}
