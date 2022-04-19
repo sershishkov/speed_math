@@ -22,7 +22,7 @@ function InputDividentHint({
       onKeyPress={onKeyPress}
       inputProps={{
         // maxLength: 1,
-        tabindex: tabIndex,
+        tabIndex: tabIndex,
       }}
       onInput={(e) => {
         e.target.value = Math.max(0, parseInt(e.target.value))

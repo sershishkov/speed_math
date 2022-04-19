@@ -159,7 +159,11 @@ function ExerciseDivisionSimple({
                             name={`dividentHint${index + 1}`}
                             id={`dividentHint${index + 1}`}
                             display={index === 0 ? 'none' : 'block'}
-                            value={arrDividentHints[index]}
+                            value={
+                              arrDividentHints && arrDividentHints[index]
+                                ? arrDividentHints[index]
+                                : ''
+                            }
                             onChange={onChangeUserAnswers}
                             onKeyPress={(e) => {
                               if (e.key === 'Enter') {
@@ -176,7 +180,7 @@ function ExerciseDivisionSimple({
                                 }
                               }
                             }}
-                            tabIndex={`${index * 2}`}
+                            tabIndex={index * 2}
                           />
 
                           <DividentDigit>{`${item}`}</DividentDigit>
@@ -225,9 +229,9 @@ function ExerciseDivisionSimple({
                       <InputDigitDivisionQuotient
                         name='tempUserDigit_1'
                         id='tempUserDigit_1'
-                        value={tempUserDigit_1}
+                        value={tempUserDigit_1 ? tempUserDigit_1 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex='1'
+                        tabIndex={1}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             const dividentHint =
@@ -242,7 +246,7 @@ function ExerciseDivisionSimple({
                         name='dividentHintTemp2'
                         id='dividentHintTemp2'
                         top='-1rem'
-                        value={dividentHintTemp2}
+                        value={dividentHintTemp2 ? dividentHintTemp2 : ''}
                         onChange={onChangeUserAnswers}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
@@ -251,15 +255,15 @@ function ExerciseDivisionSimple({
                             userDigit.focus();
                           }
                         }}
-                        tabIndex='16'
+                        tabIndex={16}
                       />
 
                       <InputDigitDivisionQuotient
                         name='tempUserDigit_2'
                         id='tempUserDigit_2'
-                        value={tempUserDigit_2}
+                        value={tempUserDigit_2 ? tempUserDigit_2 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex='3'
+                        tabIndex={3}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             const dividentHint =
@@ -274,7 +278,7 @@ function ExerciseDivisionSimple({
                         name='dividentHintTemp3'
                         id='dividentHintTemp3'
                         top='-1rem'
-                        value={dividentHintTemp3}
+                        value={dividentHintTemp3 ? dividentHintTemp3 : ''}
                         onChange={onChangeUserAnswers}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
@@ -283,14 +287,14 @@ function ExerciseDivisionSimple({
                             userDigit.focus();
                           }
                         }}
-                        tabIndex='18'
+                        tabIndex={18}
                       />
                       <InputDigitDivisionQuotient
                         name='tempUserDigit_3'
                         id='tempUserDigit_3'
-                        value={tempUserDigit_3}
+                        value={tempUserDigit_3 ? tempUserDigit_3 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex='5'
+                        tabIndex={5}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             const dividentHint =
@@ -305,7 +309,7 @@ function ExerciseDivisionSimple({
                         name='dividentHintTemp4'
                         id='dividentHintTemp4'
                         top='-1rem'
-                        value={dividentHintTemp4}
+                        value={dividentHintTemp4 ? dividentHintTemp4 : ''}
                         onChange={onChangeUserAnswers}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
@@ -314,14 +318,14 @@ function ExerciseDivisionSimple({
                             userDigit.focus();
                           }
                         }}
-                        tabIndex='20'
+                        tabIndex={20}
                       />
                       <InputDigitDivisionQuotient
                         name='tempUserDigit_4'
                         id='tempUserDigit_4'
-                        value={tempUserDigit_4}
+                        value={tempUserDigit_4 ? tempUserDigit_4 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex='7'
+                        tabIndex={7}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             const dividentHint =
@@ -336,7 +340,7 @@ function ExerciseDivisionSimple({
                         name='dividentHintTemp5'
                         id='dividentHintTemp5'
                         top='-1rem'
-                        value={dividentHintTemp5}
+                        value={dividentHintTemp5 ? dividentHintTemp5 : ''}
                         onChange={onChangeUserAnswers}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
@@ -345,14 +349,14 @@ function ExerciseDivisionSimple({
                             userDigit.focus();
                           }
                         }}
-                        tabIndex='22'
+                        tabIndex={22}
                       />
                       <InputDigitDivisionQuotient
                         name='tempUserDigit_5'
                         id='tempUserDigit_5'
-                        value={tempUserDigit_5}
+                        value={tempUserDigit_5 ? tempUserDigit_5 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex='9'
+                        tabIndex={9}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             const dividentHint =
@@ -367,7 +371,7 @@ function ExerciseDivisionSimple({
                         name='dividentHintTemp6'
                         id='dividentHintTemp6'
                         top='-1rem'
-                        value={dividentHintTemp6}
+                        value={dividentHintTemp6 ? dividentHintTemp6 : ''}
                         onChange={onChangeUserAnswers}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
@@ -376,14 +380,14 @@ function ExerciseDivisionSimple({
                             userDigit.focus();
                           }
                         }}
-                        tabIndex='24'
+                        tabIndex={24}
                       />
                       <InputDigitDivisionQuotient
                         name='tempUserDigit_6'
                         id='tempUserDigit_6'
-                        value={tempUserDigit_6}
+                        value={tempUserDigit_6 ? tempUserDigit_6 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex='11'
+                        tabIndex={11}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             const dividentHint =
@@ -398,7 +402,7 @@ function ExerciseDivisionSimple({
                         name='dividentHintTemp7'
                         id='dividentHintTemp7'
                         top='-1rem'
-                        value={dividentHintTemp7}
+                        value={dividentHintTemp7 ? dividentHintTemp7 : ''}
                         onChange={onChangeUserAnswers}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
@@ -407,15 +411,15 @@ function ExerciseDivisionSimple({
                             userDigit.focus();
                           }
                         }}
-                        tabIndex='26'
+                        tabIndex={26}
                       />
 
                       <InputDigitDivisionQuotient
                         name='tempUserDigit_7'
                         id='tempUserDigit_7'
-                        value={tempUserDigit_7}
+                        value={tempUserDigit_7 ? tempUserDigit_7 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex='13'
+                        tabIndex={13}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             const userAnswerRem_Input =
@@ -435,8 +439,8 @@ function ExerciseDivisionSimple({
                   <InputNumberDivisionRem
                     name='tempAnswerRem_1'
                     id='tempAnswerRem_1'
-                    tabIndex='14'
-                    value={tempAnswerRem_1}
+                    tabIndex={14}
+                    value={tempAnswerRem_1 ? tempAnswerRem_1 : ''}
                     display={true}
                     onChange={onChangeUserAnswers}
                     onKeyPress={(e) => {
@@ -463,9 +467,9 @@ function ExerciseDivisionSimple({
                       <InputDigitDivisionQuotient
                         name='userDigit_1'
                         id='userDigit_1'
-                        value={userDigit_1}
+                        value={userDigit_1 ? userDigit_1 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex={showMiddleRow ? '15' : '1'}
+                        tabIndex={showMiddleRow ? 15 : 1}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             // console.log(e);
@@ -487,9 +491,9 @@ function ExerciseDivisionSimple({
                       <InputDigitDivisionQuotient
                         name='userDigit_2'
                         id='userDigit_2'
-                        value={userDigit_2}
+                        value={userDigit_2 ? userDigit_2 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex={showMiddleRow ? '17' : '3'}
+                        tabIndex={showMiddleRow ? 17 : 3}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             if (showMiddleRow) {
@@ -510,9 +514,9 @@ function ExerciseDivisionSimple({
                       <InputDigitDivisionQuotient
                         name='userDigit_3'
                         id='userDigit_3'
-                        value={userDigit_3}
+                        value={userDigit_3 ? userDigit_3 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex={showMiddleRow ? '19' : '5'}
+                        tabIndex={showMiddleRow ? 19 : 5}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             if (showMiddleRow) {
@@ -533,9 +537,9 @@ function ExerciseDivisionSimple({
                       <InputDigitDivisionQuotient
                         name='userDigit_4'
                         id='userDigit_4'
-                        value={userDigit_4}
+                        value={userDigit_4 ? userDigit_4 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex={showMiddleRow ? '21' : '7'}
+                        tabIndex={showMiddleRow ? 21 : 7}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             if (showMiddleRow) {
@@ -556,9 +560,9 @@ function ExerciseDivisionSimple({
                       <InputDigitDivisionQuotient
                         name='userDigit_5'
                         id='userDigit_5'
-                        value={userDigit_5}
+                        value={userDigit_5 ? userDigit_5 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex={showMiddleRow ? '23' : '9'}
+                        tabIndex={showMiddleRow ? 23 : 9}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             if (showMiddleRow) {
@@ -579,9 +583,9 @@ function ExerciseDivisionSimple({
                       <InputDigitDivisionQuotient
                         name='userDigit_6'
                         id='userDigit_6'
-                        value={userDigit_6}
+                        value={userDigit_6 ? userDigit_6 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex={showMiddleRow ? '25' : '11'}
+                        tabIndex={showMiddleRow ? 25 : 11}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             if (showMiddleRow) {
@@ -601,9 +605,9 @@ function ExerciseDivisionSimple({
                       <InputDigitDivisionQuotient
                         name='userDigit_7'
                         id='userDigit_7'
-                        value={userDigit_7}
+                        value={userDigit_7 ? userDigit_7 : ''}
                         onChange={onChangeUserAnswers}
-                        tabIndex={showMiddleRow ? '27' : '13'}
+                        tabIndex={showMiddleRow ? 27 : 13}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             if (showMiddleRow) {
@@ -629,8 +633,8 @@ function ExerciseDivisionSimple({
                   <InputNumberDivisionRem
                     name='tempAnswerRem_2'
                     id='tempAnswerRem_2'
-                    tabIndex='28'
-                    value={tempAnswerRem_2}
+                    tabIndex={28}
+                    value={tempAnswerRem_2 ? tempAnswerRem_2 : ''}
                     onChange={onChangeUserAnswers}
                     display={showMiddleRow}
                     onKeyPress={(e) => {
@@ -660,8 +664,8 @@ function ExerciseDivisionSimple({
                   <InputNumberDivisionRem
                     name='userAnswerRem'
                     id='userAnswerRem'
-                    tabIndex={showMiddleRow ? '29' : '14'}
-                    value={userAnswerRem}
+                    tabIndex={showMiddleRow ? 29 : 14}
+                    value={userAnswerRem ? userAnswerRem : ''}
                     display={true}
                     onChange={onChangeUserAnswers}
                     onKeyPress={(e) => {
@@ -682,7 +686,7 @@ function ExerciseDivisionSimple({
                     id='answerButton'
                     variant='contained'
                     onClick={onAnswer}
-                    tabIndex={showMiddleRow ? '30' : '15'}
+                    tabIndex={showMiddleRow ? 30 : 15}
                     disabled={
                       `${userDigit_1}${userDigit_2}${userDigit_3}${userDigit_4}${userDigit_5}${userDigit_6}${userDigit_7}`
                         .length < 1

@@ -92,7 +92,7 @@ function ExerciseColumnAdding({
               id='userDigit_1'
               value={userDigit_1}
               onChange={onChangeUserAnswers}
-              tabIndex='7'
+              tabIndex={7}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const answerButton = document.getElementById('answerButton');
@@ -107,7 +107,7 @@ function ExerciseColumnAdding({
               id='userDigit_2'
               value={userDigit_2}
               onChange={onChangeUserAnswers}
-              tabIndex='6'
+              tabIndex={6}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit_1_Input =
@@ -123,7 +123,7 @@ function ExerciseColumnAdding({
               id='userDigit_3'
               value={userDigit_3}
               onChange={onChangeUserAnswers}
-              tabIndex='5'
+              tabIndex={5}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit_2_Input =
@@ -139,7 +139,7 @@ function ExerciseColumnAdding({
               id='userDigit_4'
               value={userDigit_4}
               onChange={onChangeUserAnswers}
-              tabIndex='4'
+              tabIndex={4}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit_3_Input =
@@ -155,7 +155,7 @@ function ExerciseColumnAdding({
               id='userDigit_5'
               value={userDigit_5}
               onChange={onChangeUserAnswers}
-              tabIndex='3'
+              tabIndex={3}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit_4_Input =
@@ -171,7 +171,7 @@ function ExerciseColumnAdding({
               id='userDigit_6'
               value={userDigit_6}
               onChange={onChangeUserAnswers}
-              tabIndex='2'
+              tabIndex={2}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit_5_Input =
@@ -187,7 +187,7 @@ function ExerciseColumnAdding({
               id='userDigit_7'
               value={userDigit_7}
               onChange={onChangeUserAnswers}
-              tabIndex='1'
+              tabIndex={1}
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit_6_Input =
