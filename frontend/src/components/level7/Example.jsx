@@ -10,7 +10,7 @@ function Example({ listNumbersLeft, numberRight, listNumbersResult, comment }) {
         width: 'max-content',
         margin: '1rem auto',
         display: 'grid',
-        gridTemplateColumns: '1fr 1.5rem 250px',
+        gridTemplateColumns: '220px 1rem 1rem',
       }}
     >
       <Box sx={{ borderBottom: '2px solid black' }}>
@@ -27,7 +27,15 @@ function Example({ listNumbersLeft, numberRight, listNumbersResult, comment }) {
         <NumbersList numbersList={listNumbersResult} />
       </Box>
       <Typography></Typography>
-      <Typography variant='subtitle2'>{comment}</Typography>
+      <Typography variant='subtitle2'></Typography>
+      <Typography
+        variant='subtitle2'
+        sx={{
+          gridColumn: '1 / 3',
+        }}
+      >
+        {comment}
+      </Typography>
     </Box>
   );
 }
