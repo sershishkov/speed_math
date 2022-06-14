@@ -1,6 +1,6 @@
 import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getMe } from './features/auth/authSlice';
 
 import { ToastContainer } from 'react-toastify';
@@ -10,9 +10,14 @@ import Footer from './components/layout/Footer';
 import Landing from './pages/lessons/landing/Landing';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import Container from '@mui/material/Container';
 import CircularProgress from '@mui/material/CircularProgress';
+import { ThemeProvider } from '@mui/material/styles';
+
+import theme_dark from './mui_theme/theme_dark';
+import theme_light from './mui_theme/theme_light';
 
 const SimpleAddition = React.lazy(() =>
   import('./pages/lessons/level_1/SimpleAddition')
@@ -138,165 +143,178 @@ function App() {
       dispatch(getMe());
     }
   }, [dispatch]);
+
+  const theme_state = useSelector((state) => state.theme_state.is_dark_mode);
+
   return (
     <>
-      <Router>
-        <Header />
-        <Container
-          sx={{
-            mt: '68px',
-            minWidth: '360px',
-            maxWidth: '900px',
-            // border: '1px solid red',
-          }}
-        >
-          <Suspense fallback={<CircularProgress color='secondary' />}>
-            <Routes>
-              <Route path='/' element={<Landing />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
+      <ThemeProvider theme={theme_state ? theme_dark : theme_light}>
+        <Router>
+          <CssBaseline />
+          <Header />
+          <Container
+            sx={{
+              flexGrow: 1,
+              mt: '68px',
+              minWidth: '360px',
+              maxWidth: '900px',
+              // border: '1px solid red',
+            }}
+          >
+            <Suspense fallback={<CircularProgress color='secondary' />}>
+              <Routes>
+                <Route path='/' element={<Landing />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
 
-              <Route
-                path='/lessons/level_1/simple-addition'
-                element={<SimpleAddition />}
-              />
-              <Route
-                path='/lessons/level_1/simple-division'
-                element={<SimpleDivision />}
-              />
-              <Route
-                path='/lessons/level_1/simple-multiplication'
-                element={<SimpleMultiplication />}
-              />
+                <Route
+                  path='/lessons/level_1/simple-addition'
+                  element={<SimpleAddition />}
+                />
+                <Route
+                  path='/lessons/level_1/simple-division'
+                  element={<SimpleDivision />}
+                />
+                <Route
+                  path='/lessons/level_1/simple-multiplication'
+                  element={<SimpleMultiplication />}
+                />
 
-              <Route
-                path='/lessons/level_1/simple-subtraction'
-                element={<SimpleSubtraction />}
-              />
-              <Route
-                path='/lessons/level_2/mult-close-to-100'
-                element={<MultCloseTo100 />}
-              />
-              <Route
-                path='/lessons/level_2/ref-number-10'
-                element={<ReferenceNumber10 />}
-              />
-              <Route
-                path='/lessons/level_2/ref-number-20'
-                element={<ReferenceNumber20 />}
-              />
-              <Route
-                path='/lessons/level_2/ref-number-100-above'
-                element={<ReferenceNumber100Above />}
-              />
-              <Route
-                path='/lessons/level_2/ref-number-100-below'
-                element={<ReferenceNumber100Below />}
-              />
-              <Route
-                path='/lessons/level_2/ref-number-100-mix'
-                element={<ReferenceNumber100Mix />}
-              />
-              <Route
-                path='/lessons/level_2/checking-answers'
-                element={<CheckingAnswers />}
-              />
-              <Route
-                path='/lessons/level_3/ref-number-20'
-                element={<RefNumber20 />}
-              />
-              <Route
-                path='/lessons/level_3/ref-number-50'
-                element={<RefNumber50 />}
-              />
-              <Route
-                path='/lessons/level_3/ref-number-200'
-                element={<RefNumber200 />}
-              />
-              <Route
-                path='/lessons/level_3/ref-number-500'
-                element={<RefNumber500 />}
-              />
-              <Route path='/lessons/level_3/decimals' element={<Decimals />} />
-              <Route
-                path='/lessons/level_3/two-ref-numbers'
-                element={<TwoRefNumbers />}
-              />
-              <Route path='/lessons/level_4/addition' element={<Addition />} />
-              <Route
-                path='/lessons/level_4/substruction'
-                element={<Substruction />}
-              />
-              <Route
-                path='/lessons/level_5/squaring-ending-5'
-                element={<SquaringEnding5 />}
-              />
-              <Route
-                path='/lessons/level_5/squaring-close-to-50'
-                element={<SquaringClose50 />}
-              />
-              <Route
-                path='/lessons/level_5/squaring-close-to-500'
-                element={<SquaringClose500 />}
-              />
-              <Route
-                path='/lessons/level_5/squaring-ending-1'
-                element={<SquaringEnding1 />}
-              />
-              <Route
-                path='/lessons/level_5/squaring-ending-9'
-                element={<SquaringEnding9 />}
-              />
-              <Route
-                path='/lessons/level_6/division-by-single-number'
-                element={<DivBySingleNumber />}
-              />
-              <Route
-                path='/lessons/level_6/division-by-multipliers'
-                element={<DivByMultipliers />}
-              />
-              <Route
-                path='/lessons/level_7/myltiply-by-11'
-                element={<MultiplyBy11 />}
-              />
-              <Route
-                path='/lessons/level_7/myltiply-by-12'
-                element={<MultiplyBy12 />}
-              />
-              <Route
-                path='/lessons/level_7/myltiply-by-3'
-                element={<MultiplyBy3 />}
-              />
-              <Route
-                path='/lessons/level_7/myltiply-by-4'
-                element={<MultiplyBy4 />}
-              />
-              <Route
-                path='/lessons/level_7/myltiply-by-5'
-                element={<MultiplyBy5 />}
-              />
-              <Route
-                path='/lessons/level_7/myltiply-by-6'
-                element={<MultiplyBy6 />}
-              />
-              <Route
-                path='/lessons/level_7/myltiply-by-7'
-                element={<MultiplyBy7 />}
-              />
-              <Route
-                path='/lessons/level_7/myltiply-by-8'
-                element={<MultiplyBy8 />}
-              />
-              <Route
-                path='/lessons/level_7/myltiply-by-9'
-                element={<MultiplyBy9 />}
-              />
-            </Routes>
-          </Suspense>
-          <Footer />
-        </Container>
-      </Router>
-      <ToastContainer />
+                <Route
+                  path='/lessons/level_1/simple-subtraction'
+                  element={<SimpleSubtraction />}
+                />
+                <Route
+                  path='/lessons/level_2/mult-close-to-100'
+                  element={<MultCloseTo100 />}
+                />
+                <Route
+                  path='/lessons/level_2/ref-number-10'
+                  element={<ReferenceNumber10 />}
+                />
+                <Route
+                  path='/lessons/level_2/ref-number-20'
+                  element={<ReferenceNumber20 />}
+                />
+                <Route
+                  path='/lessons/level_2/ref-number-100-above'
+                  element={<ReferenceNumber100Above />}
+                />
+                <Route
+                  path='/lessons/level_2/ref-number-100-below'
+                  element={<ReferenceNumber100Below />}
+                />
+                <Route
+                  path='/lessons/level_2/ref-number-100-mix'
+                  element={<ReferenceNumber100Mix />}
+                />
+                <Route
+                  path='/lessons/level_2/checking-answers'
+                  element={<CheckingAnswers />}
+                />
+                <Route
+                  path='/lessons/level_3/ref-number-20'
+                  element={<RefNumber20 />}
+                />
+                <Route
+                  path='/lessons/level_3/ref-number-50'
+                  element={<RefNumber50 />}
+                />
+                <Route
+                  path='/lessons/level_3/ref-number-200'
+                  element={<RefNumber200 />}
+                />
+                <Route
+                  path='/lessons/level_3/ref-number-500'
+                  element={<RefNumber500 />}
+                />
+                <Route
+                  path='/lessons/level_3/decimals'
+                  element={<Decimals />}
+                />
+                <Route
+                  path='/lessons/level_3/two-ref-numbers'
+                  element={<TwoRefNumbers />}
+                />
+                <Route
+                  path='/lessons/level_4/addition'
+                  element={<Addition />}
+                />
+                <Route
+                  path='/lessons/level_4/substruction'
+                  element={<Substruction />}
+                />
+                <Route
+                  path='/lessons/level_5/squaring-ending-5'
+                  element={<SquaringEnding5 />}
+                />
+                <Route
+                  path='/lessons/level_5/squaring-close-to-50'
+                  element={<SquaringClose50 />}
+                />
+                <Route
+                  path='/lessons/level_5/squaring-close-to-500'
+                  element={<SquaringClose500 />}
+                />
+                <Route
+                  path='/lessons/level_5/squaring-ending-1'
+                  element={<SquaringEnding1 />}
+                />
+                <Route
+                  path='/lessons/level_5/squaring-ending-9'
+                  element={<SquaringEnding9 />}
+                />
+                <Route
+                  path='/lessons/level_6/division-by-single-number'
+                  element={<DivBySingleNumber />}
+                />
+                <Route
+                  path='/lessons/level_6/division-by-multipliers'
+                  element={<DivByMultipliers />}
+                />
+                <Route
+                  path='/lessons/level_7/myltiply-by-11'
+                  element={<MultiplyBy11 />}
+                />
+                <Route
+                  path='/lessons/level_7/myltiply-by-12'
+                  element={<MultiplyBy12 />}
+                />
+                <Route
+                  path='/lessons/level_7/myltiply-by-3'
+                  element={<MultiplyBy3 />}
+                />
+                <Route
+                  path='/lessons/level_7/myltiply-by-4'
+                  element={<MultiplyBy4 />}
+                />
+                <Route
+                  path='/lessons/level_7/myltiply-by-5'
+                  element={<MultiplyBy5 />}
+                />
+                <Route
+                  path='/lessons/level_7/myltiply-by-6'
+                  element={<MultiplyBy6 />}
+                />
+                <Route
+                  path='/lessons/level_7/myltiply-by-7'
+                  element={<MultiplyBy7 />}
+                />
+                <Route
+                  path='/lessons/level_7/myltiply-by-8'
+                  element={<MultiplyBy8 />}
+                />
+                <Route
+                  path='/lessons/level_7/myltiply-by-9'
+                  element={<MultiplyBy9 />}
+                />
+              </Routes>
+            </Suspense>
+            <Footer />
+          </Container>
+        </Router>
+        <ToastContainer />
+      </ThemeProvider>
     </>
   );
 }
