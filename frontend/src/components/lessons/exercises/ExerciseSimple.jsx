@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Grid from '@mui/material/Grid';
 import ButtonStop from '../../ui/buttons/ButtonStop';
 import ButtonOk from '../../ui/buttons/ButtonOk';
@@ -25,6 +27,9 @@ function ExerciseSimple({
     }
   }, [displayExample]);
 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
   return (
     <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
       <Grid container flexDirection='column'>
@@ -37,7 +42,11 @@ function ExerciseSimple({
           </ExerciseHeader>
         </Grid>
         <Grid item>
-          <Grid container alignItems='center'>
+          <Grid
+            container
+            alignItems='center'
+            direction={matches ? 'row' : 'column'}
+          >
             <Grid item sx={{ flex: 1 }}>
               <DescrCellMain align='center'>
                 {example ? example.numberLeft : ''}

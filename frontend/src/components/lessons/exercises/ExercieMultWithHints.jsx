@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -38,6 +40,9 @@ function ExercieMultWithHints({
       userAnswer__input.focus();
     }
   }, [displayExample]);
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
       <Grid item sx={{ flex: 1, padding: '10px' }}>
@@ -58,13 +63,17 @@ function ExercieMultWithHints({
           }
         >
           <Table align='center' aria-label='simple table'>
-            <TableBody>
+            <TableBody sx={{}}>
               <TableRow
                 sx={{
                   display: showHints && showPlusHints ? 'table-row' : 'none',
                 }}
               >
-                <TableCell sx={{ pr: 0 }}>
+                <TableCell
+                  sx={{
+                    pr: 0,
+                  }}
+                >
                   <DescrCellMain align='right'>+</DescrCellMain>
                 </TableCell>
                 <TableCell>
@@ -109,10 +118,14 @@ function ExercieMultWithHints({
                     {example ? example.numberRight : ''}
                   </DescrCellMain>
                 </TableCell>
-                <TableCell>
+                <TableCell
+                  sx={{
+                    display: matches ? 'table-cell' : 'none',
+                  }}
+                >
                   <DescrCellMain align='center'>{operators[4]}</DescrCellMain>
                 </TableCell>
-                <TableCell>
+                <TableCell sx={{ display: matches ? 'table-cell' : 'none' }}>
                   <InputUserAnswerSimple
                     name='userAnswer'
                     label='Ответ'
@@ -167,6 +180,25 @@ function ExercieMultWithHints({
                 </TableCell>
                 <TableCell>
                   <DescrCellMain align='center'></DescrCellMain>
+                </TableCell>
+              </TableRow>
+              <TableRow sx={{ pr: 0, display: matches ? 'none' : 'table-row' }}>
+                <TableCell colSpan={6} sx={{ textAlign: 'center' }}>
+                  <InputUserAnswerSimple
+                    name='userAnswer'
+                    label='Ответ'
+                    type='number'
+                    id='userAnswer'
+                    value={userAnswer}
+                    onChange={onChangeUserAnswer}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        const onAnswer_Button =
+                          document.getElementById('answerButton');
+                        onAnswer_Button.focus();
+                      }
+                    }}
+                  />
                 </TableCell>
               </TableRow>
               <TableRow>

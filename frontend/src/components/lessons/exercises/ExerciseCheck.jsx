@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+// import { useTheme } from '@mui/material/styles';
+// import useMediaQuery from '@mui/material/useMediaQuery';
 import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -41,6 +43,8 @@ function ExerciseCheck({
       userAnswer_CheckNumberLeft__input.focus();
     }
   }, [displayExample]);
+  // const theme = useTheme();
+  // const matches = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
       <Grid item sx={{ flex: 1, padding: '10px' }}>
