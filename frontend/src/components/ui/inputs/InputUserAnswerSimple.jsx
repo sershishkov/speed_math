@@ -7,6 +7,7 @@ function InputUserAnswerSimple({
   value,
   onChange,
   onKeyPress,
+  // display,
 }) {
   return (
     <TextField
@@ -19,7 +20,7 @@ function InputUserAnswerSimple({
       onKeyPress={onKeyPress}
       sx={
         {
-          // border: '1px solid red'
+          // display: display,
         }
       }
     />
