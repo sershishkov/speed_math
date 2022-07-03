@@ -1,7 +1,14 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-function DigitWithStarOrDot({ isStar, isDot, item, color = 'inherit' }) {
+function DigitWithStarOrDot({
+  isStar,
+  isDot,
+  dots = '',
+  item,
+  color = 'inherit',
+}) {
+  console.log(dots);
   return (
     <Grid
       item
@@ -18,12 +25,12 @@ function DigitWithStarOrDot({ isStar, isDot, item, color = 'inherit' }) {
           position: 'absolute',
           left: isStar ? '0' : '-0.5rem',
           top: isStar ? '-0.6rem' : '-1rem',
-          fontSize: '1.5rem',
+          fontSize: isDot ? '1rem' : '1.5rem',
           fontWeight: 'bold',
           color: 'red',
         }}
       >
-        {isStar ? '*' : '.'}
+        {isStar ? '*' : dots}
       </span>
 
       <Typography sx={{ fontSize: '1.5rem', fontWeight: 'bold', color: color }}>

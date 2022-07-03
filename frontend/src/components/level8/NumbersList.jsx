@@ -18,6 +18,7 @@ function NumbersList({ numbersList, direction = 'flex-end' }) {
             isDot={item.isDot}
             item={item.digit}
             color={item.color}
+            dots={item.dots}
           />
         ))}
     </Grid>

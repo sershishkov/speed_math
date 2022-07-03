@@ -28,6 +28,7 @@ function NavigationList({ toggleDrawer }) {
   const [openLevel_5, set__openLevel_5] = useState(false);
   const [openLevel_6, set__openLevel_6] = useState(false);
   const [openLevel_7, set__openLevel_7] = useState(false);
+  const [openLevel_8, set__openLevel_8] = useState(false);
 
   const onLogout = () => {
     dispatch(logout());
@@ -584,6 +585,29 @@ function NavigationList({ toggleDrawer }) {
               <SendIcon />
             </ListItemIcon>
             <ListItemText primary='Умножение на 3' />
+          </ListItemButton>
+        </List>
+      </Collapse>
+
+      <ListItemButton onClick={() => set__openLevel_8(!openLevel_8)}>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary='Уровень№ 8' />
+        {openLevel_8 ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={openLevel_8} timeout='auto' unmountOnExit>
+        <List disablePadding>
+          <ListItemButton
+            sx={{ pl: 4 }}
+            component={Link}
+            href='/lessons/level_8/fast-multiplay-two-digit-by-two-digit'
+            onClick={toggleDrawer(false)}
+          >
+            <ListItemIcon>
+              <SendIcon />
+            </ListItemIcon>
+            <ListItemText primary='Умножение двузначное на двузначное' />
           </ListItemButton>
         </List>
       </Collapse>

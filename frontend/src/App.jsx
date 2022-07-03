@@ -135,6 +135,11 @@ const MultiplyBy8 = React.lazy(() =>
 const MultiplyBy9 = React.lazy(() =>
   import('./pages/lessons/level_7/myltiplyBy9/MultiplyBy9')
 );
+const MultTwoDigitByTwoDigit = React.lazy(() =>
+  import(
+    './pages/lessons/level_8/multTwoDigitByTwoDigit/MultTwoDigitByTwoDigit'
+  )
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -307,6 +312,10 @@ function App() {
                 <Route
                   path='/lessons/level_7/myltiply-by-9'
                   element={<MultiplyBy9 />}
+                />
+                <Route
+                  path='/lessons/level_8/fast-multiplay-two-digit-by-two-digit'
+                  element={<MultTwoDigitByTwoDigit />}
                 />
               </Routes>
             </Suspense>

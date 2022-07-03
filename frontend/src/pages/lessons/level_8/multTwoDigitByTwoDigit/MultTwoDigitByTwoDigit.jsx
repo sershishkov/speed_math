@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTimer } from 'use-timer';
-import { generateExample__MultBy } from '../../../../utils/generateExample';
+import { generateExample__MultDifferentRangesForOperands } from '../../../../utils/generateExample';
 import {
   update__statistic,
   reset as resetStatistic,
@@ -24,10 +24,9 @@ const initialStateUserAnswers = {
   userDigit_7: '',
 };
 
-function MultiplyBy3() {
-  const numberRight = 3;
-  const [min, set__min] = useState(10000);
-  const [max, set__max] = useState(99999);
+function MultTwoDigitByTwoDigit() {
+  const [min, set__min] = useState(11);
+  const [max, set__max] = useState(99);
   const [examplesNumber, set__examplesNumber] = useState(10);
   const [example, set__example] = useState(null);
   const [userAnswers, set__userAnswers] = useState(initialStateUserAnswers);
@@ -36,6 +35,7 @@ function MultiplyBy3() {
   const [displayStatistics, set__displayStatistics] = useState(false);
   const [numberOf_Task, set_numberOf_Task] = useState(0);
   const [resultsList, set__resultsList] = useState([]);
+
   const {
     userDigit_1,
     userDigit_2,
@@ -75,7 +75,9 @@ function MultiplyBy3() {
   };
 
   const nextTask = () => {
-    set__example(new generateExample__MultBy(min, max, numberRight));
+    set__example(
+      new generateExample__MultDifferentRangesForOperands(min, max, min, max)
+    );
     set_numberOf_Task((prevState) => prevState + 1);
   };
   const onContinue = () => {
@@ -145,10 +147,10 @@ function MultiplyBy3() {
   return (
     <Grid container direction='column'>
       <Header
-        hrefPrev='/lessons/level_7/myltiply-by-4'
+        hrefPrev='/lessons/level_7/myltiply-by-3'
         hrefNext='/lessons/level_8/fast-multiplay-two-digit-by-two-digit'
         time={time}
-        title='Умножение на 3'
+        title='Умножение двузначных чисел на двузначные'
       />
       <Description1 />
       <Settings
@@ -182,7 +184,6 @@ function MultiplyBy3() {
         userDigit_6={userDigit_6}
         userDigit_7={userDigit_7}
       />
-
       <ReportOnlyResult
         onSaveResults={onSaveResults}
         onContinue={onContinue}
@@ -194,4 +195,4 @@ function MultiplyBy3() {
   );
 }
 
-export default MultiplyBy3;
+export default MultTwoDigitByTwoDigit;
